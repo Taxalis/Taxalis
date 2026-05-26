@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -18,10 +19,7 @@ export default function Home() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -29,20 +27,16 @@ export default function Home() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     setError(false);
 
     try {
-      const response = await fetch("https://formspree.io/f/xnjrgeba", {
+      const res = await fetch("https://formspree.io/f/xnjrgeba", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,10 +45,9 @@ export default function Home() {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error();
+      if (!res.ok) throw new Error();
 
       setSent(true);
-
       setFormData({
         name: "",
         email: "",
@@ -69,529 +62,162 @@ export default function Home() {
     }
   };
 
-  return (
-    <main
+  const NavMenu = () => (
+    <div
       style={{
-        background: "#06111F",
-        color: "#fff",
-        overflowX: "hidden",
-        fontFamily: "Inter, sans-serif",
+        position: "absolute",
+        top: 70,
+        right: 24,
+        background: "white",
+        borderRadius: 16,
+        padding: 16,
+        display: "flex",
+        flexDirection: "column" as const,
+        gap: 12,
+        minWidth: 180,
+        boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
       }}
     >
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueberuns">Über Uns</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+  );
+
+  return (
+    <main style={{ fontFamily: "Inter, sans-serif", background: "#F7F9FC", color: "#0B1220" }}>
+
+      {/* STYLE */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        a{text-decoration:none;color:inherit}
 
-        *{
-          margin:0;
-          padding:0;
-          box-sizing:border-box;
-        }
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
-        html{
-          scroll-behavior:smooth;
-        }
-
-        body{
-          background:#06111F;
-        }
-
-        a{
-          text-decoration:none;
-          color:inherit;
-        }
-
-        .container{
-          width:100%;
-          max-width:1280px;
-          margin:0 auto;
-          padding:0 40px;
-        }
-
-        .serif{
-          font-family:'Cormorant Garamond', serif;
-        }
-
-        .nav-link{
-          font-size:13px;
-          letter-spacing:0.14em;
-          text-transform:uppercase;
-          color:rgba(255,255,255,0.65);
-          transition:0.3s;
-        }
-
-        .nav-link:hover{
+        .btn{
+          background:#0B5FFF;
           color:white;
+          padding:14px 22px;
+          border-radius:999px;
+          font-size:13px;
+          letter-spacing:0.12em;
+          text-transform:uppercase;
+          transition:0.3s;
+          display:inline-block;
+        }
+        .btn:hover{transform:translateY(-2px);opacity:0.9}
+
+        .btn-outline{
+          border:1px solid #cfd6e4;
+          padding:14px 22px;
+          border-radius:999px;
+          font-size:13px;
+          letter-spacing:0.12em;
+          text-transform:uppercase;
         }
 
-        .hero-gradient{
-          position:absolute;
-          width:900px;
-          height:900px;
-          background:radial-gradient(circle, rgba(58,113,255,0.18) 0%, rgba(58,113,255,0) 70%);
-          top:-300px;
-          right:-200px;
-          pointer-events:none;
-        }
-
-        .hero-grid{
-          display:grid;
-          grid-template-columns:1.2fr 0.8fr;
-          gap:80px;
-          align-items:center;
-        }
-
-        .hero-title{
-          font-size:96px;
-          line-height:0.95;
-          font-weight:300;
-          letter-spacing:-0.05em;
-        }
-
-        .section-title{
-          font-size:64px;
-          line-height:1;
-          font-weight:300;
-          letter-spacing:-0.04em;
-        }
-
-        .premium-card{
-          background:rgba(255,255,255,0.03);
-          border:1px solid rgba(255,255,255,0.08);
-          backdrop-filter:blur(12px);
-          transition:0.4s;
-        }
-
-        .premium-card:hover{
-          transform:translateY(-6px);
-          border-color:rgba(255,255,255,0.2);
-          background:rgba(255,255,255,0.05);
-        }
-
-        .btn-primary{
+        .card{
           background:white;
-          color:#06111F;
-          padding:18px 34px;
-          border:none;
-          border-radius:999px;
-          font-size:13px;
-          letter-spacing:0.14em;
-          text-transform:uppercase;
-          font-weight:600;
-          cursor:pointer;
-          transition:0.3s;
+          border:1px solid #e8eef7;
+          border-radius:24px;
+          padding:28px;
         }
 
-        .btn-primary:hover{
-          transform:translateY(-2px);
-          opacity:0.9;
+        .title{
+          font-size:64px;
+          line-height:1.05;
+          font-weight:300;
         }
 
-        .btn-secondary{
-          border:1px solid rgba(255,255,255,0.16);
-          padding:18px 34px;
-          border-radius:999px;
-          font-size:13px;
-          letter-spacing:0.14em;
-          text-transform:uppercase;
-          color:white;
-          transition:0.3s;
+        .sub{
+          color:#5b6475;
+          line-height:1.8;
         }
 
-        .btn-secondary:hover{
-          border-color:white;
-          background:rgba(255,255,255,0.05);
-        }
-
-        input, textarea, select{
+        input,textarea,select{
           width:100%;
-          background:rgba(255,255,255,0.04);
-          border:1px solid rgba(255,255,255,0.08);
-          padding:18px;
-          color:white;
-          border-radius:18px;
-          font-size:15px;
+          padding:14px;
+          border-radius:14px;
+          border:1px solid #dfe6f2;
           outline:none;
-          transition:0.3s;
         }
 
-        input:focus, textarea:focus, select:focus{
-          border-color:#5B8CFF;
-          background:rgba(255,255,255,0.06);
+        input:focus,textarea:focus,select:focus{
+          border-color:#0B5FFF;
         }
 
-        textarea{
-          resize:none;
-        }
-
-        label{
-          font-size:12px;
-          text-transform:uppercase;
-          letter-spacing:0.14em;
-          color:rgba(255,255,255,0.5);
-          margin-bottom:10px;
-          display:block;
-        }
-
-        .service-grid{
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:24px;
-        }
-
-        .service-card{
-          padding:40px;
-          border-radius:32px;
-        }
-
-        .service-number{
-          font-size:12px;
-          color:#5B8CFF;
-          letter-spacing:0.2em;
-          margin-bottom:28px;
-        }
-
-        .footer-link{
-          color:rgba(255,255,255,0.45);
-          transition:0.3s;
-        }
-
-        .footer-link:hover{
-          color:white;
-        }
-
-        @media(max-width:1000px){
-
-          .hero-grid{
-            grid-template-columns:1fr;
-          }
-
-          .service-grid{
-            grid-template-columns:1fr;
-          }
-
-          .hero-title{
-            font-size:68px;
-          }
-
-          .section-title{
-            font-size:48px;
-          }
-
-          .container{
-            padding:0 24px;
-          }
+        @media(max-width:900px){
+          .title{font-size:40px}
         }
       `}</style>
 
-      {/* NAVBAR */}
+      {/* NAV */}
       <nav
         style={{
           position: "fixed",
           top: 0,
           width: "100%",
-          zIndex: 999,
-          transition: "0.3s",
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          background: scrolled ? "rgba(6,17,31,0.78)" : "transparent",
-          borderBottom: scrolled
-            ? "1px solid rgba(255,255,255,0.06)"
-            : "1px solid transparent",
+          background: scrolled ? "white" : "transparent",
+          borderBottom: scrolled ? "1px solid #e8eef7" : "none",
+          zIndex: 99,
         }}
       >
-        <div
-          className="container"
-          style={{
-            height: "88px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <img
-              src="/logo.png"
-              alt="Taxalis"
-              style={{
-                height: "44px",
-                width: "auto",
-                objectFit: "contain",
-              }}
-            />
-
-            <div>
-              <div
-                className="serif"
-                style={{
-                  fontSize: "22px",
-                  fontWeight: 500,
-                }}
-              >
-                Taxalis Consulting
-              </div>
-
-              <div
-                style={{
-                  fontSize: "10px",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.45)",
-                }}
-              >
-                Buchhaltung & Consulting
-              </div>
-            </div>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", height: 70, alignItems: "center" }}>
+          
+          {/* LOGO */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <img src="/logo.png" style={{ height: 38 }} />
+            <b>Taxalis</b>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "42px",
-              alignItems: "center",
-            }}
-          >
-            <a href="#leistungen" className="nav-link">
-              Leistungen
-            </a>
-
-            <a href="#ueberuns" className="nav-link">
-              Über Uns
-            </a>
-
-            <a href="#kontakt" className="nav-link">
-              Kontakt
-            </a>
-
-            <a href="#kontakt" className="btn-primary">
-              Beratung
-            </a>
+          {/* HAMBURGER */}
+          <div style={{ position: "relative" }}>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="btn-outline">
+              Menü
+            </button>
+            {menuOpen && <NavMenu />}
           </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section
-        style={{
-          minHeight: "100vh",
-          position: "relative",
-          display: "flex",
-          alignItems: "center",
-          paddingTop: "120px",
-        }}
-      >
-        <div className="hero-gradient"></div>
-
-        <div className="container hero-grid">
+      <section style={{ paddingTop: 120, paddingBottom: 80 }}>
+        <div className="container" style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 40 }}>
+          
           <div>
-            <div
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "#5B8CFF",
-                marginBottom: "32px",
-              }}
-            >
-              Premium Buchhaltung · Berlin
-            </div>
-
-            <h1 className="serif hero-title">
-              Moderne
-              <br />
-              Finanz-
-              <br />
-              exzellenz.
-            </h1>
-
-            <p
-              style={{
-                marginTop: "36px",
-                fontSize: "18px",
-                lineHeight: 1.9,
-                color: "rgba(255,255,255,0.62)",
-                maxWidth: "620px",
-              }}
-            >
-              Taxalis Consulting begleitet Unternehmen mit moderner
-              Buchhaltung, digitalisierten Prozessen und strategischer
-              Unternehmensberatung auf höchstem Niveau.
+            <h1 className="title">Finanzberatung auf Premium Niveau.</h1>
+            <p className="sub" style={{ marginTop: 20 }}>
+              Digitale Buchhaltung, strategisches Consulting und klare Prozesse für moderne Unternehmen.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "18px",
-                marginTop: "46px",
-                flexWrap: "wrap",
-              }}
-            >
-              <a href="#kontakt" className="btn-primary">
-                Erstgespräch buchen
-              </a>
-
-              <a href="#leistungen" className="btn-secondary">
-                Leistungen ansehen
-              </a>
+            <div style={{ marginTop: 30, display: "flex", gap: 12 }}>
+              <a className="btn" href="#kontakt">Erstgespräch</a>
+              <a className="btn-outline" href="#leistungen">Leistungen</a>
             </div>
           </div>
 
-          <div
-            className="premium-card"
-            style={{
-              padding: "48px",
-              borderRadius: "40px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "#5B8CFF",
-                marginBottom: "24px",
-              }}
-            >
-              Standort
-            </div>
-
-            <div
-              className="serif"
-              style={{
-                fontSize: "38px",
-                lineHeight: 1.2,
-                marginBottom: "32px",
-              }}
-            >
-              Wilmersdorfer
-              <br />
-              Straße 122–123
-            </div>
-
-            <div
-              style={{
-                color: "rgba(255,255,255,0.55)",
-                lineHeight: 1.9,
-              }}
-            >
-              10627 Berlin
-              <br />
-              Deutschland
-            </div>
-
-            <div
-              style={{
-                marginTop: "42px",
-                display: "grid",
-                gap: "24px",
-              }}
-            >
-              <div>
-                <div
-                  style={{
-                    fontSize: "11px",
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.4)",
-                    marginBottom: "6px",
-                  }}
-                >
-                  Telefon
-                </div>
-
-                <div style={{ fontSize: "18px" }}>
-                  017683151339
-                </div>
-              </div>
-
-              <div>
-                <div
-                  style={{
-                    fontSize: "11px",
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.4)",
-                    marginBottom: "6px",
-                  }}
-                >
-                  Öffnungszeiten
-                </div>
-
-                <div style={{ fontSize: "18px" }}>
-                  Montag – Freitag
-                  <br />
-                  08:00 – 20:00 Uhr
-                </div>
-              </div>
-            </div>
+          {/* IMAGE PLACEHOLDER */}
+          <div className="card" style={{ minHeight: 280, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ color: "#9aa6b2" }}>Hochwertiges Bild (Büro / Beratung)</span>
           </div>
+
         </div>
       </section>
 
       {/* SERVICES */}
-      <section
-        id="leistungen"
-        style={{
-          padding: "140px 0",
-        }}
-      >
+      <section id="leistungen" style={{ padding: "80px 0" }}>
         <div className="container">
-          <div style={{ marginBottom: "80px" }}>
-            <div
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "#5B8CFF",
-                marginBottom: "22px",
-              }}
-            >
-              Leistungen
-            </div>
+          <h2 className="title" style={{ fontSize: 42 }}>Leistungen</h2>
 
-            <h2 className="serif section-title">
-              Struktur.
-              <br />
-              Präzision.
-              <br />
-              Wachstum.
-            </h2>
-          </div>
-
-          <div className="service-grid">
-            {[
-              "Laufende Buchhaltung",
-              "Lohnabrechnung",
-              "Unternehmensberatung",
-              "Digitale Prozesse",
-              "Finanzplanung",
-              "Gründungsberatung",
-            ].map((item, index) => (
-              <div
-                key={item}
-                className="premium-card service-card"
-              >
-                <div className="service-number">
-                  0{index + 1}
-                </div>
-
-                <h3
-                  className="serif"
-                  style={{
-                    fontSize: "32px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  {item}
-                </h3>
-
-                <p
-                  style={{
-                    color: "rgba(255,255,255,0.55)",
-                    lineHeight: 1.9,
-                    fontSize: "15px",
-                  }}
-                >
-                  Maßgeschneiderte Lösungen für moderne Unternehmen
-                  mit Fokus auf Effizienz, Skalierung und Sicherheit.
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 30 }}>
+            {["Buchhaltung", "Lohnabrechnung", "Consulting"].map((s) => (
+              <div key={s} className="card">
+                <b>{s}</b>
+                <p className="sub" style={{ marginTop: 10 }}>
+                  Premium strukturierte Finanzprozesse für Unternehmen.
                 </p>
               </div>
             ))}
@@ -600,297 +226,65 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section
-        id="ueberuns"
-        style={{
-          padding: "140px 0",
-          background: "rgba(255,255,255,0.02)",
-        }}
-      >
-        <div className="container hero-grid">
-          <div>
-            <div
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "#5B8CFF",
-                marginBottom: "22px",
-              }}
-            >
-              Über Uns
-            </div>
-
-            <h2 className="serif section-title">
-              Beratung
-              <br />
-              auf höchstem
-              <br />
-              Niveau.
-            </h2>
+      <section id="ueberuns" style={{ padding: "80px 0", background: "#fff" }}>
+        <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
+          
+          <div className="card">
+            <span className="sub">Über Uns</span>
+            <h2 className="title" style={{ fontSize: 44 }}>Struktur trifft Strategie</h2>
           </div>
 
           <div>
-            <p
-              style={{
-                fontSize: "18px",
-                lineHeight: 2,
-                color: "rgba(255,255,255,0.62)",
-                marginBottom: "32px",
-              }}
-            >
-              Taxalis Consulting verbindet moderne Finanzprozesse mit
-              strategischem Denken. Unser Fokus liegt auf
-              langfristigen Partnerschaften, maximaler Transparenz und
-              einer digitalen Infrastruktur auf Premium-Niveau.
-            </p>
-
-            <p
-              style={{
-                fontSize: "18px",
-                lineHeight: 2,
-                color: "rgba(255,255,255,0.62)",
-              }}
-            >
-              Wir begleiten Unternehmen dabei, ihre Buchhaltung
-              effizienter, skalierbarer und zukunftssicher zu gestalten.
+            <p className="sub">
+              Wir optimieren Finanzprozesse und schaffen digitale Klarheit für Unternehmen.
             </p>
           </div>
+
         </div>
       </section>
 
       {/* CONTACT */}
-      <section
-        id="kontakt"
-        style={{
-          padding: "140px 0",
-        }}
-      >
-        <div className="container hero-grid">
+      <section id="kontakt" style={{ padding: "80px 0" }}>
+        <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
+          
           <div>
-            <div
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "#5B8CFF",
-                marginBottom: "22px",
-              }}
-            >
-              Kontakt
-            </div>
-
-            <h2 className="serif section-title">
-              Lassen Sie uns
-              <br />
-              sprechen.
-            </h2>
-
-            <p
-              style={{
-                marginTop: "32px",
-                lineHeight: 1.9,
-                color: "rgba(255,255,255,0.58)",
-                maxWidth: "520px",
-                fontSize: "17px",
-              }}
-            >
-              Vereinbaren Sie ein unverbindliches Erstgespräch.
-              Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.
-            </p>
+            <h2 className="title" style={{ fontSize: 42 }}>Kontakt</h2>
+            <p className="sub">Antwort innerhalb von 24h.</p>
           </div>
 
-          <div
-            className="premium-card"
-            style={{
-              padding: "48px",
-              borderRadius: "36px",
-            }}
-          >
+          <div className="card">
             {sent ? (
-              <div>
-                <div
-                  className="serif"
-                  style={{
-                    fontSize: "48px",
-                    marginBottom: "24px",
-                  }}
-                >
-                  Vielen Dank.
-                </div>
-
-                <p
-                  style={{
-                    color: "rgba(255,255,255,0.6)",
-                    lineHeight: 1.9,
-                  }}
-                >
-                  Ihre Nachricht wurde erfolgreich übermittelt.
-                  Wir melden uns schnellstmöglich bei Ihnen.
-                </p>
-              </div>
+              <b>Danke! Nachricht gesendet.</b>
             ) : (
               <form onSubmit={handleSubmit}>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "20px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <div>
-                    <label>Name</label>
-
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label>E-Mail</label>
-
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "20px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <div>
-                    <label>Telefon</label>
-
-                    <input
-                      type="text"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label>Leistung</label>
-
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                    >
-                      <option value="">Bitte wählen</option>
-                      <option>Buchhaltung</option>
-                      <option>Lohnabrechnung</option>
-                      <option>Consulting</option>
-                      <option>Gründungsberatung</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div style={{ marginBottom: "28px" }}>
-                  <label>Nachricht</label>
-
-                  <textarea
-                    rows={6}
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn-primary"
-                  disabled={loading}
-                >
-                  {loading
-                    ? "Wird gesendet..."
-                    : "Nachricht senden"}
+                <input name="name" placeholder="Name" onChange={handleChange} />
+                <br /><br />
+                <input name="email" placeholder="E-Mail" onChange={handleChange} />
+                <br /><br />
+                <textarea name="message" placeholder="Nachricht" rows={5} onChange={handleChange} />
+                <br /><br />
+                <button className="btn" disabled={loading}>
+                  {loading ? "Sende..." : "Senden"}
                 </button>
-
-                {error && (
-                  <p
-                    style={{
-                      color: "#ff6b6b",
-                      marginTop: "18px",
-                    }}
-                  >
-                    Fehler beim Senden. Bitte erneut versuchen.
-                  </p>
-                )}
+                {error && <p style={{ color: "red" }}>Fehler beim Senden</p>}
               </form>
             )}
           </div>
+
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer
-        style={{
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-          padding: "48px 0",
-        }}
-      >
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "24px",
-          }}
-        >
-          <div>
-            <div
-              className="serif"
-              style={{
-                fontSize: "24px",
-                marginBottom: "10px",
-              }}
-            >
-              Taxalis Consulting
-            </div>
-
-            <div
-              style={{
-                color: "rgba(255,255,255,0.42)",
-              }}
-            >
-              Berlin · Deutschland
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: "26px",
-              alignItems: "center",
-            }}
-          >
-            <a href="/impressum" className="footer-link">
-              Impressum
-            </a>
-
-            <a href="/datenschutz" className="footer-link">
-              Datenschutz
-            </a>
+      <footer style={{ padding: 40, borderTop: "1px solid #e8eef7" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between" }}>
+          <span>Taxalis Consulting</span>
+          <div style={{ display: "flex", gap: 16 }}>
+            <a href="/impressum">Impressum</a>
+            <a href="/datenschutz">Datenschutz</a>
           </div>
         </div>
       </footer>
+
     </main>
   );
 }

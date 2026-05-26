@@ -1,13 +1,6 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
-
 export const metadata = {
   title: "Taxalis Consulting",
-  description: "Professionelle Buchhaltung & Consulting",
+  description: "Premium Buchhaltung & Consulting in Berlin",
 };
 
 export default function RootLayout({
@@ -17,7 +10,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={inter.className}>
+      <body
+        style={{
+          margin: 0,
+          fontFamily: "Inter, system-ui, sans-serif",
+          background: "#F5F7FA",
+          color: "#0B1B2B",
+        }}
+      >
         {children}
       </body>
     </html>
