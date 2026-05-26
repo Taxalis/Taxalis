@@ -89,7 +89,6 @@ export default function Home() {
   return (
     <main style={{ fontFamily: "Inter, sans-serif", background: "#F7F9FC", color: "#0B1220" }}>
 
-      {/* STYLE */}
       <style>{`
         *{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
@@ -127,7 +126,7 @@ export default function Home() {
         }
 
         .title{
-          font-size:64px;
+          font-size:56px;
           line-height:1.05;
           font-weight:300;
         }
@@ -150,7 +149,7 @@ export default function Home() {
         }
 
         @media(max-width:900px){
-          .title{font-size:40px}
+          .title{font-size:38px}
         }
       `}</style>
 
@@ -167,13 +166,11 @@ export default function Home() {
       >
         <div className="container" style={{ display: "flex", justifyContent: "space-between", height: 70, alignItems: "center" }}>
           
-          {/* LOGO */}
+          {/* LOGO (ohne Text daneben) */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <img src="/logo.png" style={{ height: 38 }} />
-            <b>Taxalis</b>
+            <img src="/logo.png" style={{ height: 85 }} />
           </div>
 
-          {/* HAMBURGER */}
           <div style={{ position: "relative" }}>
             <button onClick={() => setMenuOpen(!menuOpen)} className="btn-outline">
               Menü
@@ -188,9 +185,14 @@ export default function Home() {
         <div className="container" style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 40 }}>
           
           <div>
-            <h1 className="title">Finanzberatung auf Premium Niveau.</h1>
+            <h1 className="title">
+              Finanzberatung auf Premium Niveau für moderne Unternehmen.
+            </h1>
+
             <p className="sub" style={{ marginTop: 20 }}>
-              Digitale Buchhaltung, strategisches Consulting und klare Prozesse für moderne Unternehmen.
+              Wir unterstützen Selbstständige, Start-ups und Unternehmen bei der vollständigen digitalen Buchhaltung, Lohnabrechnung und vorbereitenden Jahresabschlüssen.
+              <br /><br />
+              Unser Fokus liegt auf Effizienz, Transparenz und einer modernen digitalen Finanzstruktur, damit Sie sich vollständig auf Ihr Kerngeschäft konzentrieren können.
             </p>
 
             <div style={{ marginTop: 30, display: "flex", gap: 12 }}>
@@ -199,9 +201,17 @@ export default function Home() {
             </div>
           </div>
 
-          {/* IMAGE PLACEHOLDER */}
-          <div className="card" style={{ minHeight: 280, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#9aa6b2" }}>Hochwertiges Bild (Büro / Beratung)</span>
+          {/* IMAGE ersetzt */}
+          <div className="card" style={{ padding: 0, overflow: "hidden" }}>
+            <img
+              src="/office.jpg"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: 300,
+                objectFit: "cover"
+              }}
+            />
           </div>
 
         </div>
@@ -210,17 +220,37 @@ export default function Home() {
       {/* SERVICES */}
       <section id="leistungen" style={{ padding: "80px 0" }}>
         <div className="container">
-          <h2 className="title" style={{ fontSize: 42 }}>Leistungen</h2>
+
+          <h2 className="title" style={{ fontSize: 38 }}>Leistungen</h2>
+
+          <p className="sub" style={{ maxWidth: 850, marginTop: 12 }}>
+            Unsere Leistungen decken alle zentralen Bereiche moderner Finanz- und Unternehmensprozesse ab.
+            Wir begleiten Sie von der laufenden Buchhaltung bis zur strategischen Beratung und sorgen für klare, digitale und effiziente Abläufe.
+          </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginTop: 30 }}>
-            {["Buchhaltung", "Lohnabrechnung", "Consulting"].map((s) => (
-              <div key={s} className="card">
-                <b>{s}</b>
-                <p className="sub" style={{ marginTop: 10 }}>
-                  Premium strukturierte Finanzprozesse für Unternehmen.
-                </p>
-              </div>
-            ))}
+
+            <div className="card">
+              <b>Buchhaltung</b>
+              <p className="sub" style={{ marginTop: 10 }}>
+                Digitale, strukturierte und laufende Finanzbuchhaltung für maximale Transparenz und Effizienz.
+              </p>
+            </div>
+
+            <div className="card">
+              <b>Lohnabrechnung</b>
+              <p className="sub" style={{ marginTop: 10 }}>
+                Komplette Abwicklung aller Lohn- und Gehaltsabrechnungen inkl. Meldungen bei Sozialversicherungsträgern.
+              </p>
+            </div>
+
+            <div className="card">
+              <b>Consulting</b>
+              <p className="sub" style={{ marginTop: 10 }}>
+                Strategische Beratung zur Optimierung von Unternehmensstruktur, Prozessen und finanzieller Planung.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -231,12 +261,18 @@ export default function Home() {
           
           <div className="card">
             <span className="sub">Über Uns</span>
-            <h2 className="title" style={{ fontSize: 44 }}>Struktur trifft Strategie</h2>
+            <h2 className="title" style={{ fontSize: 40 }}>
+              Struktur, Digitalisierung und Vertrauen
+            </h2>
           </div>
 
           <div>
             <p className="sub">
-              Wir optimieren Finanzprozesse und schaffen digitale Klarheit für Unternehmen.
+              Wir sind spezialisiert auf moderne Buchhaltungsprozesse und digitale Finanzorganisation.
+              <br /><br />
+              Durch effiziente Abläufe schaffen wir klare Strukturen, reduzieren Aufwand und ermöglichen Unternehmen eine sichere und skalierbare Finanzbasis.
+              <br /><br />
+              Persönliche Betreuung, schnelle Kommunikation und digitale Prozesse stehen dabei im Mittelpunkt unserer Arbeit.
             </p>
           </div>
 
@@ -248,20 +284,22 @@ export default function Home() {
         <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40 }}>
           
           <div>
-            <h2 className="title" style={{ fontSize: 42 }}>Kontakt</h2>
-            <p className="sub">Antwort innerhalb von 24h.</p>
+            <h2 className="title" style={{ fontSize: 38 }}>Kontakt</h2>
+            <p className="sub">
+              Lassen Sie uns gemeinsam Ihre Finanzprozesse optimieren. Wir melden uns innerhalb von 24 Stunden zurück.
+            </p>
           </div>
 
           <div className="card">
             {sent ? (
-              <b>Danke! Nachricht gesendet.</b>
+              <b>Danke! Ihre Anfrage wurde erfolgreich gesendet.</b>
             ) : (
               <form onSubmit={handleSubmit}>
                 <input name="name" placeholder="Name" onChange={handleChange} />
                 <br /><br />
                 <input name="email" placeholder="E-Mail" onChange={handleChange} />
                 <br /><br />
-                <textarea name="message" placeholder="Nachricht" rows={5} onChange={handleChange} />
+                <textarea name="message" placeholder="Ihre Nachricht..." rows={5} onChange={handleChange} />
                 <br /><br />
                 <button className="btn" disabled={loading}>
                   {loading ? "Sende..." : "Senden"}
