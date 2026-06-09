@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+
 export const metadata = {
   title: "Taxalis Consulting",
   description: "Premium Buchhaltung & Consulting in Berlin",
@@ -19,6 +21,7 @@ export default function RootLayout({
         }}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );

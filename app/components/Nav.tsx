@@ -1,17 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [leistungenOpen, setLeistungenOpen] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
+
+  const openLeistungen = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    setLeistungenOpen(true);
+  };
+
+  const closeLeistungen = () => {
+    closeTimerRef.current = setTimeout(() => {
+      setLeistungenOpen(false);
+    }, 180);
+  };
 
   const leistungen = [
     { href: "/leistungen/bueroservice", label: "Büroservice" },
@@ -28,9 +48,9 @@ export function Nav() {
   return (
     <>
       <style>{`
-        .nav-dropdown{position:relative}
+        .nav-dropdown{position:relative;padding-bottom:12px;margin-bottom:-12px}
         .nav-dropdown-menu{
-          position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+          position:absolute;top:100%;left:50%;transform:translateX(-50%);
           background:white;border-radius:8px;padding:8px;
           box-shadow:0 10px 30px rgba(0,0,0,0.1);border:1px solid #e5e7eb;
           min-width:280px;z-index:200;
@@ -62,39 +82,39 @@ export function Nav() {
 
       <div className={`mobile-overlay${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(false)} />
       <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
-        <a href="/" onClick={() => setMenuOpen(false)}>Startseite</a>
+        <Link href="/" onClick={() => setMenuOpen(false)}>Startseite</Link>
         <div className="mobile-section">Leistungen</div>
-        {leistungen.map(l => <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>)}
+        {leistungen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
         <div className="mobile-section">Unternehmen</div>
-        <a href="/#ueberuns" onClick={() => setMenuOpen(false)}>Über Uns</a>
-        <a href="/#kontakt" onClick={() => setMenuOpen(false)}>Kontakt</a>
-        <a href="/impressum" onClick={() => setMenuOpen(false)}>Impressum</a>
-        <a href="/datenschutz" onClick={() => setMenuOpen(false)}>Datenschutz</a>
+        <Link href="/#ueberuns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
+        <Link href="/#kontakt" onClick={() => setMenuOpen(false)}>Kontakt</Link>
+        <Link href="/impressum" onClick={() => setMenuOpen(false)}>Impressum</Link>
+        <Link href="/datenschutz" onClick={() => setMenuOpen(false)}>Datenschutz</Link>
         <div style={{ marginTop: 16 }}>
-          <a className="btn" href="/#kontakt" onClick={() => setMenuOpen(false)} style={{ display: "block", textAlign: "center", padding: "12px" }}>Jetzt anfragen</a>
+          <Link className="btn" href="/#kontakt" onClick={() => setMenuOpen(false)} style={{ display: "block", textAlign: "center", padding: "12px" }}>Jetzt anfragen</Link>
         </div>
       </div>
 
       <nav style={{ position: "fixed", top: 0, width: "100%", background: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid #e5e7eb", zIndex: 97, transition: "all 0.3s ease" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", justifyContent: "space-between", height: 72, alignItems: "center" }}>
-          <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}><img src="/logo.png" style={{ height: 60, width: "auto" }} alt="Taxalis Logo" /></a>
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}><Image src="/logo.png" style={{ height: 60, width: "auto" }} alt="Taxalis Logo" width={100} height={60} priority /></Link>
 
           <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 0 }}>
-            <a className="nav-link" href="/">Start</a>
-            <div className="nav-dropdown" onMouseEnter={() => setLeistungenOpen(true)} onMouseLeave={() => setLeistungenOpen(false)}>
+            <Link className="nav-link" href="/">Start</Link>
+            <div className="nav-dropdown" onMouseEnter={openLeistungen} onMouseLeave={closeLeistungen}>
               <button className="nav-link" style={{ display: "flex", alignItems: "center", gap: 4 }}>
                 Leistungen <span style={{ fontSize: 10 }}>▼</span>
               </button>
               {leistungenOpen && (
                 <div className="nav-dropdown-menu">
-                  {leistungen.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
+                  {leistungen.map(l => <Link key={l.href} href={l.href}>{l.label}</Link>)}
                 </div>
               )}
             </div>
-            <a className="nav-link" href="/#ueberuns">Über Uns</a>
-            <a className="nav-link" href="/#kontakt">Kontakt</a>
+            <Link className="nav-link" href="/#ueberuns">Über Uns</Link>
+            <Link className="nav-link" href="/#kontakt">Kontakt</Link>
             <div style={{ width: 1, height: 20, background: "#e5e7eb", margin: "0 8px" }} />
-            <a className="btn" href="/#kontakt">Jetzt anfragen</a>
+            <Link className="btn" href="/#kontakt">Jetzt anfragen</Link>
           </div>
 
           <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menü">
@@ -117,7 +137,7 @@ export function Footer() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
           <div>
-            <img src="/logo.png" style={{ height: 50, width: "auto", filter: "brightness(0) invert(1)", marginBottom: 16 }} alt="Taxalis" />
+            <Image src="/logo.png" style={{ height: 50, width: "auto", filter: "brightness(0) invert(1)", marginBottom: 16 }} alt="Taxalis" width={100} height={50} />
             <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.8, maxWidth: 260 }}>Professioneller Büro- & Buchhaltungsservice für moderne Unternehmen in Berlin.</p>
             <div style={{ marginTop: 20, display: "flex", gap: 10 }}>
               {["DSGVO-konform", "Diskret", "Digital"].map(b => (
@@ -129,9 +149,9 @@ export function Footer() {
             <div style={{ fontWeight: 600, marginBottom: 16, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Leistungen</div>
             {leistungen.map((l, i) => (
               <div key={l} style={{ marginBottom: 8 }}>
-                <a href={hrefs[i]} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
+                <Link href={hrefs[i]} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
                   onMouseEnter={e => (e.currentTarget.style.color = "white")}
-                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>{l}</a>
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>{l}</Link>
               </div>
             ))}
           </div>
@@ -147,9 +167,9 @@ export function Footer() {
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Seiten</div>
               {[{ label: "Startseite", href: "/" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map(l => (
                 <div key={l.label} style={{ marginBottom: 8 }}>
-                  <a href={l.href} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
+                  <Link href={l.href} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
                     onMouseEnter={e => (e.currentTarget.style.color = "white")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>{l.label}</a>
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>{l.label}</Link>
                 </div>
               ))}
             </div>
