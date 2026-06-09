@@ -1,21 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Nav, Footer } from "@/app/components/Nav";
 import { getServiceById } from "@/app/lib/services";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 export default function ServicePage() {
   const params = useParams();
   const id = params?.id as string;
   const service = id ? getServiceById(id) : null;
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
   if (!service) {
     return (
       <>
@@ -24,7 +17,7 @@ export default function ServicePage() {
           <div style={{ textAlign: "center" }}>
             <h1 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "12px" }}>Seite nicht gefunden</h1>
             <p style={{ color: "#6b7280", marginBottom: "24px" }}>Die gewünschte Leistung existiert nicht.</p>
-            <a href="/" style={{ background: "#1f2937", color: "white", padding: "12px 24px", borderRadius: "8px", textDecoration: "none", display: "inline-block" }}>Zurück zur Startseite</a>
+            <Link href="/" style={{ background: "#1f2937", color: "white", padding: "12px 24px", borderRadius: "8px", textDecoration: "none", display: "inline-block" }}>Zurück zur Startseite</Link>
           </div>
         </div>
         <Footer />
@@ -81,14 +74,14 @@ export default function ServicePage() {
         <div className="hero">
           <div className="container">
             <div className="breadcrumb">
-              <a href="/">Startseite</a> / {service.title}
+              <Link href="/">Startseite</Link> / {service.title}
             </div>
             <div style={{ fontSize: "64px", marginBottom: "16px" }}>{service.icon}</div>
             <h1>{service.title}</h1>
             <p className="tagline">{service.tagline}</p>
             <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
-              <a className="btn" href="/#kontakt">Jetzt anfragen</a>
-              <a className="btn btn-outline" href="#details" style={{ background: "transparent", color: "#1f2937", border: "2px solid #1f2937" }}>Mehr erfahren</a>
+              <Link className="btn" href="/#kontakt">Jetzt anfragen</Link>
+              <Link className="btn btn-outline" href="#details" style={{ background: "transparent", color: "#1f2937", border: "2px solid #1f2937" }}>Mehr erfahren</Link>
             </div>
           </div>
         </div>
@@ -153,7 +146,7 @@ export default function ServicePage() {
           <div className="container">
             <h2>Bereit zu starten?</h2>
             <p>Lassen Sie sich von unserem Team kostenlos beraten und erfahren Sie, wie wir Ihr Unternehmen unterstützen können.</p>
-            <a className="btn" href="/#kontakt">{service.cta}</a>
+            <Link className="btn" href="/#kontakt">{service.cta}</Link>
           </div>
         </div>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Nav, Footer } from "@/app/components/Nav";
+import Link from "next/link";
 
 export default function Datenschutz() {
   return (
@@ -113,7 +114,7 @@ export default function Datenschutz() {
               finden Sie auf dieser Website.
             </p>
 
-            <a className="btn" href="/">Zurück zur Startseite</a>
+            <Link className="btn" href="/">Zurück zur Startseite</Link>
           </div>
         </div>
       </main>

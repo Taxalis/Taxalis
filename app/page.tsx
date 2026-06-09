@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Nav, Footer } from "@/app/components/Nav";
 import { services } from "@/app/lib/services";
 
@@ -118,8 +119,8 @@ export default function Home() {
               <h1 style={{ fontSize: 48, fontWeight: 600, lineHeight: 1.1, color: "#111827", marginBottom: 24 }}>Moderne Buchhaltung für Ihr Unternehmen</h1>
               <p className="sub" style={{ marginTop: 16, marginBottom: 32 }}>Von der Lohnbuchhaltung bis zum Mahnwesen – wir kümmern uns um alle administrativen und buchhalterischen Aufgaben, damit Sie sich auf Ihr Geschäft konzentrieren können.</p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <a className="btn" href="#kontakt">Kostenlose Beratung</a>
-                <a className="btn-outline" href="#leistungen">Leistungen entdecken</a>
+                <Link className="btn" href="#kontakt">Kostenlose Beratung</Link>
+                <Link className="btn-outline" href="#leistungen">Leistungen entdecken</Link>
               </div>
             </div>
             <div className="hide-mobile" style={{ background: "white", border: "1px solid #e5e7eb", borderRadius: 8, padding: 32 }}>
@@ -130,7 +131,7 @@ export default function Home() {
                   <span style={{ color: "#374151", fontSize: 13, fontWeight: 500 }}>{s.title}</span>
                 </div>
               ))}
-              <a className="btn" href="#kontakt" style={{ display: "block", textAlign: "center", marginTop: 24, padding: "12px", fontSize: 12 }}>Jetzt anfragen</a>
+              <Link className="btn" href="#kontakt" style={{ display: "block", textAlign: "center", marginTop: 24, padding: "12px", fontSize: 12 }}>Jetzt anfragen</Link>
             </div>
           </div>
         </section>
@@ -155,12 +156,12 @@ export default function Home() {
             <p className="sub" style={{ maxWidth: 600, marginTop: 16 }}>Von der laufenden Buchführung bis zur Kostenrechnung – entdecken Sie all unsere modernen Services.</p>
             <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24, marginTop: 48 }}>
               {services.map((s, i) => (
-                <a key={s.id} href={`/leistungen/${s.id}`} id={`card-${s.id}`} data-animate="true" className={`service-card animate-in${visibleCards.has(`card-${s.id}`) ? " visible" : ""}`} style={{ transitionDelay: `${i * 0.08}s` }}>
+                <Link key={s.id} href={`/leistungen/${s.id}`} id={`card-${s.id}`} data-animate="true" className={`service-card animate-in${visibleCards.has(`card-${s.id}`) ? " visible" : ""}`} style={{ transitionDelay: `${i * 0.08}s` }}>
                   <div style={{ fontSize: 32, marginBottom: 16 }}>{s.icon}</div>
                   <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 6 }}>{s.title}</h3>
                   <div style={{ fontSize: 11, color: "#9ca3af", fontWeight: 600, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.shortTitle}</div>
                   <p className="sub" style={{ fontSize: 13 }}>{s.description}</p>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Nav, Footer } from "@/app/components/Nav";
+import Link from "next/link";
 
 export default function Impressum() {
   return (
@@ -70,7 +71,7 @@ export default function Impressum() {
               Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürft der Zustimmung des Autors.
             </p>
 
-            <a className="btn" href="/">Zurück zur Startseite</a>
+            <Link className="btn" href="/">Zurück zur Startseite</Link>
           </div>
         </div>
       </main>
