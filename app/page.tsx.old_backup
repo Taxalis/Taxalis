@@ -1,0 +1,428 @@
+"use client";
+
+import { useEffect, useState, useRef } from "react";
+
+export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(false);
+    try {
+      const res = await fetch("https://formspree.io/f/xnjrgeba", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const services = [
+    { id: "s1", icon: "📋", title: "Büroservice", short: "Professionelle Büroorganisation", desc: "Wir übernehmen administrative Aufgaben, Schriftverkehr, Dokumentenmanagement und die komplette Organisation Ihres Büroalltags – damit Sie sich auf Ihr Kerngeschäft konzentrieren können." },
+    { id: "s2", icon: "💼", title: "Lohnbuchhaltung", short: "Präzise Lohn- & Gehaltsabrechnungen", desc: "Vollständige Abwicklung aller Lohn- und Gehaltsabrechnungen inklusive Meldungen bei Sozialversicherungsträgern, Krankenkassen und Finanzämtern – termingerecht und fehlerfrei." },
+    { id: "s3", icon: "📊", title: "Buchhaltung", short: "Strukturierte Finanzbuchhaltung", desc: "Laufende, digitale Finanzbuchhaltung für maximale Transparenz. Wir erfassen, prüfen und verbuchen alle Geschäftsvorfälle systematisch und bereiten Ihre Unterlagen steuerberaterfertig auf." },
+    { id: "s4", icon: "📁", title: "Buchführung", short: "Ordnungsgemäße Buchführung", desc: "Ordnungsgemäße Buchführung nach HGB – von der Belegerfassung bis zur Kontenabstimmung. Wir sorgen für eine saubere, revisionssichere Dokumentation aller Finanzbewegungen." },
+    { id: "s5", icon: "🔄", title: "Vorbereitende Buchhaltung", short: "Vorbereitung für den Steuerberater", desc: "Wir sortieren, prüfen und strukturieren alle Belege und Unterlagen professionell vor – so minimieren Sie die Kosten beim Steuerberater und schaffen maximale Effizienz." },
+    { id: "s6", icon: "📈", title: "Vorbereitende Jahresabschlüsse", short: "Jahresabschluss-Vorbereitung", desc: "Professionelle Vorbereitung Ihrer Jahresabschlussunterlagen im legalen Rahmen – ohne Steuerberater. Wir erstellen alle Grundlagen, damit Ihr Abschluss reibungslos und kosteneffizient verläuft." },
+  ];
+
+  const stats = [
+    { value: "100+", label: "Zufriedene Kunden" },
+    { value: "10+", label: "Jahre Erfahrung" },
+    { value: "24h", label: "Reaktionszeit" },
+    { value: "100%", label: "Digital & Modern" },
+  ];
+
+  return (
+    <main style={{ fontFamily: "'Inter', sans-serif", background: "#F7F9FC", color: "#0B1220" }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        a{text-decoration:none;color:inherit}
+        body{overflow-x:hidden}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .btn{background:#1a56db;color:white;padding:15px 28px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:0.04em;transition:all 0.3s ease;display:inline-block;cursor:pointer;border:none;}
+        .btn:hover{background:#1740a8;transform:translateY(-2px);box-shadow:0 8px 25px rgba(26,86,219,0.35)}
+        .btn-outline{border:2px solid #1a56db;color:#1a56db;padding:13px 28px;border-radius:999px;font-size:14px;font-weight:600;transition:all 0.3s ease;display:inline-block;background:transparent;cursor:pointer;}
+        .btn-outline:hover{background:#1a56db;color:white;transform:translateY(-2px)}
+        .btn-white{background:white;color:#1a56db;padding:15px 28px;border-radius:999px;font-size:14px;font-weight:600;transition:all 0.3s ease;display:inline-block;cursor:pointer;border:none;}
+        .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
+        .card{background:white;border:1px solid #e8eef7;border-radius:20px;padding:32px;transition:all 0.3s ease;}
+        .card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.08)}
+        .service-card{background:white;border:1px solid #e8eef7;border-radius:20px;padding:32px;transition:all 0.35s ease;}
+        .service-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(26,86,219,0.12);border-color:#1a56db;}
+        .animate-in{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease, transform 0.6s ease;}
+        .animate-in.visible{opacity:1;transform:translateY(0);}
+        .nav-link{color:#374151;font-size:14px;font-weight:500;padding:8px 16px;border-radius:8px;transition:all 0.2s;}
+        .nav-link:hover{color:#1a56db;background:#eff6ff}
+        .section-label{font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#1a56db;margin-bottom:12px;display:block;}
+        .title-xl{font-size:58px;line-height:1.05;font-weight:300;letter-spacing:-0.02em}
+        .title-lg{font-size:44px;line-height:1.1;font-weight:300;letter-spacing:-0.02em}
+        .sub{color:#6b7280;line-height:1.8;font-size:15px}
+        input,textarea,select{width:100%;padding:14px 18px;border-radius:12px;border:1.5px solid #e5e7eb;outline:none;font-size:14px;font-family:inherit;background:white;color:#111827;transition:border-color 0.2s;}
+        input:focus,textarea:focus,select:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,0.08)}
+        .badge{display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#1a56db;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:600;}
+        .stat-card{text-align:center;padding:32px 24px;}
+        .hero-gradient{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#1a56db 100%);}
+        .process-step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid #f3f4f6;}
+        .process-step:last-child{border-bottom:none}
+        .step-number{width:44px;height:44px;background:#1a56db;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;}
+        .mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:98;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+        .mobile-overlay.open{opacity:1;pointer-events:all}
+        .mobile-menu{position:fixed;top:0;right:-300px;width:280px;height:100vh;background:white;z-index:99;padding:80px 32px 32px;display:flex;flex-direction:column;gap:8px;transition:right 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:-20px 0 60px rgba(0,0,0,0.15);}
+        .mobile-menu.open{right:0}
+        .mobile-menu a{padding:14px 16px;border-radius:12px;font-size:15px;font-weight:500;color:#111827;transition:all 0.2s;}
+        .mobile-menu a:hover{background:#eff6ff;color:#1a56db}
+        .hamburger{width:40px;height:40px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;background:none;border:1.5px solid #e5e7eb;border-radius:10px;padding:8px;transition:all 0.2s;}
+        .hamburger:hover{border-color:#1a56db}
+        .hamburger span{display:block;width:18px;height:2px;background:#374151;border-radius:2px;transition:all 0.3s;}
+        .trust-row{display:flex;gap:32px;flex-wrap:wrap;margin-top:32px;}
+        .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#6b7280;font-weight:500;}
+        @media(max-width:768px){
+          .title-xl{font-size:34px}.title-lg{font-size:28px}
+          .hero-grid{grid-template-columns:1fr!important}
+          .services-grid{grid-template-columns:1fr!important}
+          .stats-grid{grid-template-columns:repeat(2,1fr)!important}
+          .about-grid{grid-template-columns:1fr!important}
+          .contact-grid{grid-template-columns:1fr!important}
+          .process-grid{grid-template-columns:1fr!important}
+          .footer-grid{flex-direction:column;gap:24px}
+          .desktop-nav{display:none!important}
+          .hide-mobile{display:none!important}
+        }
+        @media(min-width:769px){.hamburger{display:none!important}}
+      `}</style>
+
+      <div className={`mobile-overlay${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(false)} />
+      <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
+        <a href="#leistungen" onClick={() => setMenuOpen(false)}>Leistungen</a>
+        <a href="#ablauf" onClick={() => setMenuOpen(false)}>Ablauf</a>
+        <a href="#ueberuns" onClick={() => setMenuOpen(false)}>Über Uns</a>
+        <a href="#kontakt" onClick={() => setMenuOpen(false)}>Kontakt</a>
+        <hr style={{ borderColor: "#f3f4f6", margin: "8px 0" }} />
+        <a href="/impressum" onClick={() => setMenuOpen(false)}>Impressum</a>
+        <a href="/datenschutz" onClick={() => setMenuOpen(false)}>Datenschutz</a>
+        <div style={{ marginTop: 16 }}>
+          <a className="btn" href="#kontakt" onClick={() => setMenuOpen(false)} style={{ display: "block", textAlign: "center" }}>Jetzt anfragen</a>
+        </div>
+      </div>
+
+      <nav style={{ position: "fixed", top: 0, width: "100%", background: scrolled ? "rgba(255,255,255,0.95)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid #e8eef7" : "none", zIndex: 97, transition: "all 0.3s ease" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", height: 72, alignItems: "center" }}>
+          <img src="/logo.png" style={{ height: 70, width: "auto" }} alt="Taxalis Logo" />
+          <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <a className="nav-link" href="#leistungen">Leistungen</a>
+            <a className="nav-link" href="#ablauf">Ablauf</a>
+            <a className="nav-link" href="#ueberuns">Über Uns</a>
+            <a className="nav-link" href="#kontakt">Kontakt</a>
+            <div style={{ width: 1, height: 20, background: "#e5e7eb", margin: "0 8px" }} />
+            <a className="btn" href="#kontakt" style={{ padding: "10px 22px", fontSize: 13 }}>Jetzt anfragen</a>
+          </div>
+          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menü">
+            <span style={menuOpen ? { transform: "rotate(45deg) translate(5px,5px)" } : {}} />
+            <span style={menuOpen ? { opacity: 0 } : {}} />
+            <span style={menuOpen ? { transform: "rotate(-45deg) translate(5px,-5px)" } : {}} />
+          </button>
+        </div>
+      </nav>
+
+      <section className="hero-gradient" style={{ paddingTop: 140, paddingBottom: 100 }}>
+        <div className="container hero-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 60, alignItems: "center" }}>
+          <div>
+            <span className="badge" style={{ background: "rgba(255,255,255,0.15)", color: "white", marginBottom: 24 }}>✦ Ihr Büro- & Buchhaltungsservice in Berlin</span>
+            <h1 className="title-xl" style={{ color: "white", marginTop: 16 }}>Professioneller Büro- & Buchhaltungsservice für Ihr Unternehmen.</h1>
+            <p style={{ color: "rgba(255,255,255,0.75)", marginTop: 24, lineHeight: 1.8, fontSize: 16, maxWidth: 520 }}>Wir unterstützen Selbstständige, Freiberufler und Unternehmen mit Büroservice, Lohnbuchhaltung, Buchführung und vorbereitenden Jahresabschlüssen – professionell, digital und zuverlässig.</p>
+            <div style={{ marginTop: 36, display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <a className="btn-white" href="#kontakt">Kostenloses Erstgespräch</a>
+              <a href="#leistungen" style={{ color: "rgba(255,255,255,0.85)", fontSize: 14, fontWeight: 500, display: "flex", alignItems: "center", gap: 6, padding: "15px 0" }}>Alle Leistungen →</a>
+            </div>
+            <div className="trust-row">
+              {["Keine versteckten Kosten", "Schnelle Reaktionszeit", "100% Digital"].map((t) => (
+                <div className="trust-item" key={t}>
+                  <span style={{ width: 20, height: 20, background: "rgba(255,255,255,0.2)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, color: "white", fontWeight: 700 }}>✓</span>
+                  <span style={{ color: "rgba(255,255,255,0.75)" }}>{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="hide-mobile" style={{ background: "rgba(255,255,255,0.08)", borderRadius: 24, padding: 32, backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.15)" }}>
+            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", marginBottom: 20 }}>UNSERE KERNLEISTUNGEN</div>
+            {["Büroservice & Administration", "Lohnbuchhaltung", "Buchhaltung & Buchführung", "Vorbereitende Buchhaltung", "Vorbereitende Jahresabschlüsse"].map((s, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 0", borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#60a5fa", flexShrink: 0 }} />
+                <span style={{ color: "rgba(255,255,255,0.85)", fontSize: 14, fontWeight: 500 }}>{s}</span>
+              </div>
+            ))}
+            <a className="btn-white" href="#kontakt" style={{ display: "block", textAlign: "center", marginTop: 24, padding: "12px 20px" }}>Jetzt anfragen</a>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: "white", borderBottom: "1px solid #f3f4f6" }}>
+        <div className="container stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
+          {stats.map((s, i) => (
+            <div key={i} className="stat-card" style={{ borderRight: i < 3 ? "1px solid #f3f4f6" : "none" }}>
+              <div style={{ fontSize: 40, fontWeight: 700, color: "#1a56db", letterSpacing: "-0.02em" }}>{s.value}</div>
+              <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4, fontWeight: 500 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="leistungen" style={{ padding: "100px 0" }}>
+        <div className="container">
+          <span className="section-label">Leistungen</span>
+          <h2 className="title-lg">Was wir für Sie tun</h2>
+          <p className="sub" style={{ maxWidth: 600, marginTop: 16 }}>Von der laufenden Buchführung bis zur Vorbereitung Ihres Jahresabschlusses – wir übernehmen alle administrativen und buchhalterischen Aufgaben für Ihr Unternehmen.</p>
+          <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24, marginTop: 48 }}>
+            {services.map((s, i) => (
+              <div key={s.id} id={`card-${s.id}`} data-animate="true" className={`service-card animate-in${visibleCards.has(`card-${s.id}`) ? " visible" : ""}`} style={{ transitionDelay: `${i * 0.08}s` }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>{s.icon}</div>
+                <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 6 }}>{s.title}</h3>
+                <div style={{ fontSize: 12, color: "#1a56db", fontWeight: 600, marginBottom: 12 }}>{s.short}</div>
+                <p className="sub" style={{ fontSize: 14 }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="ablauf" style={{ padding: "100px 0", background: "white" }}>
+        <div className="container process-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+          <div>
+            <span className="section-label">So einfach geht's</span>
+            <h2 className="title-lg">Ihr Weg zu uns</h2>
+            <p className="sub" style={{ marginTop: 16, marginBottom: 40 }}>In wenigen Schritten zur professionellen Betreuung – unkompliziert, transparent und ohne Risiko.</p>
+            <a className="btn" href="#kontakt">Jetzt starten</a>
+          </div>
+          <div>
+            {[
+              { n: "01", title: "Kostenlose Erstberatung", desc: "Wir lernen Ihr Unternehmen kennen und besprechen Ihre Anforderungen – unverbindlich und ohne Kosten." },
+              { n: "02", title: "Individuelles Angebot", desc: "Sie erhalten ein maßgeschneidertes Angebot, das exakt auf Ihre Bedürfnisse und Ihr Budget abgestimmt ist." },
+              { n: "03", title: "Digitale Übergabe", desc: "Wir richten alle digitalen Prozesse ein und übernehmen nahtlos Ihre Buchhaltung und Administration." },
+              { n: "04", title: "Laufende Betreuung", desc: "Sie haben jederzeit einen festen Ansprechpartner und profitieren von schnellen Reaktionszeiten." },
+            ].map((step) => (
+              <div className="process-step" key={step.n}>
+                <div className="step-number">{step.n}</div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{step.title}</div>
+                  <p className="sub" style={{ fontSize: 14 }}>{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="ueberuns" style={{ padding: "100px 0", background: "linear-gradient(135deg, #f8faff 0%, #eff6ff 100%)" }}>
+        <div className="container about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <span className="section-label">Über Uns</span>
+            <h2 className="title-lg">Ihr verlässlicher Partner für Büro & Buchhaltung</h2>
+            <p className="sub" style={{ marginTop: 20 }}>Wir sind spezialisiert auf professionelle Bürodienstleistungen und moderne Buchhaltungsprozesse für Selbstständige, Freiberufler und kleine bis mittelständische Unternehmen.</p>
+            <p className="sub" style={{ marginTop: 16 }}>Durch effiziente, digitale Abläufe schaffen wir klare Strukturen, reduzieren Ihren administrativen Aufwand und ermöglichen Ihnen eine sichere, skalierbare Basis für Ihr Wachstum.</p>
+            <p className="sub" style={{ marginTop: 16 }}>Persönliche Betreuung, schnelle Kommunikation und modernste digitale Prozesse stehen im Mittelpunkt unserer Arbeit – damit Sie sich auf das konzentrieren können, was wirklich zählt.</p>
+            <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <a className="btn" href="#kontakt">Kontakt aufnehmen</a>
+              <a className="btn-outline" href="#leistungen">Leistungen ansehen</a>
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {[
+              { icon: "🎯", title: "Präzision & Zuverlässigkeit", desc: "Jede Aufgabe wird sorgfältig, fristgerecht und mit höchster Sorgfalt erledigt." },
+              { icon: "💻", title: "100% Digital", desc: "Vollständig digitale Prozesse für maximale Effizienz, Flexibilität und Transparenz." },
+              { icon: "🔒", title: "Vertraulichkeit", desc: "Ihre Daten und Unterlagen werden streng vertraulich und nach DSGVO behandelt." },
+            ].map((item) => (
+              <div key={item.title} className="card" style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                <div style={{ fontSize: 24, flexShrink: 0 }}>{item.icon}</div>
+                <div>
+                  <div style={{ fontWeight: 700, marginBottom: 6 }}>{item.title}</div>
+                  <p className="sub" style={{ fontSize: 14 }}>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: "#1a56db", padding: "60px 0" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 24 }}>
+          <div>
+            <h2 style={{ color: "white", fontSize: 28, fontWeight: 600 }}>Bereit, Ihren Aufwand zu reduzieren?</h2>
+            <p style={{ color: "rgba(255,255,255,0.75)", marginTop: 8 }}>Kostenloses Erstgespräch – unverbindlich und ohne Risiko.</p>
+          </div>
+          <a className="btn-white" href="#kontakt" style={{ whiteSpace: "nowrap" }}>Jetzt kostenlos anfragen</a>
+        </div>
+      </section>
+
+      <section id="kontakt" style={{ padding: "100px 0" }}>
+        <div className="container contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
+          <div>
+            <span className="section-label">Kontakt</span>
+            <h2 className="title-lg">Lassen Sie uns sprechen</h2>
+            <p className="sub" style={{ marginTop: 16 }}>Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen. Das Erstgespräch ist völlig kostenlos und unverbindlich.</p>
+            <div style={{ marginTop: 40, display: "flex", flexDirection: "column", gap: 20 }}>
+              {[
+                { icon: "📧", label: "E-Mail", value: "info@taxalis-consulting.de" },
+                { icon: "📍", label: "Standort", value: "Berlin, Deutschland" },
+                { icon: "⏰", label: "Reaktionszeit", value: "Innerhalb von 24 Stunden" },
+              ].map((c) => (
+                <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "center" }}>
+                  <div style={{ width: 48, height: 48, background: "#eff6ff", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>{c.icon}</div>
+                  <div>
+                    <div style={{ fontSize: 12, color: "#9ca3af", fontWeight: 600, marginBottom: 2 }}>{c.label}</div>
+                    <div style={{ fontWeight: 500 }}>{c.value}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="card" style={{ padding: 40 }}>
+            {sent ? (
+              <div style={{ textAlign: "center", padding: "40px 0" }}>
+                <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
+                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Vielen Dank!</h3>
+                <p className="sub">Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Kostenlose Anfrage</h3>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                  <div>
+                    <label style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 6 }}>Vor- & Nachname *</label>
+                    <input name="name" placeholder="Max Mustermann" onChange={handleChange} value={formData.name} required />
+                  </div>
+                  <div>
+                    <label style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 6 }}>Unternehmen</label>
+                    <input name="company" placeholder="Firma GmbH" onChange={handleChange} value={formData.company} />
+                  </div>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                  <div>
+                    <label style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 6 }}>E-Mail *</label>
+                    <input name="email" type="email" placeholder="max@firma.de" onChange={handleChange} value={formData.email} required />
+                  </div>
+                  <div>
+                    <label style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 6 }}>Telefon</label>
+                    <input name="phone" placeholder="+49 30 123456" onChange={handleChange} value={formData.phone} />
+                  </div>
+                </div>
+                <div>
+                  <label style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 6 }}>Gewünschte Leistung</label>
+                  <select name="service" onChange={handleChange} value={formData.service}>
+                    <option value="">Bitte wählen...</option>
+                    <option>Büroservice & Administration</option>
+                    <option>Lohnbuchhaltung</option>
+                    <option>Buchhaltung</option>
+                    <option>Buchführung</option>
+                    <option>Vorbereitende Buchhaltung</option>
+                    <option>Vorbereitende Jahresabschlüsse</option>
+                    <option>Mehrere Leistungen</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 6 }}>Ihre Nachricht *</label>
+                  <textarea name="message" placeholder="Beschreiben Sie kurz Ihr Anliegen..." rows={4} onChange={handleChange} value={formData.message} required />
+                </div>
+                <button type="submit" className="btn" disabled={loading} style={{ marginTop: 8 }}>
+                  {loading ? "Wird gesendet..." : "Kostenlose Anfrage senden →"}
+                </button>
+                {error && <p style={{ color: "#ef4444", fontSize: 13 }}>⚠️ Fehler beim Senden. Bitte versuchen Sie es erneut.</p>}
+                <p style={{ fontSize: 11, color: "#9ca3af" }}>Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.</p>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <footer style={{ background: "#0f172a", color: "white", padding: "60px 0 32px" }}>
+        <div className="container">
+          <div className="footer-grid" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 48, flexWrap: "wrap", gap: 32 }}>
+            <div style={{ maxWidth: 280 }}>
+              <img src="/logo.png" style={{ height: 60, width: "auto", filter: "brightness(0) invert(1)", marginBottom: 16 }} alt="Taxalis" />
+              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.7 }}>Professioneller Büro- & Buchhaltungsservice für moderne Unternehmen in Berlin.</p>
+            </div>
+            <div style={{ display: "flex", gap: 64, flexWrap: "wrap" }}>
+              <div>
+                <div style={{ fontWeight: 700, marginBottom: 16, fontSize: 13 }}>Leistungen</div>
+                {["Büroservice", "Lohnbuchhaltung", "Buchhaltung", "Buchführung", "Jahresabschlüsse"].map((l) => (
+                  <div key={l} style={{ marginBottom: 10 }}>
+                    <a href="#leistungen" style={{ color: "rgba(255,255,255,0.5)", fontSize: 13 }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>{l}</a>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div style={{ fontWeight: 700, marginBottom: 16, fontSize: 13 }}>Unternehmen</div>
+                {[{ label: "Über Uns", href: "#ueberuns" }, { label: "Kontakt", href: "#kontakt" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map((l) => (
+                  <div key={l.label} style={{ marginBottom: 10 }}>
+                    <a href={l.href} style={{ color: "rgba(255,255,255,0.5)", fontSize: 13 }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>{l.label}</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+            <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© {new Date().getFullYear()} Taxalis Consulting. Alle Rechte vorbehalten.</span>
+            <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Berlin, Deutschland</span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}
