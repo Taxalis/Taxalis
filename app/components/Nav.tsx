@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,12 +8,30 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [leistungenOpen, setLeistungenOpen] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
+
+  const openLeistungen = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    setLeistungenOpen(true);
+  };
+
+  const closeLeistungen = () => {
+    closeTimerRef.current = setTimeout(() => {
+      setLeistungenOpen(false);
+    }, 180);
+  };
 
   const leistungen = [
     { href: "/leistungen/bueroservice", label: "Büroservice" },
@@ -30,9 +48,9 @@ export function Nav() {
   return (
     <>
       <style>{`
-        .nav-dropdown{position:relative}
+        .nav-dropdown{position:relative;padding-bottom:12px;margin-bottom:-12px}
         .nav-dropdown-menu{
-          position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+          position:absolute;top:100%;left:50%;transform:translateX(-50%);
           background:white;border-radius:8px;padding:8px;
           box-shadow:0 10px 30px rgba(0,0,0,0.1);border:1px solid #e5e7eb;
           min-width:280px;z-index:200;
@@ -83,7 +101,7 @@ export function Nav() {
 
           <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 0 }}>
             <Link className="nav-link" href="/">Start</Link>
-            <div className="nav-dropdown" onMouseEnter={() => setLeistungenOpen(true)} onMouseLeave={() => setLeistungenOpen(false)}>
+            <div className="nav-dropdown" onMouseEnter={openLeistungen} onMouseLeave={closeLeistungen}>
               <button className="nav-link" style={{ display: "flex", alignItems: "center", gap: 4 }}>
                 Leistungen <span style={{ fontSize: 10 }}>▼</span>
               </button>
