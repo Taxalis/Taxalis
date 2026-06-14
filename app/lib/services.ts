@@ -23,7 +23,7 @@ export const services: ServiceDetails[] = [
     tagline: "Zeit gewinnen, Effizienz steigern",
     description: "Professionelle Büroorganisation und administrative Unterstützung für Ihr Unternehmen.",
     longDescription: "Verwaltung und Büroorganisation bindet wertvolle Zeit. Unsere Büroservices entlasten Sie vollständig von administrativen Aufgaben – vom Schriftverkehr über Terminplanung bis zur digitalen Dokumentenverwaltung. So können Sie sich auf strategische Aufgaben konzentrieren, während wir die operative Exzellenz sichern.",
-    benefits: ["Mehr Zeit für wichtige Geschäfsaufgaben", "Professionelle Dokumentenpflege", "Optimierte Arbeitsprozesse", "Reduzierte Betriebskosten", "Verlässliche Kontinuität"],
+    benefits: ["Mehr Zeit für wichtige Geschäftsaufgaben", "Professionelle Dokumentenpflege", "Optimierte Arbeitsprozesse", "Reduzierte Betriebskosten", "Verlässliche Kontinuität"],
     features: ["Schriftverkehr & Korrespondenz", "Digitales Dokumentenmanagement", "Terminplanung & Koordination", "Aktenorganisation & Archivierung", "Digitale Sicherung", "Kundenbetreuung"],
     processSteps: ["Analyse Ihrer bestehenden Prozesse", "Aufbau einer systematischen Struktur", "Schrittweise Digitalisierung", "Kontinuierliche Optimierung"],
     cta: "Kostenlose Beratung vereinbaren",

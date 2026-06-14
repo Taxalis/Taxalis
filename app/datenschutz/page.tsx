@@ -10,7 +10,7 @@ export default function Datenschutz() {
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          .container { max-width: 900px; margin: 0 auto; padding: 100px 24px; }
+          .container { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; }
           .card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 48px; }
           h1 { font-size: 42px; font-weight: 600; margin-bottom: 32px; color: #111827; }
           h2 { margin-top: 32px; margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #111827; }

@@ -96,8 +96,8 @@ export function Nav() {
       </div>
 
       <nav style={{ position: "fixed", top: 0, width: "100%", background: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid #e5e7eb", zIndex: 97, transition: "all 0.3s ease" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", justifyContent: "space-between", height: 72, alignItems: "center" }}>
-          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}><Image src="/logo.png" style={{ height: 60, width: "auto" }} alt="Taxalis Logo" width={100} height={60} priority /></Link>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", justifyContent: "space-between", height: 92, alignItems: "center" }}>
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}><Image src="/logo.png" style={{ height: 80, width: "auto" }} alt="Taxalis Logo" width={109} height={80} priority /></Link>
 
           <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 0 }}>
             <Link className="nav-link" href="/">Start</Link>
@@ -137,7 +137,7 @@ export function Footer() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
           <div>
-            <Image src="/logo.png" style={{ height: 50, width: "auto", filter: "brightness(0) invert(1)", marginBottom: 16 }} alt="Taxalis" width={100} height={50} />
+            <Image src="/logo.png" style={{ height: 64, width: "auto", filter: "brightness(0) invert(1)", marginBottom: 16 }} alt="Taxalis" width={87} height={64} />
             <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.8, maxWidth: 260 }}>Professioneller Büro- & Buchhaltungsservice für moderne Unternehmen in Berlin.</p>
             <div style={{ marginTop: 20, display: "flex", gap: 10 }}>
               {["DSGVO-konform", "Diskret", "Digital"].map(b => (

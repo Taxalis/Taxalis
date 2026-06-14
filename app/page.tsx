@@ -1,44 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon, { IconName } from "@/app/components/Icon";
 import { services } from "@/app/lib/services";
 import LeadForm from "@/app/components/LeadForm";
-
-const DELAYS = ["delay-0", "delay-75", "delay-150", "delay-225"];
-
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"} ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
+import { Reveal, DELAYS } from "@/app/components/Reveal";
 
 const PAIN_POINTS: { icon: IconName; title: string; desc: string }[] = [
   {
@@ -115,7 +83,7 @@ export default function Home() {
       <Nav />
       <main className="bg-white text-slate-900">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-slate-50 pt-32 pb-20 sm:pt-40 sm:pb-28">
+        <section className="relative overflow-hidden bg-slate-50 pt-36 pb-20 sm:pt-44 sm:pb-28">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-xs font-semibold text-emerald-700">
@@ -192,7 +160,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-6 -left-6 hidden rounded-xl border border-slate-100 bg-white px-5 py-4 shadow-xl shadow-slate-200/70 sm:block">
+              <div className="absolute -top-6 -left-6 hidden rounded-xl border border-slate-100 bg-white px-5 py-4 shadow-xl shadow-slate-200/70 sm:block">
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-white">
                     <Icon name="map-pin" size={18} />

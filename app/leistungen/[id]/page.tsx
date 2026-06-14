@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";
-import { getServiceById } from "@/app/lib/services";
+import { services, getServiceById } from "@/app/lib/services";
 import { useParams } from "next/navigation";
+import { Reveal, DELAYS } from "@/app/components/Reveal";
 
 export default function ServicePage() {
   const params = useParams();
@@ -17,148 +19,218 @@ export default function ServicePage() {
   }, []);
 
   if (!mounted) return null;
+
   if (!service) {
     return (
       <>
         <Nav />
-        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-          <div style={{ textAlign: "center" }}>
-            <h1 style={{ fontSize: "32px", fontWeight: 700, marginBottom: "12px" }}>Seite nicht gefunden</h1>
-            <p style={{ color: "#6b7280", marginBottom: "24px" }}>Die gewünschte Leistung existiert nicht.</p>
-            <a href="/" style={{ background: "#10b981", color: "white", padding: "12px 24px", borderRadius: "8px", textDecoration: "none", display: "inline-block" }}>Zurück zur Startseite</a>
+        <main className="flex min-h-screen items-center justify-center bg-white px-6 text-center">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">Seite nicht gefunden</h1>
+            <p className="mt-3 text-slate-500">Die gewünschte Leistung existiert nicht.</p>
+            <Link
+              href="/"
+              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-600"
+            >
+              Zurück zur Startseite
+            </Link>
           </div>
-        </div>
+        </main>
         <Footer />
       </>
     );
   }
 
+  const otherServices = services.filter((s) => s.id !== service.id).slice(0, 3);
+
   return (
     <>
       <Nav />
-      <main style={{ fontFamily: "'Inter', sans-serif", background: "#ffffff", color: "#111827" }}>
-        <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          .hero { background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); padding: 100px 24px 80px; }
-          .hero h1 { font-size: 52px; font-weight: 700; margin: 24px 0 16px; color: #111827; }
-          .hero .tagline { font-size: 20px; color: #6b7280; margin-bottom: 32px; }
-          .container { max-width: 1000px; margin: 0 auto; }
-          .section { padding: 80px 24px; }
-          .section h2 { font-size: 32px; font-weight: 600; margin-bottom: 48px; color: #111827; }
-          .section p { color: #4b5563; line-height: 1.8; margin-bottom: 24px; }
-          .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px; }
-          .benefit-card { background: #f9fafb; padding: 32px; border-radius: 12px; border: 1px solid #e5e7eb; transition: all 0.3s; }
-          .benefit-card:hover { background: #ecfdf5; border-color: #a7f3d0; transform: translateY(-2px); }
-          .benefit-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #111827; }
-          .benefit-card p { font-size: 14px; color: #6b7280; }
-          .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-          .feature-item { background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 3px solid #10b981; }
-          .feature-item h4 { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px; }
-          .feature-item p { font-size: 12px; color: #9ca3af; }
-          .steps { max-width: 800px; margin: 0 auto; }
-          .step { display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start; }
-          .step-number { background: #10b981; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; flex-shrink: 0; }
-          .step-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #111827; }
-          .step-content p { font-size: 14px; color: #6b7280; line-height: 1.6; }
-          .cta-box { background: #0f172a; color: white; padding: 80px 24px; text-align: center; }
-          .cta-box h2 { font-size: 40px; font-weight: 600; margin-bottom: 16px; }
-          .cta-box p { font-size: 18px; margin-bottom: 40px; opacity: 0.9; }
-          .btn { background: #10b981; color: white; padding: 14px 32px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s; border: none; cursor: pointer; }
-          .btn:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(16,185,129,0.25); }
-          .btn-outline { background: transparent; color: white; border: 2px solid white; padding: 12px 30px; }
-          .btn-outline:hover { background: #0f172a; color: white; }
-          .breadcrumb { color: #9ca3af; margin-bottom: 32px; }
-          .breadcrumb a { color: #6b7280; text-decoration: none; }
-          @media(max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .section h2 { font-size: 24px; }
-            .step { gap: 16px; }
-            .cta-box h2 { font-size: 28px; }
-          }
-        `}</style>
-
+      <main className="bg-white text-slate-900">
         {/* Hero */}
-        <div className="hero">
-          <div className="container">
-            <div className="breadcrumb">
-              <a href="/">Startseite</a> / {service.title}
-            </div>
-            <div style={{ width: 64, height: 64, borderRadius: 16, background: "#ecfdf5", color: "#10b981", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px" }}>
-              <Icon name={service.icon} size={32} strokeWidth={1.6} />
-            </div>
-            <h1>{service.title}</h1>
-            <p className="tagline">{service.tagline}</p>
-            <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
-              <a className="btn" href="/#kontakt">Jetzt anfragen</a>
-              <a className="btn btn-outline" href="#details" style={{ background: "transparent", color: "#0f172a", border: "2px solid #0f172a" }}>Mehr erfahren</a>
-            </div>
+        <section className="relative overflow-hidden bg-slate-50 pt-36 pb-16 sm:pt-44 sm:pb-24">
+          <div className="mx-auto max-w-4xl px-6 text-center">
+            <Reveal>
+              <nav className="mb-6 flex items-center justify-center gap-2 text-sm text-slate-400" aria-label="Breadcrumb">
+                <Link href="/" className="transition-colors hover:text-emerald-600">
+                  Startseite
+                </Link>
+                <span>/</span>
+                <span className="text-slate-600">{service.title}</span>
+              </nav>
+              <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+                <Icon name={service.icon} size={32} strokeWidth={1.6} />
+              </div>
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">{service.title}</h1>
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{service.tagline}</p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="/#kontakt"
+                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                >
+                  {service.cta}
+                  <Icon name="arrow-right" size={16} />
+                </a>
+                <a
+                  href="#details"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300"
+                >
+                  Mehr erfahren
+                </a>
+              </div>
+            </Reveal>
           </div>
-        </div>
+        </section>
 
         {/* Description */}
-        <div className="section" style={{ background: "#f9fafb", borderTop: "1px solid #e5e7eb", borderBottom: "1px solid #e5e7eb" }}>
-          <div className="container">
-            <p style={{ fontSize: "16px", lineHeight: 1.8, color: "#374151" }}>{service.longDescription}</p>
-          </div>
-        </div>
+        <section className="border-y border-slate-100 bg-white py-16 sm:py-20">
+          <Reveal>
+            <div className="mx-auto max-w-3xl px-6 text-center">
+              <p className="text-lg leading-relaxed text-slate-600">{service.longDescription}</p>
+            </div>
+          </Reveal>
+        </section>
 
-        {/* Benefits */}
-        <div className="section" id="details">
-          <div className="container">
-            <h2>Was Sie gewinnen</h2>
-            <div className="benefits-grid">
-              {service.benefits.map((benefit, i) => (
-                <div key={i} className="benefit-card">
-                  <h3><span style={{ color: "#10b981" }}>✓</span> {benefit.split(" ").slice(0, 3).join(" ")}</h3>
-                  <p>{benefit}</p>
+        {/* Benefits + Features */}
+        <section id="details" className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Ihr Nutzen</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Was Sie davon haben
+                </h2>
+              </div>
+            </Reveal>
+            <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-10">
+              <Reveal>
+                <div className="h-full rounded-2xl border border-slate-100 bg-white p-8 shadow-sm shadow-slate-200/40">
+                  <h3 className="mb-6 text-lg font-semibold text-slate-900">Ihre Vorteile</h3>
+                  <ul className="space-y-4">
+                    {service.benefits.map((b) => (
+                      <li key={b} className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                          <Icon name="check" size={14} />
+                        </span>
+                        <span className="text-sm leading-relaxed text-slate-600">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
+              </Reveal>
+              <Reveal className="delay-150">
+                <div className="h-full rounded-2xl border border-slate-100 bg-white p-8 shadow-sm shadow-slate-200/40">
+                  <h3 className="mb-6 text-lg font-semibold text-slate-900">Leistungsumfang</h3>
+                  <ul className="grid gap-3 sm:grid-cols-2">
+                    {service.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex items-start gap-2.5 rounded-lg bg-slate-50 px-3 py-2.5 text-sm leading-relaxed text-slate-600 transition-colors hover:bg-emerald-50"
+                      >
+                        <Icon name="arrow-right" size={14} className="mt-0.5 flex-shrink-0 text-emerald-500" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
             </div>
           </div>
-        </div>
-
-        {/* Features */}
-        <div className="section" style={{ background: "#f9fafb" }}>
-          <div className="container">
-            <h2>Leistungsmerkmale</h2>
-            <div className="features-grid">
-              {service.features.map((feature, i) => (
-                <div key={i} className="feature-item">
-                  <h4>{feature}</h4>
-                  <p>In vollem Umfang enthalten</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        </section>
 
         {/* Process */}
-        <div className="section">
-          <div className="container">
-            <h2>Ablauf & Prozess</h2>
-            <div className="steps">
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">So gehen wir vor</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Ablauf &amp; Prozess
+                </h2>
+              </div>
+            </Reveal>
+            <div
+              className={`mt-12 grid gap-6 sm:grid-cols-2 ${
+                service.processSteps.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-5"
+              }`}
+            >
               {service.processSteps.map((step, i) => (
-                <div key={i} className="step">
-                  <div className="step-number">{i + 1}</div>
-                  <div className="step-content">
-                    <h4>{step}</h4>
-                    <p>Wir kümmern uns systematisch um jeden Schritt des Prozesses, damit Sie maximale Effizienz gewinnen.</p>
+                <Reveal key={step} className={DELAYS[i % 4]}>
+                  <div className="h-full rounded-2xl border border-slate-100 p-6 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg hover:shadow-slate-200/50">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-sm font-bold text-white">
+                      {i + 1}
+                    </div>
+                    <h3 className="mb-2 font-semibold text-slate-900">{step}</h3>
+                    <p className="text-sm leading-relaxed text-slate-500">
+                      Wir kümmern uns systematisch um diesen Schritt, damit Sie maximale Effizienz gewinnen.
+                    </p>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Related services */}
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Weitere Leistungen</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Das könnte Sie auch interessieren
+                </h2>
+              </div>
+            </Reveal>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {otherServices.map((s, i) => (
+                <Reveal key={s.id} className={DELAYS[i % 3]}>
+                  <Link
+                    href={`/leistungen/${s.id}`}
+                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60"
+                  >
+                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                      <Icon name={s.icon} size={22} />
+                    </span>
+                    <h3 className="mb-1 text-lg font-semibold text-slate-900">{s.title}</h3>
+                    <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-500">{s.description}</p>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
+                      Mehr erfahren
+                      <Icon name="arrow-right" size={14} />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* CTA */}
-        <div className="cta-box">
-          <div className="container">
-            <h2>Bereit zu starten?</h2>
-            <p>Lassen Sie sich von unserem Team kostenlos beraten und erfahren Sie, wie wir Ihr Unternehmen unterstützen können.</p>
-            <a className="btn" href="/#kontakt">{service.cta}</a>
-          </div>
-        </div>
+        <section className="bg-slate-900 py-20 text-center text-white sm:py-28">
+          <Reveal>
+            <div className="mx-auto max-w-2xl px-6">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Bereit für den nächsten Schritt?</h2>
+              <p className="mt-4 text-lg text-white/70">
+                Lassen Sie sich von unserem Team kostenlos beraten und erfahren Sie, wie wir Ihr Unternehmen entlasten können.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <a
+                  href="/#kontakt"
+                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                >
+                  {service.cta}
+                  <Icon name="arrow-right" size={16} />
+                </a>
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/40"
+                >
+                  Zur Startseite
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </section>
       </main>
       <Footer />
     </>
