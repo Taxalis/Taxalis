@@ -19,12 +19,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Leistung nicht gefunden",
       description: "Die gewünschte Leistung konnte nicht gefunden werden.",
+      robots: { index: false, follow: true },
     };
   }
 
+  const description = `${service.description} Jetzt unverbindlich bei Taxalis Consulting in Berlin anfragen.`;
+
   return {
-    title: `${service.title} | Taxalis Consulting`,
-    description: service.longDescription,
+    title: service.title,
+    description,
+    alternates: {
+      canonical: `/leistungen/${service.id}`,
+    },
+    openGraph: {
+      title: `${service.title} | Taxalis Consulting`,
+      description,
+      url: `/leistungen/${service.id}`,
+      type: "website",
+      images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: service.title }],
+    },
   };
 }
 

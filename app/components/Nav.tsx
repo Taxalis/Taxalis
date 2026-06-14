@@ -61,21 +61,21 @@ export function Nav() {
           display:block;padding:10px 14px;border-radius:6px;font-size:13px;
           color:#374151;font-weight:500;transition:all 0.15s;
         }
-        .nav-dropdown-menu a:hover{background:#f3f4f6;color:#1f2937}
+        .nav-dropdown-menu a:hover{background:#ecfdf5;color:#059669}
         .mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:98;opacity:0;pointer-events:none;transition:opacity 0.3s;}
         .mobile-overlay.open{opacity:1;pointer-events:all}
         .mobile-menu{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:white;z-index:99;padding:80px 24px 32px;display:flex;flex-direction:column;gap:4px;transition:right 0.35s cubic-bezier(0.4,0,0.2,1);box-shadow:-20px 0 60px rgba(0,0,0,0.15);overflow-y:auto;}
         .mobile-menu.open{right:0}
         .mobile-menu a{padding:12px 14px;border-radius:6px;font-size:13px;font-weight:500;color:#111827;display:block;transition:all 0.2s;}
-        .mobile-menu a:hover{background:#f3f4f6;color:#1f2937}
+        .mobile-menu a:hover{background:#ecfdf5;color:#059669}
         .mobile-section{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;padding:16px 14px 8px;}
         .hamburger{width:40px;height:40px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;background:none;border:1.5px solid #e5e7eb;border-radius:6px;padding:8px;transition:all 0.2s;}
-        .hamburger:hover{border-color:#1f2937}
+        .hamburger:hover{border-color:#10b981}
         .hamburger span{display:block;width:18px;height:2px;background:#374151;border-radius:2px;transition:all 0.3s;}
         .nav-link{color:#374151;font-size:13px;font-weight:500;padding:8px 12px;border-radius:6px;transition:all 0.2s;cursor:pointer;background:none;border:none;}
-        .nav-link:hover{color:#1f2937;background:#f3f4f6}
-        .btn{background:#1f2937;color:white;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;transition:all 0.3s;display:inline-block;border:none;cursor:pointer;}
-        .btn:hover{background:#111827;transform:translateY(-1px)}
+        .nav-link:hover{color:#059669;background:#ecfdf5}
+        .btn{background:#10b981;color:white;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:600;transition:all 0.3s;display:inline-block;border:none;cursor:pointer;}
+        .btn:hover{background:#059669;transform:translateY(-1px)}
         @media(max-width:768px){.desktop-nav{display:none!important}.hamburger{display:flex!important}}
         @media(min-width:769px){.hamburger{display:none!important}}
       `}</style>
@@ -133,7 +133,7 @@ export function Footer() {
   const hrefs = ["/leistungen/bueroservice", "/leistungen/lohnbuchhaltung", "/leistungen/buchhaltung", "/leistungen/buchfuehrung", "/leistungen/vorbereitende-buchhaltung", "/leistungen/jahresabschluesse", "/leistungen/mahnwesen", "/leistungen/rechnungserstellung", "/leistungen/kostenrechnung"];
 
   return (
-    <footer style={{ background: "#1f2937", color: "white", padding: "60px 0 32px" }}>
+    <footer style={{ background: "#0f172a", color: "white", padding: "60px 0 32px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
           <div>
@@ -150,7 +150,7 @@ export function Footer() {
             {leistungen.map((l, i) => (
               <div key={l} style={{ marginBottom: 8 }}>
                 <Link href={hrefs[i]} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "white")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#34d399")}
                   onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>{l}</Link>
               </div>
             ))}
@@ -160,15 +160,21 @@ export function Footer() {
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>E-MAIL</div>
               <a href="mailto:info@taxalis-consulting.de" style={{ color: "rgba(255,255,255,0.85)", fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "white")}
+                onMouseEnter={e => (e.currentTarget.style.color = "#34d399")}
                 onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.85)")}>info@taxalis-consulting.de</a>
+            </div>
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>TELEFON</div>
+              <a href="tel:+4917683151339" style={{ color: "rgba(255,255,255,0.85)", fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#34d399")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.85)")}>0176 83151339</a>
             </div>
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Seiten</div>
               {[{ label: "Startseite", href: "/" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map(l => (
                 <div key={l.label} style={{ marginBottom: 8 }}>
                   <Link href={l.href} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "white")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#34d399")}
                     onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>{l.label}</Link>
                 </div>
               ))}

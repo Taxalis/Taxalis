@@ -1,6 +1,8 @@
+import type { IconName } from "@/app/components/Icon";
+
 export interface ServiceDetails {
   id: string;
-  icon: string;
+  icon: IconName;
   title: string;
   shortTitle: string;
   tagline: string;
@@ -15,7 +17,7 @@ export interface ServiceDetails {
 export const services: ServiceDetails[] = [
   {
     id: "bueroservice",
-    icon: "📋",
+    icon: "briefcase",
     title: "Büroservice",
     shortTitle: "Administrative Exzellenz",
     tagline: "Zeit gewinnen, Effizienz steigern",
@@ -28,7 +30,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "lohnbuchhaltung",
-    icon: "💼",
+    icon: "wallet",
     title: "Lohnbuchhaltung",
     shortTitle: "Sichere Gehaltsabrechnung",
     tagline: "Präzision, Sicherheit, Compliance",
@@ -41,7 +43,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "buchhaltung",
-    icon: "📊",
+    icon: "bar-chart",
     title: "Buchhaltung",
     shortTitle: "Finanzielle Transparenz",
     tagline: "Verstehen Sie Ihre Zahlen",
@@ -54,7 +56,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "buchfuehrung",
-    icon: "📁",
+    icon: "book-open",
     title: "Buchführung",
     shortTitle: "Nach HGB-Standard",
     tagline: "Rechtskonform und verlässlich",
@@ -67,7 +69,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "vorbereitende-buchhaltung",
-    icon: "🔄",
+    icon: "layers",
     title: "Vorbereitende Buchhaltung",
     shortTitle: "Effiziente Steuerberater-Vorbereitung",
     tagline: "Sparen Sie erheblich bei Steuerberatung",
@@ -80,7 +82,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "jahresabschluesse",
-    icon: "📈",
+    icon: "trend-up",
     title: "Jahresabschlüsse",
     shortTitle: "Professionelle Abschlussvorbereitung",
     tagline: "Solide Basis für Ihre Steuererklärung",
@@ -93,7 +95,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "mahnwesen",
-    icon: "📬",
+    icon: "bell",
     title: "Mahnwesen",
     shortTitle: "Professionelles Forderungsmanagement",
     tagline: "Ihre Zahlungsflüsse sichern",
@@ -106,7 +108,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "rechnungserstellung",
-    icon: "📄",
+    icon: "file-text",
     title: "Rechnungserstellung",
     shortTitle: "Korrekte, professionelle Rechnungen",
     tagline: "Schnell, gesetzlich konform",
@@ -119,7 +121,7 @@ export const services: ServiceDetails[] = [
   },
   {
     id: "kostenrechnung",
-    icon: "💰",
+    icon: "calculator",
     title: "Kostenrechnung",
     shortTitle: "Transparente Kostenanalyse",
     tagline: "Verstehen Sie Ihre Profitabilität",

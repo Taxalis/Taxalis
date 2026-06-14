@@ -16,12 +16,12 @@ export default function Datenschutz() {
           h2 { margin-top: 32px; margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #111827; }
           p { color: #6b7280; line-height: 1.8; margin: 12px 0; }
           b { font-weight: 600; color: #111827; }
-          ul { margin: 12px 0 12px 24px; }
+          ul { margin: 12px 0 12px 24px; list-style: disc; }
           li { color: #6b7280; line-height: 1.8; margin: 8px 0; }
-          a { color: #1f2937; text-decoration: none; transition: color 0.2s; }
-          a:hover { color: #111827; }
-          .btn { display: inline-block; margin-top: 40px; background: #1f2937; color: white; padding: 12px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; transition: all 0.3s; }
-          .btn:hover { background: #111827; transform: translateY(-2px); }
+          a { color: #059669; text-decoration: none; transition: color 0.2s; }
+          a:hover { color: #047857; }
+          .btn { display: inline-block; margin-top: 40px; background: #10b981; color: white; padding: 12px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; transition: all 0.3s; }
+          .btn:hover { background: #059669; transform: translateY(-2px); }
           @media(max-width: 768px) {
             .container { padding: 60px 24px; }
             .card { padding: 32px; }
