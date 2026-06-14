@@ -89,6 +89,19 @@ export default function ServicePage() {
               <p className="text-lg leading-relaxed text-slate-600">{service.longDescription}</p>
             </div>
           </Reveal>
+          {service.complianceNote && (
+            <Reveal className="delay-150">
+              <div className="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-xl border border-emerald-100 bg-emerald-50/60 px-6 py-5 sm:mx-6">
+                <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                  <Icon name="shield" size={16} />
+                </span>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  <span className="font-semibold text-slate-900">Hinweis gemäß § 6 StBerG: </span>
+                  {service.complianceNote}
+                </p>
+              </div>
+            </Reveal>
+          )}
         </section>
 
         {/* Benefits + Features */}
@@ -206,7 +219,7 @@ export default function ServicePage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-slate-900 py-20 text-center text-white sm:py-28">
+        <section className="bg-neutral-900 py-20 text-center text-white sm:py-28">
           <Reveal>
             <div className="mx-auto max-w-2xl px-6">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Bereit für den nächsten Schritt?</h2>

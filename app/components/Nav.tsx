@@ -39,7 +39,7 @@ export function Nav() {
     { href: "/leistungen/buchhaltung", label: "Buchhaltung" },
     { href: "/leistungen/buchfuehrung", label: "Buchführung" },
     { href: "/leistungen/vorbereitende-buchhaltung", label: "Vorbereitende Buchhaltung" },
-    { href: "/leistungen/jahresabschluesse", label: "Vorbereitende Jahresabschlüsse" },
+    { href: "/leistungen/jahresabschluesse", label: "Vorbereitende Jahresabschlussarbeiten" },
     { href: "/leistungen/mahnwesen", label: "Mahnwesen & Zahlungsverkehr" },
     { href: "/leistungen/rechnungserstellung", label: "Rechnungserstellung" },
     { href: "/leistungen/kostenrechnung", label: "Kosten- & Leistungsrechnung" },
@@ -86,7 +86,8 @@ export function Nav() {
         <div className="mobile-section">Leistungen</div>
         {leistungen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
         <div className="mobile-section">Unternehmen</div>
-        <Link href="/#ueberuns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
+        <Link href="/ueber-uns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
+        <Link href="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
         <Link href="/#kontakt" onClick={() => setMenuOpen(false)}>Kontakt</Link>
         <Link href="/impressum" onClick={() => setMenuOpen(false)}>Impressum</Link>
         <Link href="/datenschutz" onClick={() => setMenuOpen(false)}>Datenschutz</Link>
@@ -111,7 +112,8 @@ export function Nav() {
                 </div>
               )}
             </div>
-            <Link className="nav-link" href="/#ueberuns">Über Uns</Link>
+            <Link className="nav-link" href="/ueber-uns">Über Uns</Link>
+            <Link className="nav-link" href="/faq">FAQ</Link>
             <Link className="nav-link" href="/#kontakt">Kontakt</Link>
             <div style={{ width: 1, height: 20, background: "#e5e7eb", margin: "0 8px" }} />
             <Link className="btn" href="/#kontakt">Jetzt anfragen</Link>
@@ -129,11 +131,11 @@ export function Nav() {
 }
 
 export function Footer() {
-  const leistungen = ["Büroservice", "Lohnbuchhaltung", "Buchhaltung", "Buchführung", "Vorbereitende Buchhaltung", "Jahresabschlüsse", "Mahnwesen", "Rechnungserstellung", "Kostenrechnung"];
+  const leistungen = ["Büroservice", "Lohnbuchhaltung", "Buchhaltung", "Buchführung", "Vorbereitende Buchhaltung", "Jahresabschluss-Vorbereitung", "Mahnwesen", "Rechnungserstellung", "Kostenrechnung"];
   const hrefs = ["/leistungen/bueroservice", "/leistungen/lohnbuchhaltung", "/leistungen/buchhaltung", "/leistungen/buchfuehrung", "/leistungen/vorbereitende-buchhaltung", "/leistungen/jahresabschluesse", "/leistungen/mahnwesen", "/leistungen/rechnungserstellung", "/leistungen/kostenrechnung"];
 
   return (
-    <footer style={{ background: "#0f172a", color: "white", padding: "60px 0 32px" }}>
+    <footer style={{ background: "#171717", color: "white", padding: "60px 0 32px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
           <div>
@@ -171,7 +173,7 @@ export function Footer() {
             </div>
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Seiten</div>
-              {[{ label: "Startseite", href: "/" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map(l => (
+              {[{ label: "Startseite", href: "/" }, { label: "Über Uns", href: "/ueber-uns" }, { label: "FAQ", href: "/faq" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map(l => (
                 <div key={l.label} style={{ marginBottom: 8 }}>
                   <Link href={l.href} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
                     onMouseEnter={e => (e.currentTarget.style.color = "#34d399")}

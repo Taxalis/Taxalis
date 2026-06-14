@@ -12,6 +12,13 @@ export interface ServiceDetails {
   features: string[];
   processSteps: string[];
   cta: string;
+  /**
+   * Optional compliance note shown on the service detail page for services
+   * close to the boundary of the Steuerberatungsgesetz (§ 6 StBerG). Makes
+   * transparent that Taxalis Consulting performs preparatory bookkeeping /
+   * payroll tasks only and is not a Steuerberater.
+   */
+  complianceNote?: string;
 }
 
 export const services: ServiceDetails[] = [
@@ -35,10 +42,10 @@ export const services: ServiceDetails[] = [
     shortTitle: "Sichere Gehaltsabrechnung",
     tagline: "Präzision, Sicherheit, Compliance",
     description: "Vollständige Lohn- und Gehaltsabrechnung mit allen gesetzlichen Meldungen.",
-    longDescription: "Lohnbuchhaltung ist Vertrauenssache und erfordert höchste Genauigkeit. Wir verwalten alle Aspekte der Gehaltsabrechnung – von Arbeitszeiten über Steuern und Sozialabgaben bis zu korrekten Behördenmeldungen. Rechtssicherheit für Sie, Zuverlässigkeit für Ihre Mitarbeiter.",
-    benefits: ["100% gesetzliche Konformität", "Fehlerfreie Abrechnungen", "Automatisierte Prozesse", "Transparente Gehaltsabläufe", "Pünktliche Zahlungen", "Vollständige Meldepflicht-Abwicklung"],
-    features: ["Monatliche Gehaltsabrechnung", "Steuer- und Sozialversicherung", "Behördenmeldungen", "Provision und Bonus-Abrechnung", "Minijob & Midijob-Verwaltung", "Sonderzahlungen & Abfindungen", "Mitarbeiter-Datenverwaltung"],
-    processSteps: ["Erfassung Ihrer Mitarbeiterdaten", "Monatliche Arbeitszeit-Eingabe", "Automatische Berechnung & Verarbeitung", "Kontrolle und Freigabe", "Auszahlung & Behörden-Meldung"],
+    longDescription: "Lohnbuchhaltung ist Vertrauenssache und erfordert höchste Genauigkeit. Wir verwalten alle Aspekte der laufenden Gehaltsabrechnung – von Arbeitszeiten über Lohnsteuer und Sozialabgaben bis zu den korrekten Meldungen an die zuständigen Stellen. Rechtssicherheit für Sie, Zuverlässigkeit für Ihre Mitarbeiter.",
+    benefits: ["Gesetzeskonforme, pünktliche Abrechnungen", "Fehlerfreie Lohn- und Gehaltsläufe", "Automatisierte Prozesse", "Transparente Gehaltsabläufe", "Pünktliche Zahlungen", "Vollständige Abwicklung der Meldepflichten"],
+    features: ["Monatliche Gehaltsabrechnung", "Lohnsteuer- und Sozialversicherungsberechnung", "Behörden- und Krankenkassenmeldungen", "Provisions- und Bonusabrechnung", "Minijob- & Midijob-Verwaltung", "Sonderzahlungen & Abfindungen", "Mitarbeiter-Datenverwaltung"],
+    processSteps: ["Erfassung Ihrer Mitarbeiterdaten", "Monatliche Arbeitszeit-Eingabe", "Berechnung & Verarbeitung der Abrechnung", "Kontrolle und Freigabe", "Auszahlung & Meldung an die Behörden"],
     cta: "Unverbindliches Angebot anfordern",
   },
   {
@@ -48,11 +55,12 @@ export const services: ServiceDetails[] = [
     shortTitle: "Finanzielle Transparenz",
     tagline: "Verstehen Sie Ihre Zahlen",
     description: "Laufende Finanzbuchhaltung für vollständige Kontrolle über Ihre Finanzen.",
-    longDescription: "Eine ordentliche Buchhaltung ist das Fundament erfolgreicher Geschäftsentscheidungen. Wir führen Ihre Finanzbuchhaltung digital, systematisch und nach allen Vorgaben. Jeder Geschäftsfall wird erfasst, geprüft und verbucht. Das Ergebnis: Vollständige finanzielle Transparenz, jederzeit verfügbar.",
-    benefits: ["Vollständige finanzielle Kontrolle", "Steuerberater-fertige Unterlagen", "Optimierte Steuerlastplanung", "Tagesaktuelle Finanzkennzahlen", "Revisionssichere Dokumentation", "Datengestützte Geschäftsentscheidungen"],
-    features: ["Digitale Belegerfassung", "Automatische Kategorisierung", "Kontoabstimmungen", "Rechnungs-Management", "Lieferantenverwaltung", "Kostenstellenrechnung", "Finanzielle Analysen & Reports"],
+    longDescription: "Eine ordentliche, laufende Buchhaltung ist das Fundament erfolgreicher Geschäftsentscheidungen. Wir führen Ihre Finanzbuchhaltung digital, systematisch und nach allen Vorgaben. Jeder Geschäftsvorfall wird erfasst, geprüft und verbucht. Das Ergebnis: vollständige finanzielle Transparenz, jederzeit verfügbar – und eine optimal vorbereitete Grundlage für Ihren Steuerberater.",
+    benefits: ["Vollständige finanzielle Kontrolle", "Steuerberater-fertige Unterlagen", "Fundierte Basis für die Steuerplanung Ihres Steuerberaters", "Tagesaktuelle Finanzkennzahlen", "Revisionssichere Dokumentation", "Datengestützte Geschäftsentscheidungen"],
+    features: ["Digitale Belegerfassung", "Automatische Kategorisierung", "Kontoabstimmungen", "Rechnungs-Management", "Lieferantenverwaltung", "Kostenstellenrechnung", "Monatliche betriebswirtschaftliche Auswertung (BWA)"],
     processSteps: ["Überprüfung Ihrer Buchhaltungsstruktur", "Digitalisierung aller Prozesse", "Regelmäßige Erfassung & Verarbeitung", "Kontrollen und Abstimmungen", "Monatliche Berichterstattung"],
     cta: "Beratungsgespräch buchen",
+    complianceNote: "Die laufende Finanzbuchhaltung erbringen wir gemäß § 6 Nr. 4 StBerG. Steuerliche Auswertungen, Erklärungen und Beratung erfolgen durch den Steuerberater Ihres Vertrauens – mit unseren Auswertungen als verlässlicher Grundlage.",
   },
   {
     id: "buchfuehrung",
@@ -60,12 +68,13 @@ export const services: ServiceDetails[] = [
     title: "Buchführung",
     shortTitle: "Nach HGB-Standard",
     tagline: "Rechtskonform und verlässlich",
-    description: "Ordnungsgemäße Buchführung nach HGB mit revisionssicherer Dokumentation.",
-    longDescription: "Nach HGB muss jedes Unternehmen ordnungsgemäße Bücher führen. Wir garantieren volle Rechtskonformität – von der chronologischen Belegerfassung über systematische Kontierung bis zur Abschlussvorbereitung. Alles dokumentiert, revisionssicher und nachprüfbar.",
-    benefits: ["Volle gesetzliche Konformität", "Revisionssichere Dokumentation", "Schnelle Jahresabschlüsse", "Transparente Gewinn- & Verlustrechnung", "Basis für strategische Planung", "Schutz vor Strafzahlungen"],
-    features: ["Chronologische Belegerfassung", "Systematische Kontierung", "Tägliche Journalführung", "Kontenabstimmungen", "Inventur-Verarbeitung", "Gewinn- & Verlustrechnung", "Bilanzabstimmung"],
-    processSteps: ["Einrichtung Ihres Kontensystems", "Tägliche Belegverarbeitung", "Monatliche Abstimmungen", "Quartals- und Jahresabschlüsse", "Archivierung nach gesetzlichen Vorgaben"],
+    description: "Ordnungsgemäße laufende Buchführung nach HGB mit revisionssicherer Dokumentation.",
+    longDescription: "Nach HGB muss jedes Unternehmen ordnungsgemäße Bücher führen. Wir übernehmen die laufende Buchführung mit voller Rechtskonformität – von der chronologischen Belegerfassung über die systematische Kontierung bis zur optimalen Vorbereitung Ihres Jahresabschlusses. Alles dokumentiert, revisionssicher und nachprüfbar – damit Ihr Steuerberater den Abschluss zügig fertigstellen kann.",
+    benefits: ["Volle gesetzliche Konformität", "Revisionssichere Dokumentation", "Optimale Vorbereitung für Ihren Jahresabschluss", "Aussagekräftige monatliche Auswertungen", "Basis für strategische Planung", "Schutz vor Fristversäumnissen"],
+    features: ["Chronologische Belegerfassung", "Systematische Kontierung", "Tägliche Journalführung", "Kontenabstimmungen", "Inventur-Vorbereitung", "Betriebswirtschaftliche Auswertung (BWA)", "Abstimmung mit Ihrer Steuerkanzlei"],
+    processSteps: ["Einrichtung Ihres Kontensystems", "Tägliche Belegverarbeitung", "Monatliche Abstimmungen", "Vorbereitung der Quartals- und Jahreswerte", "Archivierung nach gesetzlichen Vorgaben"],
     cta: "Jetzt kostenfrei anfragen",
+    complianceNote: "Die laufende Buchführung führen wir gemäß § 6 Nr. 4 StBerG für Sie. Den Jahresabschluss selbst sowie Steuererklärungen erstellt Ihr Steuerberater – wir liefern dafür eine vollständig vorbereitete, abgestimmte Buchhaltung.",
   },
   {
     id: "vorbereitende-buchhaltung",
@@ -73,25 +82,27 @@ export const services: ServiceDetails[] = [
     title: "Vorbereitende Buchhaltung",
     shortTitle: "Effiziente Steuerberater-Vorbereitung",
     tagline: "Sparen Sie erheblich bei Steuerberatung",
-    description: "Professionelle Vorbereitung aller Unterlagen für optimale Steuerberater-Zusammenarbeit.",
-    longDescription: "Mit professionell vorbereiteter Buchhaltung sparen Sie erheblich bei Steuerberatung. Belege werden sorgfältig geprüft, sortiert und kategorisiert. Ihr Steuerberater erhält ein vollständiges, strukturiertes Dossier und kann sich auf strategische Optimierung konzentrieren statt Zeit mit Datenerfassung zu verschwenden.",
-    benefits: ["Deutliche Reduzierung der Steuerberater-Kosten", "Schnellerer Steuerprozess", "Keine Rückfragen durch Lücken", "Optimale Unterlagen-Qualität", "Professionelle Kategorisierung", "Maximale Effizienz für alle"],
-    features: ["Belegprüfung & Sortierung", "Fachgerechte Kategorisierung", "Automatische Datenerfassung", "Kontierung und Korrektur", "Unterlagen-Checklisten", "Abweichungsanalyse", "Vollständigkeits-Check"],
+    description: "Professionelle Vorbereitung aller Unterlagen für eine optimale Zusammenarbeit mit Ihrem Steuerberater.",
+    longDescription: "Mit professionell vorbereiteter Buchhaltung sparen Sie erheblich bei Steuerberatung. Belege werden sorgfältig geprüft, sortiert und kategorisiert. Ihr Steuerberater erhält ein vollständiges, strukturiertes Dossier und kann sich auf seine eigentliche Aufgabe – die steuerliche Bewertung, Erklärungen und Beratung – konzentrieren, statt Zeit mit Datenerfassung zu verbringen.",
+    benefits: ["Deutliche Reduzierung der Steuerberater-Kosten", "Schnellerer Ablauf bei Ihrer Steuerkanzlei", "Keine Rückfragen durch Lücken", "Optimale Unterlagen-Qualität", "Professionelle Kategorisierung", "Maximale Effizienz für alle Beteiligten"],
+    features: ["Belegprüfung & Sortierung", "Fachgerechte Kategorisierung", "Digitale Datenerfassung", "Kontierungsvorschläge", "Unterlagen-Checklisten", "Abweichungsanalyse", "Vollständigkeits-Check vor Übergabe"],
     processSteps: ["Zusammenstellung aller Belege", "Prüfung auf Vollständigkeit", "Korrekte Kategorisierung", "Digitale Archivierung", "Übergabe an Ihren Steuerberater"],
     cta: "Kosten sparen – jetzt anfragen",
+    complianceNote: "Wir übernehmen ausschließlich vorbereitende, buchhalterische Tätigkeiten gemäß § 6 StBerG. Die steuerliche Bewertung, Erklärungen und verbindliche Beratung erfolgen durch Ihren Steuerberater – wir bereiten lediglich optimal zu.",
   },
   {
     id: "jahresabschluesse",
     icon: "trend-up",
-    title: "Jahresabschlüsse",
-    shortTitle: "Professionelle Abschlussvorbereitung",
-    tagline: "Solide Basis für Ihre Steuererklärung",
-    description: "Professionelle Vorbereitung aller Jahresabschlussunterlagen mit rechtlicher Sicherheit.",
-    longDescription: "Der Jahresabschluss entscheidet über finanzielle Klarheit. Wir bereiten alle erforderlichen Unterlagen vor: Inventuren werden verarbeitet, Abschreibungen berechnet, Rückstellungen gebildet und alle Positionen final abgestimmt. Das Ergebnis: Eine solide, transparente Grundlage für einen reibungslosen Abschluss.",
-    benefits: ["Rechtlich sichere Abschlüsse", "Transparente Jahresergebnisse", "Optimierte Steuerpositionen", "Schnelle Abschlusserstellung", "Professionelle Vermögensbewertung", "Risiken minimiert"],
-    features: ["Inventur-Verarbeitung", "Anlagenabschreibung", "Forderungsabsicherung", "Rückstellungsbildung", "Verbindlichkeits-Review", "Bilanzabstimmung", "Gewinn- & Verlustrechnung"],
-    processSteps: ["Vorbereitung aller Inventurdaten", "Berechnung aller Abschlussposten", "Fremdvergleich & Bewertung", "Vollständige Kontenabstimmung", "Finale Abschlussberichterstattung"],
-    cta: "Abschluss-Beratung vereinbaren",
+    title: "Vorbereitende Jahresabschlussarbeiten",
+    shortTitle: "Effiziente Abschluss-Vorbereitung",
+    tagline: "Optimale Vorarbeit für Ihren Steuerberater",
+    description: "Strukturierte Vorbereitung aller Unterlagen für den Jahresabschluss – für eine schnelle, reibungslose Zusammenarbeit mit Ihrer Steuerkanzlei.",
+    longDescription: "Den Jahresabschluss erstellt Ihr Steuerberater – wir sorgen dafür, dass er dafür alles in bestmöglicher Form vorliegen hat. Wir stellen Inventurdaten zusammen, gleichen sämtliche Konten ab, prüfen offene Posten auf Plausibilität und bereiten ein vollständiges, strukturiertes Übergabe-Dossier vor. Das spart Zeit, reduziert Rückfragen und senkt häufig die Kosten Ihrer Steuerkanzlei zum Jahresende.",
+    benefits: ["Schnellere Abschlusserstellung durch Ihren Steuerberater", "Weniger Rückfragen durch vollständige Unterlagen", "Reduzierte Kosten Ihrer Steuerkanzlei", "Lückenlose Kontenabstimmung", "Klarer Überblick noch vor Jahresende", "Professionell strukturierte Übergabe-Dokumentation"],
+    features: ["Inventur-Vorbereitung & Erfassung", "Vollständige Kontenabstimmung", "Prüfung offener Posten", "Zusammenstellung aller Belege", "Plausibilitätsprüfung der laufenden Buchhaltung", "Strukturiertes Übergabe-Dossier", "Direkte Abstimmung mit Ihrer Steuerkanzlei"],
+    processSteps: ["Vorbereitung & Sammlung aller Unterlagen", "Inventur-Erfassung", "Vollständige Kontenabstimmung", "Plausibilitätsprüfung", "Übergabe an Ihren Steuerberater"],
+    cta: "Abschluss-Vorbereitung anfragen",
+    complianceNote: "Die Erstellung des Jahresabschlusses (Bilanz, GuV) und von Steuererklärungen ist Steuerberatern vorbehalten. Wir übernehmen ausschließlich die vorbereitenden buchhalterischen Tätigkeiten gemäß § 6 StBerG und arbeiten dafür eng mit Ihrer Steuerkanzlei zusammen.",
   },
   {
     id: "mahnwesen",
@@ -113,8 +124,8 @@ export const services: ServiceDetails[] = [
     shortTitle: "Korrekte, professionelle Rechnungen",
     tagline: "Schnell, gesetzlich konform",
     description: "Professionelle Rechnungserstellung mit vollständiger gesetzlicher Konformität.",
-    longDescription: "Von der erbrachten Leistung zur perfekten Rechnung – wir kümmern uns um die korrekte, pünktliche Rechnungserstellung. Mit allen erforderlichen Angaben, fehlerfreier Steuerberechnung und revisionssicherer Dokumentation. So sparen Sie Zeit und minimieren Fehlerrisiken.",
-    benefits: ["100% gesetzlich konforme Rechnungen", "Schnelle Abrechnungsprozesse", "Fehlerfreie Steuerberechnung", "Professionelle Gestaltung", "Digitale Archivierung", "Zeiteffizienz für Ihr Team"],
+    longDescription: "Von der erbrachten Leistung zur perfekten Rechnung – wir kümmern uns um die korrekte, pünktliche Rechnungserstellung. Mit allen erforderlichen Angaben, fehlerfreier Berechnung und revisionssicherer Dokumentation. So sparen Sie Zeit und minimieren Fehlerrisiken.",
+    benefits: ["Gesetzlich konforme Rechnungen", "Schnelle Abrechnungsprozesse", "Fehlerfreie Berechnung", "Professionelle Gestaltung", "Digitale Archivierung", "Zeiteffizienz für Ihr Team"],
     features: ["Automatische Rechnungserstellung", "Sichere Numerierung", "Steuer- und Rabatt-Berechnung", "Zahlungsbedingungen", "Digitale Archivierung", "E-Mail-Versand", "Rechnungs-Register"],
     processSteps: ["Erfassung der Leistungsdaten", "Automatische Rechnungsgenerierung", "Kontrolle und Freigabe", "Versand an Kunden", "Digitale Archivierung"],
     cta: "Demo anfordern",
@@ -126,7 +137,7 @@ export const services: ServiceDetails[] = [
     shortTitle: "Transparente Kostenanalyse",
     tagline: "Verstehen Sie Ihre Profitabilität",
     description: "Detaillierte Kostenanalyse für bessere Geschäftsentscheidungen.",
-    longDescription: "Verstehen Sie, wohin Ihr Geld fließt. Durch systematische Kostenerfassung und -analyse identifizieren Sie Sparpotenziale, optimieren Ihre Preisgestaltung und treffen fundierte Geschäftsentscheidungen. Kostenrechnung ist die Basis für profitables Wachstum.",
+    longDescription: "Verstehen Sie, wohin Ihr Geld fließt. Durch systematische Kostenerfassung und -analyse identifizieren Sie Sparpotenziale, optimieren Ihre Preisgestaltung und treffen fundierte unternehmerische Entscheidungen. Kostenrechnung ist die Basis für profitables Wachstum.",
     benefits: ["Klare Kostenstrukturen", "Rentabilität pro Service", "Identifizierte Sparpotenziale", "Optimierte Preisgestaltung", "Gewinn pro Kunde transparent", "Fundierte Geschäftsentscheidungen"],
     features: ["Kostenstellenrechnung", "Kostenträgerrechnung", "Variable & Fixkosten-Analyse", "Deckungsbeitrag-Berechnung", "Gewinn-/Verlust pro Projekt", "Kostentrend-Analyse", "Budgetvergleiche"],
     processSteps: ["Definition Ihrer Kostenstellen", "Erfassung und Kategorisierung", "Monatliche Analyse", "Berichterstattung mit Optimierungsvorschlägen", "Regelmäßige Anpassungen"],

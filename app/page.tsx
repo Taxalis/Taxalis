@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon, { IconName } from "@/app/components/Icon";
 import { services } from "@/app/lib/services";
+import { faqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
 
@@ -52,6 +53,35 @@ const TRUST_POINTS: { icon: IconName; title: string; desc: string }[] = [
     title: "Persönlicher Ansprechpartner",
     desc: "Ein fester Ansprechpartner in Berlin kennt Ihr Unternehmen und ist direkt erreichbar.",
   },
+];
+
+const QUALITY_PROMISES: { icon: IconName; title: string; desc: string }[] = [
+  {
+    icon: "clock",
+    title: "Antwort innerhalb 24 Stunden",
+    desc: "Wir melden uns werktags innerhalb eines Arbeitstages – ohne Warteschleifen oder anonyme Hotlines.",
+  },
+  {
+    icon: "calculator",
+    title: "Transparente Festpreise",
+    desc: "Sie kennen Ihre Kosten von Anfang an. Keine versteckten Gebühren, keine Überraschungen auf der Rechnung.",
+  },
+  {
+    icon: "users",
+    title: "Fester Ansprechpartner",
+    desc: "Eine Person kennt Ihr Unternehmen und Ihre Unterlagen – durchgängig, nicht wechselnd.",
+  },
+  {
+    icon: "shield",
+    title: "Rechtssicher & vorbereitet",
+    desc: "Ihre Buchhaltung ist jederzeit aktuell, nachvollziehbar und optimal für Ihren Steuerberater vorbereitet.",
+  },
+];
+
+const FAQ_PREVIEW = [
+  "Seid ihr eine Steuerkanzlei oder Steuerberater?",
+  "Was kostet die Zusammenarbeit mit Taxalis Consulting?",
+  "Ist die Zusammenarbeit vollständig digital möglich?",
 ];
 
 const PROCESS_STEPS = [
@@ -238,6 +268,22 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
+            <Reveal>
+              <div className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-xl border border-slate-200 bg-white px-6 py-4 text-left">
+                <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                  <Icon name="shield" size={14} />
+                </span>
+                <p className="text-sm leading-relaxed text-slate-500">
+                  <span className="font-semibold text-slate-700">Hinweis: </span>
+                  Wir übernehmen die laufende Buchhaltung, Lohnabrechnung und vorbereitende Tätigkeiten gemäß § 6 StBerG.
+                  Jahresabschlüsse, Steuererklärungen und Steuerberatung erfolgen weiterhin durch Ihren Steuerberater –{" "}
+                  <Link href="/ueber-uns" className="font-semibold text-emerald-600 hover:text-emerald-700">
+                    mehr dazu
+                  </Link>
+                  .
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
 
@@ -268,28 +314,140 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Why us / trust */}
-        <section id="ueberuns" className="bg-slate-900 py-20 text-white sm:py-28">
+        {/* Quality promise */}
+        <section className="bg-slate-50 py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-6">
             <Reveal>
               <div className="mx-auto max-w-2xl text-center">
-                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">Über Taxalis Consulting</span>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Warum Unternehmen uns vertrauen</h2>
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Unser Versprechen</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Darauf können Sie sich verlassen
+                </h2>
               </div>
             </Reveal>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {TRUST_POINTS.map((t, i) => (
-                <Reveal key={t.title} className={`delay-${(i % 4) * 75}`}>
-                  <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6">
-                    <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
-                      <Icon name={t.icon} size={20} />
+              {QUALITY_PROMISES.map((q, i) => (
+                <Reveal key={q.title} className={DELAYS[i % 4]}>
+                  <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg hover:shadow-slate-200/50">
+                    <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                      <Icon name={q.icon} size={20} />
                     </span>
-                    <h3 className="mb-2 font-semibold">{t.title}</h3>
-                    <p className="text-sm leading-relaxed text-white/60">{t.desc}</p>
+                    <h3 className="mb-2 font-semibold text-slate-900">{q.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-500">{q.desc}</p>
                   </div>
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Why us / trust */}
+        <section id="ueberuns" className="bg-neutral-900 py-20 text-white sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
+              <Reveal>
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">Über Taxalis Consulting</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Warum Unternehmen uns vertrauen</h2>
+                <p className="mt-4 max-w-md text-white/60">
+                  Taxalis Consulting wurde von Jannik Roloff in Berlin gegründet – mit dem Anspruch, Buchhaltung,
+                  Lohnabrechnung und Büroorganisation so digital, transparent und persönlich zu gestalten, wie es kleine
+                  und mittlere Unternehmen verdienen.
+                </p>
+                <Link
+                  href="/ueber-uns"
+                  className="mt-6 inline-flex items-center gap-2 rounded-lg border border-white/20 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-emerald-400 hover:text-emerald-400"
+                >
+                  Mehr über uns
+                  <Icon name="arrow-right" size={16} />
+                </Link>
+              </Reveal>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {TRUST_POINTS.map((t, i) => (
+                  <Reveal key={t.title} className={`delay-${(i % 4) * 75}`}>
+                    <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6">
+                      <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+                        <Icon name={t.icon} size={20} />
+                      </span>
+                      <h3 className="mb-2 font-semibold">{t.title}</h3>
+                      <p className="text-sm leading-relaxed text-white/60">{t.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Referenzen */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Referenzen</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Das sagen unsere Mandanten
+                </h2>
+                <p className="mt-4 text-lg text-slate-600">
+                  Wir bauen gerade erste Mandate auf und freuen uns, hier schon bald echte Erfahrungsberichte zu zeigen.
+                </p>
+              </div>
+            </Reveal>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[0, 1, 2].map((i) => (
+                <Reveal key={i} className={DELAYS[i % 3]}>
+                  <div className="flex h-full flex-col rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-6">
+                    <div className="mb-4 flex gap-1 text-slate-300">
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <Icon key={s} name="sparkle" size={14} />
+                      ))}
+                    </div>
+                    <p className="flex-1 text-sm leading-relaxed text-slate-400">
+                      Referenz folgt in Kürze – haben Sie mit uns zusammengearbeitet? Wir freuen uns über Ihr Feedback.
+                    </p>
+                    <div className="mt-4 text-sm font-semibold text-slate-400">Ihr Unternehmen</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ teaser */}
+        <section className="bg-slate-50 py-20 sm:py-28">
+          <div className="mx-auto max-w-3xl px-6">
+            <Reveal>
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Häufige Fragen</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Gut zu wissen
+                </h2>
+              </div>
+            </Reveal>
+            <div className="mt-12 space-y-4">
+              {FAQ_PREVIEW.map((q, i) => {
+                const item = faqItems.find((f) => f.question === q);
+                if (!item) return null;
+                return (
+                  <Reveal key={q} className={DELAYS[i % 4]}>
+                    <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-200/40">
+                      <h3 className="font-semibold text-slate-900">{item.question}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.answer}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+            <Reveal>
+              <div className="mt-10 text-center">
+                <Link
+                  href="/faq"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-emerald-200 hover:text-emerald-600"
+                >
+                  Alle Fragen ansehen
+                  <Icon name="arrow-right" size={16} />
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </section>
 
