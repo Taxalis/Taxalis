@@ -5,8 +5,9 @@ import Icon, { IconName } from "@/app/components/Icon";
 
 const FORM_SERVICES: { id: string; icon: IconName; title: string; desc: string }[] = [
   { id: "lohnbuchhaltung", icon: "wallet", title: "Lohnbuchhaltung", desc: "Gehaltsabrechnung & Meldewesen" },
-  { id: "bueroservice", icon: "briefcase", title: "Büroservice", desc: "Administrative Entlastung" },
-  { id: "buchhaltung", icon: "bar-chart", title: "Laufende Buchhaltung", desc: "Belege, Konten, Auswertungen" },
+  { id: "buchhaltung", icon: "bar-chart", title: "Buchhaltung", desc: "Belege, USt-Meldung, Auswertungen" },
+  { id: "bueroservice", icon: "briefcase", title: "Büroservice & Beratung", desc: "Gründung & Verwaltung" },
+  { id: "jahresabschluesse", icon: "trend-up", title: "Jahresabschluss-Vorbereitung", desc: "Vorarbeit für den Steuerberater" },
   { id: "full-service", icon: "sparkle", title: "Full-Service-Paket", desc: "Alles aus einer Hand" },
 ];
 

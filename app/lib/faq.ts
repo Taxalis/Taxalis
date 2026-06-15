@@ -17,7 +17,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Welche Leistungen bietet Taxalis Consulting konkret an?",
     answer:
-      "Wir bieten Büroservice, Lohn- und Gehaltsbuchhaltung, laufende Finanzbuchhaltung, Buchführung nach HGB, vorbereitende Buchhaltung für Ihren Steuerberater, Vorbereitung von Jahresabschlussarbeiten, Mahnwesen, Rechnungserstellung und Kostenrechnung an. Jede Leistung ist einzeln oder als kombiniertes Paket buchbar.",
+      "Wir bieten vier Kernleistungen: Lohnbuchhaltung (inkl. An-/Abmeldungen, digitaler Personalakte und allen Meldungen), laufende Buchhaltung mit Belegerfassung und Umsatzsteuer-Meldung, Büroservice & Unternehmensberatung (von der Unternehmensgründung bis zum behördlichen Schriftverkehr) sowie die Vorbereitung Ihres Jahresabschlusses – auch rückwirkend – für Ihren Steuerberater. Jede Leistung ist einzeln oder als kombiniertes Paket buchbar.",
   },
   {
     question: "Wie läuft die Zusammenarbeit ab?",

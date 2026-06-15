@@ -34,15 +34,10 @@ export function Nav() {
   };
 
   const leistungen = [
-    { href: "/leistungen/bueroservice", label: "Büroservice" },
     { href: "/leistungen/lohnbuchhaltung", label: "Lohnbuchhaltung" },
     { href: "/leistungen/buchhaltung", label: "Buchhaltung" },
-    { href: "/leistungen/buchfuehrung", label: "Buchführung" },
-    { href: "/leistungen/vorbereitende-buchhaltung", label: "Vorbereitende Buchhaltung" },
-    { href: "/leistungen/jahresabschluesse", label: "Vorbereitende Jahresabschlussarbeiten" },
-    { href: "/leistungen/mahnwesen", label: "Mahnwesen & Zahlungsverkehr" },
-    { href: "/leistungen/rechnungserstellung", label: "Rechnungserstellung" },
-    { href: "/leistungen/kostenrechnung", label: "Kosten- & Leistungsrechnung" },
+    { href: "/leistungen/bueroservice", label: "Büroservice & Unternehmensberatung" },
+    { href: "/leistungen/jahresabschluesse", label: "Jahresabschluss-Vorbereitung" },
   ];
 
   return (
@@ -131,8 +126,8 @@ export function Nav() {
 }
 
 export function Footer() {
-  const leistungen = ["Büroservice", "Lohnbuchhaltung", "Buchhaltung", "Buchführung", "Vorbereitende Buchhaltung", "Jahresabschluss-Vorbereitung", "Mahnwesen", "Rechnungserstellung", "Kostenrechnung"];
-  const hrefs = ["/leistungen/bueroservice", "/leistungen/lohnbuchhaltung", "/leistungen/buchhaltung", "/leistungen/buchfuehrung", "/leistungen/vorbereitende-buchhaltung", "/leistungen/jahresabschluesse", "/leistungen/mahnwesen", "/leistungen/rechnungserstellung", "/leistungen/kostenrechnung"];
+  const leistungen = ["Lohnbuchhaltung", "Buchhaltung", "Büroservice & Unternehmensberatung", "Jahresabschluss-Vorbereitung"];
+  const hrefs = ["/leistungen/lohnbuchhaltung", "/leistungen/buchhaltung", "/leistungen/bueroservice", "/leistungen/jahresabschluesse"];
 
   return (
     <footer style={{ background: "#171717", color: "white", padding: "60px 0 32px" }}>
