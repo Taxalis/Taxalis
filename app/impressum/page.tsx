@@ -99,9 +99,9 @@ export default function Impressum() {
                 </div>
                 <div className="mt-5 space-y-4 text-sm leading-relaxed text-slate-600">
                   <p>
-                    Taxalis Consulting bietet Dienstleistungen in den Bereichen Büroservice, Lohn- und Gehaltsbuchhaltung,
-                    laufende Finanzbuchhaltung, Buchführung, vorbereitende Buchhaltung, Mahnwesen, Rechnungserstellung und
-                    Kostenrechnung an. Diese Tätigkeiten erbringen wir als geschultes Buchhaltungs- und
+                    Taxalis Consulting bietet Dienstleistungen in den Bereichen Lohn- und Gehaltsbuchhaltung,
+                    laufende Finanzbuchhaltung (einschließlich Belegerfassung und Umsatzsteuer-Voranmeldungen), Büroservice und
+                    administrative Unternehmensunterstützung sowie vorbereitende Arbeiten für den Jahresabschluss an. Diese Tätigkeiten erbringen wir als geschultes Buchhaltungs- und
                     Finanzbuchhaltungsunternehmen im Rahmen der zulässigen Hilfeleistung in Steuersachen nach{" "}
                     <strong className="font-semibold text-slate-900">§ 6 Nr. 3 und Nr. 4 Steuerberatungsgesetz (StBerG)</strong>,
                     insbesondere die laufende Buchführung und die laufende Lohnabrechnung einschließlich der Fertigung der
