@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { testimonials, reviewStats } from "@/app/lib/testimonials";
 import "./globals.css";
 
 const jsonLd = {
@@ -51,6 +52,21 @@ const jsonLd = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Jahresabschluss-Vorbereitung Berlin", url: "https://www.taxalis-consulting.de/leistungen/jahresabschluesse" } },
     ],
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: reviewStats.average.toFixed(1),
+    reviewCount: reviewStats.count,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  review: testimonials
+    .filter((t) => t.text)
+    .map((t) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: t.name },
+      reviewRating: { "@type": "Rating", ratingValue: t.rating, bestRating: 5 },
+      reviewBody: t.text,
+    })),
 };
 
 export const metadata: Metadata = {

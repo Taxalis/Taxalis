@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon, { IconName } from "@/app/components/Icon";
 import { services } from "@/app/lib/services";
+import { testimonials, reviewStats } from "@/app/lib/testimonials";
 import { faqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
@@ -387,24 +388,29 @@ export default function Home() {
                 <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                   Das sagen unsere Mandanten
                 </h2>
-                <p className="mt-4 text-lg text-slate-600">
-                  Wir bauen gerade erste Mandate auf und freuen uns, hier schon bald echte Erfahrungsberichte zu zeigen.
-                </p>
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-lg text-slate-600">
+                  <span className="text-amber-400" aria-hidden>★★★★★</span>
+                  <span>
+                    <strong className="font-semibold text-slate-900">
+                      {reviewStats.average.toLocaleString("de-DE", { minimumFractionDigits: 1 })}
+                    </strong>{" "}
+                    von 5 · {reviewStats.count} Bewertungen auf {reviewStats.source}
+                  </span>
+                </div>
               </div>
             </Reveal>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {[0, 1, 2].map((i) => (
-                <Reveal key={i} className={DELAYS[i % 3]}>
-                  <div className="flex h-full flex-col rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-6">
-                    <div className="mb-4 flex gap-1 text-slate-300">
-                      {Array.from({ length: 5 }).map((_, s) => (
-                        <Icon key={s} name="sparkle" size={14} />
-                      ))}
+              {testimonials.filter((t) => t.text).map((t, i) => (
+                <Reveal key={t.name} className={DELAYS[i % 3]}>
+                  <div className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-200/40">
+                    <div className="mb-4 text-amber-400" aria-label={`${t.rating} von 5 Sternen`}>
+                      {"★".repeat(t.rating)}
                     </div>
-                    <p className="flex-1 text-sm leading-relaxed text-slate-400">
-                      Referenz folgt in Kürze – haben Sie mit uns zusammengearbeitet? Wir freuen uns über Ihr Feedback.
-                    </p>
-                    <div className="mt-4 text-sm font-semibold text-slate-400">Ihr Unternehmen</div>
+                    <p className="flex-1 text-sm leading-relaxed text-slate-600">{t.text}</p>
+                    <div className="mt-4">
+                      <div className="text-sm font-semibold text-slate-900">{t.name}</div>
+                      {t.meta && <div className="text-xs text-slate-400">{t.meta}</div>}
+                    </div>
                   </div>
                 </Reveal>
               ))}
