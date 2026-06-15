@@ -61,7 +61,7 @@ export default function ServicePage() {
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
                 <Icon name={service.icon} size={32} strokeWidth={1.6} />
               </div>
-              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">{service.title}</h1>
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">{service.title} <span className="text-emerald-600">Berlin</span></h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{service.tagline}</p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a
@@ -103,6 +103,26 @@ export default function ServicePage() {
             </Reveal>
           )}
         </section>
+
+        {/* Local SEO content */}
+        {service.localIntro && service.localIntro.length > 0 && (
+          <section className="bg-white py-12 sm:py-16">
+            <Reveal>
+              <div className="mx-auto max-w-3xl px-6">
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                  {service.title} in Berlin
+                </h2>
+                <div className="mt-5 space-y-4">
+                  {service.localIntro.map((p, i) => (
+                    <p key={i} className="text-base leading-relaxed text-slate-600">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </section>
+        )}
 
         {/* Benefits + Features */}
         <section id="details" className="bg-slate-50 py-20 sm:py-28">

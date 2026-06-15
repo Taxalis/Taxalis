@@ -23,16 +23,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const description = `${service.description} Jetzt unverbindlich bei Taxalis Consulting in Berlin anfragen.`;
+  const title = service.seoTitle ?? service.title;
+  const description =
+    service.seoDescription ?? `${service.description} Jetzt unverbindlich bei Taxalis Consulting in Berlin anfragen.`;
 
   return {
-    title: service.title,
+    title,
     description,
+    keywords: service.localKeywords,
     alternates: {
       canonical: `/leistungen/${service.id}`,
     },
     openGraph: {
-      title: `${service.title} | Taxalis Consulting`,
+      title: `${title} | Taxalis Consulting`,
       description,
       url: `/leistungen/${service.id}`,
       type: "website",
@@ -41,6 +44,48 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const service = getServiceById(id);
+
+  const jsonLd = service
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: service.title,
+        name: `${service.title} Berlin`,
+        description: service.seoDescription ?? service.description,
+        areaServed: { "@type": "City", name: "Berlin" },
+        url: `https://www.taxalis-consulting.de/leistungen/${service.id}`,
+        provider: {
+          "@type": "AccountingService",
+          "@id": "https://www.taxalis-consulting.de/#business",
+          name: "Taxalis Consulting",
+          url: "https://www.taxalis-consulting.de",
+          telephone: "+49 176 83151339",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Wilmersdorfer Str. 122-123",
+            postalCode: "10627",
+            addressLocality: "Berlin",
+            addressCountry: "DE",
+          },
+        },
+      }
+    : null;
+
+  return (
+    <>
+      {jsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      )}
+      {children}
+    </>
+  );
 }

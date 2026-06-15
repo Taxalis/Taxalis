@@ -82,6 +82,7 @@ export function Nav() {
         {leistungen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
         <div className="mobile-section">Unternehmen</div>
         <Link href="/ueber-uns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
+        <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
         <Link href="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
         <Link href="/#kontakt" onClick={() => setMenuOpen(false)}>Kontakt</Link>
         <Link href="/impressum" onClick={() => setMenuOpen(false)}>Impressum</Link>
@@ -108,6 +109,7 @@ export function Nav() {
               )}
             </div>
             <Link className="nav-link" href="/ueber-uns">Über Uns</Link>
+            <Link className="nav-link" href="/blog">Blog</Link>
             <Link className="nav-link" href="/faq">FAQ</Link>
             <Link className="nav-link" href="/#kontakt">Kontakt</Link>
             <div style={{ width: 1, height: 20, background: "#e5e7eb", margin: "0 8px" }} />
@@ -168,7 +170,7 @@ export function Footer() {
             </div>
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Seiten</div>
-              {[{ label: "Startseite", href: "/" }, { label: "Über Uns", href: "/ueber-uns" }, { label: "FAQ", href: "/faq" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map(l => (
+              {[{ label: "Startseite", href: "/" }, { label: "Über Uns", href: "/ueber-uns" }, { label: "Blog", href: "/blog" }, { label: "FAQ", href: "/faq" }, { label: "Impressum", href: "/impressum" }, { label: "Datenschutz", href: "/datenschutz" }].map(l => (
                 <div key={l.label} style={{ marginBottom: 8 }}>
                   <Link href={l.href} style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, transition: "color 0.2s", textDecoration: "none" }}
                     onMouseEnter={e => (e.currentTarget.style.color = "#34d399")}

@@ -5,22 +5,51 @@ import "./globals.css";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "AccountingService",
+  "@id": "https://www.taxalis-consulting.de/#business",
   name: "Taxalis Consulting",
+  description:
+    "Digitaler Backoffice-Partner in Berlin für Lohnbuchhaltung, laufende Buchhaltung, Büroservice und Jahresabschluss-Vorbereitung – DSGVO-konform und zu 100 % digital.",
   image: "https://www.taxalis-consulting.de/logo.png",
+  logo: "https://www.taxalis-consulting.de/logo.png",
   url: "https://www.taxalis-consulting.de",
   email: "info@taxalis-consulting.de",
   telephone: "+49 176 83151339",
+  priceRange: "€€",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Wilmersdorfer Str. 122-123",
     postalCode: "10627",
     addressLocality: "Berlin",
+    addressRegion: "Berlin",
     addressCountry: "DE",
   },
-  areaServed: "Berlin",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 52.5076,
+    longitude: 13.3062,
+  },
+  areaServed: { "@type": "City", name: "Berlin" },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  ],
   founder: {
     "@type": "Person",
     name: "Jannik Roloff",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Leistungen",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lohnbuchhaltung Berlin", url: "https://www.taxalis-consulting.de/leistungen/lohnbuchhaltung" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Buchhaltung Berlin", url: "https://www.taxalis-consulting.de/leistungen/buchhaltung" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Büroservice & Unternehmensberatung Berlin", url: "https://www.taxalis-consulting.de/leistungen/bueroservice" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Jahresabschluss-Vorbereitung Berlin", url: "https://www.taxalis-consulting.de/leistungen/jahresabschluesse" } },
+    ],
   },
 };
 

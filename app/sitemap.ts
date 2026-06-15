@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllServiceIds } from "@/app/lib/services";
+import { blogPosts } from "@/app/lib/blog";
 
 const baseUrl = "https://www.taxalis-consulting.de";
 
@@ -24,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/impressum`,
       lastModified: new Date(),
       changeFrequency: "yearly",
@@ -44,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
+    url: `${baseUrl}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
 }
