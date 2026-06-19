@@ -81,6 +81,7 @@ export function Nav() {
         <div className="mobile-section">Leistungen</div>
         {leistungen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
         <div className="mobile-section">Unternehmen</div>
+        <Link href="/preise" onClick={() => setMenuOpen(false)}>Preise</Link>
         <Link href="/ueber-uns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
         <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
         <Link href="/faq" onClick={() => setMenuOpen(false)}>FAQ</Link>
@@ -108,6 +109,7 @@ export function Nav() {
                 </div>
               )}
             </div>
+            <Link className="nav-link" href="/preise">Preise</Link>
             <Link className="nav-link" href="/ueber-uns">Über Uns</Link>
             <Link className="nav-link" href="/blog">Blog</Link>
             <Link className="nav-link" href="/faq">FAQ</Link>
@@ -135,6 +137,7 @@ export function Footer() {
     { label: "Jahresabschluss-Vorbereitung", href: "/leistungen/jahresabschluesse" },
   ];
   const seiten = [
+    { label: "Preise", href: "/preise" },
     { label: "Über Uns", href: "/ueber-uns" },
     { label: "FAQ", href: "/faq" },
     { label: "Blog", href: "/blog" },
