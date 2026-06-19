@@ -114,14 +114,14 @@ export default function Home() {
       <Nav />
       <main className="bg-white text-slate-900">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-slate-50 pt-36 pb-20 sm:pt-44 sm:pb-28">
+        <section className="relative overflow-hidden bg-slate-50 pt-36 pb-20 sm:pt-44 sm:pb-28" style={{ backgroundImage: "radial-gradient(ellipse at 15% 60%, rgba(16,185,129,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.05) 0%, transparent 50%)" }}>
           <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-xs font-semibold text-emerald-700">
                 <Icon name="map-pin" size={14} />
                 Digitaler Backoffice-Partner in Berlin
               </span>
-              <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">
+              <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
                 Premium Büroservice &amp; Lohnbuchhaltung für Berliner Unternehmen
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
@@ -206,6 +206,27 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Stats strip */}
+        <section className="border-y border-slate-100 bg-white">
+          <div className="mx-auto max-w-6xl px-6 py-5">
+            <div className="grid grid-cols-2 gap-y-5 gap-x-8 sm:grid-cols-4">
+              {(
+                [
+                  { n: "5,0 ★", label: "Google-Bewertung" },
+                  { n: "4", label: "Kernleistungen" },
+                  { n: "100%", label: "Digital & DSGVO" },
+                  { n: "< 24 h", label: "Antwortzeit" },
+                ] as { n: string; label: string }[]
+              ).map((s) => (
+                <div key={s.n} className="flex flex-col items-center gap-0.5 text-center">
+                  <span className="text-2xl font-bold text-slate-900">{s.n}</span>
+                  <span className="text-xs text-slate-500">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Pain points */}
         <section className="py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-6">
@@ -249,18 +270,26 @@ export default function Home() {
                 </p>
               </div>
             </Reveal>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
               {services.map((s, i) => (
-                <Reveal key={s.id} className={DELAYS[i % 3]}>
+                <Reveal key={s.id} className={DELAYS[i % 4]}>
                   <Link
                     href={`/leistungen/${s.id}`}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60"
+                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60"
                   >
-                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
-                      <Icon name={s.icon} size={22} />
+                    <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                      <Icon name={s.icon} size={26} />
                     </span>
-                    <h3 className="mb-1 text-lg font-semibold text-slate-900">{s.title}</h3>
-                    <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-500">{s.description}</p>
+                    <h3 className="mb-2 text-xl font-semibold text-slate-900">{s.title}</h3>
+                    <p className="mb-5 text-sm leading-relaxed text-slate-500">{s.description}</p>
+                    <ul className="mb-5 flex-1 space-y-2">
+                      {s.benefits.slice(0, 3).map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-xs text-slate-500">
+                          <Icon name="check" size={13} className="mt-0.5 flex-shrink-0 text-emerald-500" />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
                     <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
                       Mehr erfahren
                       <Icon name="arrow-right" size={14} />
@@ -302,8 +331,8 @@ export default function Home() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {PROCESS_STEPS.map((step, i) => (
                 <Reveal key={step.n} className={`delay-${(i % 4) * 75}`}>
-                  <div className="h-full rounded-2xl border border-slate-100 p-6">
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-sm font-bold text-white">
+                  <div className="h-full rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:border-emerald-200 hover:shadow-md hover:shadow-slate-200/50">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500 text-base font-bold text-white shadow-md shadow-emerald-500/30">
                       {step.n}
                     </div>
                     <h3 className="mb-2 font-semibold text-slate-900">{step.title}</h3>
@@ -402,14 +431,20 @@ export default function Home() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {testimonials.filter((t) => t.text).map((t, i) => (
                 <Reveal key={t.name} className={DELAYS[i % 3]}>
-                  <div className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-200/40">
-                    <div className="mb-4 text-amber-400" aria-label={`${t.rating} von 5 Sternen`}>
-                      {"★".repeat(t.rating)}
+                  <div className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 shadow-sm shadow-slate-200/40">
+                    <div className="mb-3 flex items-start justify-between">
+                      <div className="text-amber-400" aria-label={`${t.rating} von 5 Sternen`}>{"★".repeat(t.rating)}</div>
+                      <span className="text-5xl font-serif leading-none text-emerald-100 select-none" aria-hidden="true">&ldquo;</span>
                     </div>
-                    <p className="flex-1 text-sm leading-relaxed text-slate-600">{t.text}</p>
-                    <div className="mt-4">
-                      <div className="text-sm font-semibold text-slate-900">{t.name}</div>
-                      {t.meta && <div className="text-xs text-slate-400">{t.meta}</div>}
+                    <p className="flex-1 text-sm leading-relaxed text-slate-600 italic">{t.text}</p>
+                    <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
+                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white">
+                        {t.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-slate-900">{t.name}</div>
+                        {t.meta && <div className="text-xs text-slate-400">{t.meta}</div>}
+                      </div>
                     </div>
                   </div>
                 </Reveal>
