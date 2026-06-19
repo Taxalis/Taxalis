@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { testimonials, reviewStats } from "@/app/lib/testimonials";
+import CookieBanner from "@/app/components/CookieBanner";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -35,8 +39,8 @@ const jsonLd = {
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
+      opens: "08:00",
+      closes: "20:00",
     },
   ],
   founder: {
@@ -118,11 +122,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de">
+    <html lang="de" className={inter.className}>
       <body
         style={{
           margin: 0,
-          fontFamily: "Inter, system-ui, sans-serif",
           background: "#F5F7FA",
           color: "#0B1B2B",
         }}
@@ -132,6 +135,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <CookieBanner />
         <Analytics />
         <SpeedInsights />
       </body>

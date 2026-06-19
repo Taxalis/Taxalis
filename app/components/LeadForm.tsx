@@ -27,6 +27,7 @@ type FormState = {
   firma: string;
   email: string;
   telefon: string;
+  datenschutz: boolean;
 };
 
 const initialState: FormState = {
@@ -37,6 +38,7 @@ const initialState: FormState = {
   firma: "",
   email: "",
   telefon: "",
+  datenschutz: false,
 };
 
 export default function LeadForm() {
@@ -62,6 +64,7 @@ export default function LeadForm() {
   const canProceed = () => {
     if (step === 1) return data.services.length > 0;
     if (step === 2) return !!data.unternehmensgroesse;
+    if (step === 4) return !!data.name && !!data.email && data.datenschutz;
     return true;
   };
 
@@ -257,6 +260,22 @@ export default function LeadForm() {
               className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm outline-none transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
             />
           </div>
+          <label className="mt-4 flex items-start gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={data.datenschutz}
+              onChange={(e) => setData((prev) => ({ ...prev, datenschutz: e.target.checked }))}
+              required
+              className="mt-0.5 h-4 w-4 flex-shrink-0 accent-emerald-500"
+            />
+            <span className="text-xs leading-relaxed text-slate-500">
+              Ich habe die{" "}
+              <a href="/datenschutz" target="_blank" className="text-emerald-600 underline hover:text-emerald-700">
+                Datenschutzerklärung
+              </a>{" "}
+              gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. *
+            </span>
+          </label>
           {error && (
             <div className="mt-3 text-sm font-semibold text-red-600">
               Fehler beim Versenden. Bitte versuchen Sie es später erneut.

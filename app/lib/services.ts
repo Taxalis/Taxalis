@@ -10,7 +10,7 @@ export interface ServiceDetails {
   longDescription: string;
   benefits: string[];
   features: string[];
-  processSteps: string[];
+  processSteps: { title: string; desc: string }[];
   cta: string;
   /**
    * Optional compliance note shown on the service detail page for services
@@ -48,7 +48,13 @@ export const services: ServiceDetails[] = [
     ],
     benefits: ["Gesetzeskonforme, pünktliche Abrechnungen", "An- und Abmeldungen zuverlässig erledigt", "Digitale Personalakte – jederzeit griffbereit", "Korrekte Elster- und Sozialversicherungsmeldungen", "Saubere Monatswechsel ohne Fristversäumnis", "Persönlicher Berliner Ansprechpartner"],
     features: ["Anmeldung & Abmeldung von Mitarbeitern", "Erstellung von Arbeitsverträgen", "Digitale Personalakte (E-Akte)", "Monatliche Lohn- und Gehaltsabrechnung", "Optionale Zeit- und Stundenerfassung", "Kontrolle der Arbeitszeitkonten", "Monatswechsel & Lohnsteueranmeldung (Elster)", "Sozialversicherungsmeldungen & -wechsel", "Lohnkorrekturen bei Bedarf"],
-    processSteps: ["An-/Abmeldung & Erfassung Ihrer Mitarbeiterdaten", "Festlegung der Stundenbasis (vorgegeben oder per Zeiterfassung)", "Monatliche Abrechnung & Kontrolle der Arbeitszeitkonten", "Meldungen via Elster und an die Sozialversicherung", "Kontrolle, Freigabe und Korrekturen bei Bedarf"],
+    processSteps: [
+      { title: "An-/Abmeldung & Erfassung der Mitarbeiterdaten", desc: "Wir erfassen alle Stammdaten, richten die digitale Personalakte ein und melden Ihre Mitarbeiter bei Finanzamt und Sozialversicherung an." },
+      { title: "Festlegung der Stundenbasis", desc: "Gemeinsam legen wir fest, ob Stunden fix vorgegeben oder über eine Zeiterfassung übermittelt werden – beides ist möglich." },
+      { title: "Monatliche Abrechnung & Arbeitszeitkontrolle", desc: "Pünktlich zum Monatsende erstellen wir die Gehaltsabrechnungen und kontrollieren Überstunden, Resturlaub und Arbeitszeitkonten." },
+      { title: "Meldungen via Elster & Sozialversicherung", desc: "Lohnsteueranmeldung, Beitragsnachweise und SV-Meldungen werden fristgerecht und vollständig elektronisch übermittelt." },
+      { title: "Kontrolle, Freigabe & Korrekturen", desc: "Sie prüfen und geben die Abrechnungen frei – Korrekturen erledigen wir schnell und unkompliziert auf Anfrage." },
+    ],
     cta: "Unverbindliches Angebot anfordern",
   },
   {
@@ -69,7 +75,13 @@ export const services: ServiceDetails[] = [
     ],
     benefits: ["Vollständige finanzielle Kontrolle", "Laufende Umsatzsteuer-Erfassung & -Meldung", "Steuerberater-fertige Unterlagen", "Skalierbar nach Belegvolumen", "Revisionssichere Dokumentation", "Optionale Kassenbuchführung"],
     features: ["Digitale Belegerfassung", "Erfassung & Meldung der Umsatzsteuer (UStVA)", "Kontenabstimmung", "Verbuchung nach Belegvolumen", "Optionale Kassenbuchführung", "Monatliche betriebswirtschaftliche Auswertung (BWA)", "Vollständige Vorbereitung für Ihren Steuerberater"],
-    processSteps: ["Einrichtung Ihrer Buchhaltungsstruktur", "Digitale Belegerfassung", "Laufende Verbuchung & Kontenabstimmung", "Umsatzsteuer-Erfassung & -Meldung", "Monatliche Auswertung & Übergabe"],
+    processSteps: [
+      { title: "Einrichtung Ihrer Buchhaltungsstruktur", desc: "Wir richten Ihre Kontenstruktur und digitalen Ablageprozesse ein, sodass Belege sofort sauber erfasst werden können." },
+      { title: "Digitale Belegerfassung", desc: "Sie übermitteln Belege per App, E-Mail oder Upload – wir erfassen, prüfen und archivieren alles revisionssicher." },
+      { title: "Laufende Verbuchung & Kontenabstimmung", desc: "Alle Geschäftsvorfälle werden zeitnah verbucht und Ihre Konten regelmäßig abgestimmt – die Zahlen sind stets aktuell." },
+      { title: "Umsatzsteuer-Erfassung & -Meldung", desc: "Wir ermitteln Ihre Umsatzsteuer und übermitteln die Voranmeldung fristgerecht ans Finanzamt – monatlich oder quartalsweise." },
+      { title: "Monatliche Auswertung & Übergabe", desc: "Sie erhalten eine verständliche BWA, alle Unterlagen sind steuerberater-fertig aufbereitet und zur Übergabe bereit." },
+    ],
     cta: "Beratungsgespräch buchen",
     complianceNote: "Die laufende Finanzbuchhaltung erbringen wir gemäß § 6 Nr. 4 StBerG. Steuerliche Auswertungen, Erklärungen und Beratung erfolgen durch den Steuerberater Ihres Vertrauens – mit unseren Auswertungen als verlässlicher Grundlage.",
   },
@@ -91,7 +103,13 @@ export const services: ServiceDetails[] = [
     ],
     benefits: ["Reibungsloser Start in die Selbstständigkeit", "Alle Gründungs-Formalitäten aus einer Hand", "Entlastung im behördlichen Schriftverkehr", "Flexible Bearbeitung pro Vorgang", "Fristen sicher im Blick", "Persönlicher Ansprechpartner in Berlin"],
     features: ["Neugründung: Gewerbeanmeldung", "Steuerliche Erfassung beim Finanzamt", "Anmeldung Berufsgenossenschaft (BG)", "Beantragung der Betriebsnummer", "Versicherungsangelegenheiten", "Widerspruch & Meldungen", "Bankwesen & Korrespondenz", "Sozialversicherungstechnische Vorgänge", "Behördliche Mitwirkungsaufforderungen"],
-    processSteps: ["Erstgespräch & Bedarfsklärung", "Onboarding bzw. Erfassung des Vorgangs", "Bearbeitung & Kommunikation mit Behörden und Stellen", "Rückmeldung & Dokumentation", "Ablage in Ihrer digitalen Akte"],
+    processSteps: [
+      { title: "Erstgespräch & Bedarfsklärung", desc: "Wir besprechen, ob es sich um eine Neugründung oder einen laufenden Vorgang handelt, und klären alle benötigten Unterlagen." },
+      { title: "Onboarding bzw. Erfassung des Vorgangs", desc: "Für Gründer: vollständiges Onboarding. Für laufende Vorgänge: strukturierte Aufnahme aller relevanten Informationen und Dokumente." },
+      { title: "Bearbeitung & Behördenkommunikation", desc: "Wir übernehmen die Kommunikation mit Finanzamt, Berufsgenossenschaft, Sozialversicherung und Ämtern – schriftlich und telefonisch." },
+      { title: "Rückmeldung & Dokumentation", desc: "Sie erhalten eine klare Rückmeldung über den aktuellen Status Ihres Vorgangs – transparent, nachvollziehbar und ohne Überraschungen." },
+      { title: "Ablage in Ihrer digitalen Akte", desc: "Alle Schreiben, Bescheide und Dokumente werden in Ihrer digitalen Akte archiviert – jederzeit und von überall abrufbar." },
+    ],
     cta: "Kostenlose Beratung vereinbaren",
   },
   {
@@ -112,7 +130,13 @@ export const services: ServiceDetails[] = [
     ],
     benefits: ["Auch rückwirkende Aufarbeitung möglich", "Schnellere Abschlusserstellung durch Ihren Steuerberater", "Weniger Rückfragen durch vollständige Unterlagen", "Reduzierte Kosten Ihrer Steuerkanzlei", "Lückenlose Kontenabstimmung", "Professionell strukturierte Übergabe"],
     features: ["Nachträgliche Aufarbeitung der laufenden Buchhaltung", "Inventur-Vorbereitung & Erfassung", "Vollständige Kontenabstimmung", "Prüfung offener Posten", "Plausibilitätsprüfung der Buchhaltung", "Strukturiertes Übergabe-Dossier", "Direkte Abstimmung mit Ihrer Steuerkanzlei"],
-    processSteps: ["Sichtung & Sammlung aller Unterlagen", "Nachbuchung zurückliegender Monate (falls nötig)", "Inventur-Erfassung & Kontenabstimmung", "Plausibilitätsprüfung", "Übergabe an Ihren Steuerberater"],
+    processSteps: [
+      { title: "Sichtung & Sammlung aller Unterlagen", desc: "Gemeinsam stellen wir alle Belege, Kontenauszüge und Vorjahresdokumente zusammen und klären, ob Lücken zu schließen sind." },
+      { title: "Nachbuchung zurückliegender Monate", desc: "Liegt die Buchhaltung im Rückstand, holen wir sie vollständig und korrekt nach – Monat für Monat, ohne Lücken." },
+      { title: "Inventur-Erfassung & Kontenabstimmung", desc: "Wir erfassen Ihren Warenbestand, gleichen alle Konten ab und klären offene Posten für ein sauberes Jahresergebnis." },
+      { title: "Plausibilitätsprüfung", desc: "Wir prüfen die Zahlen auf Konsistenz und Vollständigkeit, damit Ihr Steuerberater mit verlässlichen Daten arbeiten kann." },
+      { title: "Übergabe an Ihren Steuerberater", desc: "Sie erhalten ein vollständiges, strukturiertes Übergabe-Dossier – aufbereitet für eine schnelle, reibungslose Abschlusserstellung." },
+    ],
     cta: "Abschluss-Vorbereitung anfragen",
     complianceNote: "Die Erstellung des Jahresabschlusses (Bilanz, GuV) und von Steuererklärungen ist Steuerberatern vorbehalten. Wir übernehmen ausschließlich die vorbereitenden buchhalterischen Tätigkeiten gemäß § 6 StBerG und arbeiten dafür eng mit Ihrer Steuerkanzlei zusammen.",
   },

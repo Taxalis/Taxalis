@@ -37,13 +37,21 @@ export default function BlogPage() {
                     href={`/blog/${p.slug}`}
                     className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60"
                   >
-                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">{p.category}</span>
-                    <h2 className="mt-2 mb-2 text-lg font-semibold text-slate-900">{p.title}</h2>
+                    <div className="mb-2 flex items-center justify-between gap-2">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">{p.category}</span>
+                      <span className="text-xs text-slate-400">
+                        {new Date(p.date).toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}
+                      </span>
+                    </div>
+                    <h2 className="mb-2 text-lg font-semibold text-slate-900">{p.title}</h2>
                     <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-500">{p.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
-                      Artikel lesen
-                      <Icon name="arrow-right" size={14} />
-                    </span>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
+                        Artikel lesen
+                        <Icon name="arrow-right" size={14} />
+                      </span>
+                      <span className="text-xs text-slate-400">{p.readingMinutes} Min.</span>
+                    </div>
                   </Link>
                 </Reveal>
               ))}

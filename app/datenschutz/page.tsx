@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";

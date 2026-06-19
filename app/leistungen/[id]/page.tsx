@@ -1,45 +1,19 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";
 import { services, getServiceById } from "@/app/lib/services";
-import { useParams } from "next/navigation";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
 
-export default function ServicePage() {
-  const params = useParams();
-  const id = params?.id as string;
-  const service = id ? getServiceById(id) : null;
-  const [mounted, setMounted] = useState(false);
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export default async function ServicePage({ params }: Props) {
+  const { id } = await params;
+  const service = getServiceById(id);
 
-  if (!mounted) return null;
-
-  if (!service) {
-    return (
-      <>
-        <Nav />
-        <main className="flex min-h-screen items-center justify-center bg-white px-6 text-center">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900">Seite nicht gefunden</h1>
-            <p className="mt-3 text-slate-500">Die gewünschte Leistung existiert nicht.</p>
-            <Link
-              href="/"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-600"
-            >
-              Zurück zur Startseite
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
-  }
+  if (!service) notFound();
 
   const otherServices = services.filter((s) => s.id !== service.id).slice(0, 3);
 
@@ -61,7 +35,9 @@ export default function ServicePage() {
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
                 <Icon name={service.icon} size={32} strokeWidth={1.6} />
               </div>
-              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">{service.title} <span className="text-emerald-600">Berlin</span></h1>
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                {service.title} <span className="text-emerald-600">Berlin</span>
+              </h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">{service.tagline}</p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a
@@ -188,15 +164,13 @@ export default function ServicePage() {
               }`}
             >
               {service.processSteps.map((step, i) => (
-                <Reveal key={step} className={DELAYS[i % 4]}>
+                <Reveal key={step.title} className={DELAYS[i % 4]}>
                   <div className="h-full rounded-2xl border border-slate-100 p-6 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg hover:shadow-slate-200/50">
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-sm font-bold text-white">
                       {i + 1}
                     </div>
-                    <h3 className="mb-2 font-semibold text-slate-900">{step}</h3>
-                    <p className="text-sm leading-relaxed text-slate-500">
-                      Wir kümmern uns systematisch um diesen Schritt, damit Sie maximale Effizienz gewinnen.
-                    </p>
+                    <h3 className="mb-2 font-semibold text-slate-900">{step.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-500">{step.desc}</p>
                   </div>
                 </Reveal>
               ))}
@@ -244,7 +218,7 @@ export default function ServicePage() {
             <div className="mx-auto max-w-2xl px-6">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Bereit für den nächsten Schritt?</h2>
               <p className="mt-4 text-lg text-white/70">
-                Lassen Sie sich von unserem Team kostenlos beraten und erfahren Sie, wie wir Ihr Unternehmen entlasten können.
+                Lassen Sie sich kostenlos beraten und erfahren Sie, wie wir Ihr Unternehmen entlasten können.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                 <a

@@ -213,7 +213,7 @@ export function Footer() {
                 <span className="flex-shrink-0 text-emerald-500">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </span>
-                <span className="text-sm text-white/55">Mo – Fr, 09:00 – 18:00 Uhr</span>
+                <span className="text-sm text-white/55">Mo – Fr, 08:00 – 20:00 Uhr</span>
               </li>
             </ul>
           </div>
