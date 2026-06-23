@@ -94,9 +94,19 @@ export const metadata: Metadata = {
     "Büroservice Berlin",
     "Buchhaltung Berlin",
     "Buchhaltungsservice Berlin",
+    "Finanzbuchhaltung Berlin",
+    "Gehaltsabrechnung Berlin",
+    "Buchhaltung outsourcen Berlin",
+    "Buchhaltung Freiberufler Berlin",
+    "Buchhaltungsbüro Charlottenburg",
     "Outsourcing Buchhaltung",
     "Taxalis Consulting",
   ],
+  other: {
+    "geo.region": "DE-BE",
+    "geo.placename": "Berlin",
+    "ICBM": "52.5076, 13.3062",
+  },
   openGraph: {
     title: "Premium Büroservice & Lohnbuchhaltung Berlin | Taxalis Consulting",
     description:

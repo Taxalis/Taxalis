@@ -164,6 +164,96 @@ export const blogPosts: BlogPost[] = [
     ],
     related: [{ href: "/leistungen/bueroservice", label: "Büroservice & Unternehmensberatung in Berlin" }],
   },
+  {
+    slug: "buchhaltung-outsourcen-berlin-kosten",
+    title: "Buchhaltung outsourcen Berlin: Was kostet das wirklich?",
+    description:
+      "Was kostet es, Buchhaltung in Berlin auszulagern? Preise, Einflussfaktoren und wann sich Outsourcing für Berliner KMU und Freiberufler lohnt.",
+    category: "Buchhaltung",
+    date: "2026-06-23",
+    readingMinutes: 5,
+    keywords: [
+      "Buchhaltung outsourcen Berlin",
+      "Kosten Buchhaltung Berlin",
+      "Buchhaltung Freiberufler Berlin",
+      "Buchhaltungsservice Kosten",
+      "Finanzbuchhaltung Berlin",
+    ],
+    excerpt:
+      "Was kostet es, Buchhaltung in Berlin auszulagern? Wir erklären Preise, Einflussfaktoren und wann sich der Schritt für Freiberufler und KMU wirklich lohnt.",
+    content: [
+      { type: "p", text: "„Was kostet das?“ – das ist die häufigste Frage, wenn Berliner Unternehmen über das Auslagern ihrer Buchhaltung nachdenken. Die ehrliche Antwort: Es kommt auf mehrere Faktoren an. In diesem Artikel erklären wir, was die Kosten bestimmt, was Sie realistisch einplanen sollten und wann sich Outsourcing finanziell lohnt." },
+      { type: "h2", text: "Was beeinflusst den Preis?" },
+      { type: "ul", items: [
+        "Anzahl der monatlichen Belege (Eingangs- und Ausgangsrechnungen, Kontoauszüge)",
+        "Umsatzsteuerpflicht: Voranmeldung monatlich, quartalsweise oder Jahresmeldung",
+        "Rechtsform: Freiberufler mit EÜR zahlen weniger als eine GmbH mit Bilanzierungspflicht",
+        "Zusatzleistungen: Lohnbuchhaltung, Jahresabschluss-Vorbereitung, Büroservice",
+        "Rückstände: Nachbuchungen mehrerer Jahre erhöhen den Aufwand einmalig",
+      ] },
+      { type: "h2", text: "Typische Kosten in Berlin" },
+      { type: "p", text: "Für Freiberufler und Kleinunternehmer mit überschaubarem Belegvolumen (bis ca. 50 Belege/Monat) und ohne Umsatzsteuerpflicht beginnen seriöse Angebote in Berlin bei etwa 79–120 € pro Monat. Kleine GmbHs oder umsatzsteuerpflichtige Unternehmen mit mehr Belegen liegen häufig im Bereich 150–350 € monatlich. Hinzu kommen einmalige Kosten für das Onboarding und die Einrichtung digitaler Prozesse." },
+      { type: "h2", text: "Was kostet es, es selbst zu machen?" },
+      { type: "p", text: "Viele Unternehmerinnen und Unternehmer rechnen nicht, was ihre eigene Arbeitszeit kostet. Wer zwei bis vier Stunden im Monat für Buchhaltung aufwendet und dabei einen Stundensatz von 80–120 € hat, zahlt bereits 160–480 € – in eigener Zeit, statt im Kerngeschäft. Hinzu kommen Software, Fehlerrisiken und Zeitaufwand für die Kommunikation mit dem Steuerberater." },
+      { type: "h2", text: "Ab wann lohnt sich Outsourcing?" },
+      { type: "p", text: "Als Faustregel gilt: Sobald Sie mehr als zwei Stunden pro Monat mit Buchhaltung verbringen oder unruhig schlafen, weil Fristen näherrücken, lohnt sich die Abgabe an einen Profi. In Berlin – wo jede Stunde zählt und die Steuerlast hoch ist – ist das oft schon ab dem ersten Mitarbeiter oder ab einem Jahresumsatz von ca. 50.000 € der Fall." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Buchhaltung outsourcen in Berlin kostet weniger als viele denken – und spart oft mehr, als es kostet. Transparente Festpreise statt Stundenabrechnungen machen die monatliche Belastung planbar. Fragen Sie uns nach einem unverbindlichen Angebot: Im kostenlosen Erstgespräch rechnen wir gemeinsam durch, ob und wie sich Outsourcing für Ihr Unternehmen lohnt." },
+    ],
+    related: [
+      { href: "/leistungen/buchhaltung", label: "Buchhaltungsservice in Berlin" },
+      { href: "/preise", label: "Unsere Preise" },
+    ],
+  },
+  {
+    slug: "lohnabrechnung-gmbh-berlin",
+    title: "Lohnabrechnung für GmbH in Berlin: Was Sie wissen müssen",
+    description:
+      "Lohnabrechnung für GmbH in Berlin: Pflichten, typische Fallstricke und warum viele Berliner GmbHs die Gehaltsabrechnung auslagern.",
+    category: "Lohnbuchhaltung",
+    date: "2026-06-23",
+    readingMinutes: 6,
+    keywords: [
+      "Lohnabrechnung GmbH Berlin",
+      "Gehaltsabrechnung GmbH",
+      "Lohnbuchhaltung Berlin",
+      "GmbH Mitarbeiter Berlin",
+      "Lohnsteueranmeldung Berlin",
+    ],
+    excerpt:
+      "GmbH gegründet in Berlin und jetzt mit Mitarbeitern? Die Lohnabrechnung ist komplex – hier erfahren Sie, was Pflicht ist, wo Fallstricke lauern und warum Outsourcing sinnvoll ist.",
+    content: [
+      { type: "p", text: "Eine GmbH in Berlin zu führen bedeutet: hohe Verantwortung gegenüber Ihren Mitarbeitern und gegenüber Behörden. Die Gehaltsabrechnung ist dabei eine der komplexesten laufenden Aufgaben – sie verlangt aktuelles Wissen zu Lohnsteuer, Sozialversicherung, Meldepflichten und immer neuen gesetzlichen Änderungen. In diesem Artikel erfahren Sie, was eine GmbH bei der Lohnabrechnung beachten muss – und warum viele Berliner GmbHs das auslagern." },
+      { type: "h2", text: "Was gehört zur Lohnabrechnung einer GmbH?" },
+      { type: "ul", items: [
+        "Monatliche Erstellung der Gehaltsabrechnungen für alle Mitarbeiter",
+        "Berechnung und Abführung der Lohnsteuer (Lohnsteueranmeldung via Elster)",
+        "Berechnung und Abführung der Sozialversicherungsbeiträge (GKV, RV, AV, PV)",
+        "An- und Abmeldungen bei der Krankenkasse und der Minijob-Zentrale",
+        "Führung der digitalen Personalakte",
+        "Jahresabschluss-Tätigkeiten: Lohnsteuerbescheinigungen, Sozialversicherungsnachweise",
+        "Mutterschutz, Elternzeit, AU-Bescheinigungen: Korrekte Abwicklung im laufenden Jahr",
+      ] },
+      { type: "h2", text: "Besonderheiten bei der GmbH" },
+      { type: "p", text: "Geschäftsführer einer GmbH erhalten in der Regel ein Gehalt, das über den Arbeitsvertrag geregelt ist. Auch der Gesellschafter-Geschäftsführer (GGF) muss korrekt abgerechnet werden – je nach Beteiligungsquote und Vertragslage mit unterschiedlicher sozialversicherungsrechtlicher Behandlung. Hier liegen klassische Fallstricke: Wird ein beherrschender GGF fälschlicherweise wie ein Arbeitnehmer behandelt, drohen Nachzahlungen und Bußgelder." },
+      { type: "h2", text: "Typische Fehler bei der Lohnabrechnung" },
+      { type: "ul", items: [
+        "Falsche Steuerklasse oder Freibeträge nicht berücksichtigt",
+        "Vergessene Meldungen bei Eltern- oder Pflegezeit",
+        "Sachbezüge (z. B. Dienstwagen, Jobticket) nicht korrekt versteuert",
+        "Fristen für die Lohnsteueranmeldung (jeweils 10. des Folgemonats) versäumt",
+        "An-/Abmeldungen zur Sozialversicherung zu spät eingereicht",
+      ] },
+      { type: "h2", text: "Warum Berliner GmbHs die Lohnabrechnung auslagern" },
+      { type: "p", text: "Die Lohnabrechnung bindet interne Ressourcen, ist fehleranfällig und ändert sich regelmäßig durch neue Gesetze. Gerade in Berlin, wo der Arbeitsmarkt heiß ist und Mitarbeiterbindung zählt, sollten Abrechnungen pünktlich, korrekt und transparent sein. Ein externer Lohnbuchhaltungsservice übernimmt genau das – zuverlässig, DSGVO-konform und mit festem Ansprechpartner." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Lohnabrechnung für eine GmbH in Berlin ist kein Selbstläufer. Die Fehlerquellen sind zahlreich, die Fristen eng und die Konsequenzen bei Fehlern real. Wer das auslagert, gewinnt Sicherheit, spart Zeit und kann sich auf sein Kerngeschäft konzentrieren. Sprechen Sie uns an – wir übernehmen Ihre Gehaltsabrechnung vollständig und zuverlässig." },
+    ],
+    related: [
+      { href: "/leistungen/lohnbuchhaltung", label: "Lohnbuchhaltung Berlin" },
+      { href: "/faq", label: "Häufige Fragen zur Lohnabrechnung" },
+    ],
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

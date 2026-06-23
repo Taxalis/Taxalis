@@ -1,17 +1,38 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";
-import { Reveal, DELAYS } from "@/app/components/Reveal";
+import { Reveal } from "@/app/components/Reveal";
 import { faqItems } from "@/app/lib/faq";
+import FaqAccordion from "./FaqAccordion";
+
+export const metadata: Metadata = {
+  title: "FAQ – Häufige Fragen zu Buchhaltung & Lohnabrechnung Berlin",
+  description:
+    "Antworten auf die häufigsten Fragen zu Buchhaltung outsourcen in Berlin, Kosten, Lohnabrechnung und unserer Abgrenzung zur Steuerberatung gemäß § 6 StBerG.",
+  alternates: { canonical: "/faq" },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Nav />
       <main className="bg-white text-slate-900">
         {/* Hero */}
@@ -40,34 +61,7 @@ export default function Faq() {
         {/* FAQ list */}
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-3xl px-6">
-            <div className="space-y-4">
-              {faqItems.map((item, i) => {
-                const open = openIndex === i;
-                return (
-                  <Reveal key={item.question} className={DELAYS[i % 4]}>
-                    <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm shadow-slate-200/40">
-                      <button
-                        onClick={() => setOpenIndex(open ? null : i)}
-                        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                        aria-expanded={open}
-                      >
-                        <span className="font-semibold text-slate-900">{item.question}</span>
-                        <span
-                          className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 transition-transform ${
-                            open ? "rotate-45" : ""
-                          }`}
-                        >
-                          <Icon name="x" size={14} className={open ? "" : "rotate-45"} />
-                        </span>
-                      </button>
-                      {open && (
-                        <div className="px-6 pb-6 text-sm leading-relaxed text-slate-600">{item.answer}</div>
-                      )}
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
+            <FaqAccordion />
 
             <Reveal>
               <div className="mt-12 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-8 text-center sm:p-10">

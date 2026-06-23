@@ -10,6 +10,16 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/(.*)",
+        has: [{ type: "header", key: "x-forwarded-proto", value: "http" }],
+        destination: "https://www.taxalis-consulting.de/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

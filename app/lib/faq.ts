@@ -49,4 +49,29 @@ export const faqItems: FaqItem[] = [
     answer:
       "In der Regel können wir bereits kurz nach dem Erstgespräch und der Einrichtung der digitalen Prozesse mit der laufenden Betreuung beginnen. Die genaue Zeitschiene hängt vom Umfang Ihrer Anforderungen und der Übergabe bestehender Unterlagen ab.",
   },
+  {
+    question: "Was kostet Buchhaltung outsourcen in Berlin?",
+    answer:
+      "Die Kosten hängen vom Umfang ab: Für kleine Unternehmen und Freiberufler mit wenigen Belegen starten unsere Buchführungspakete ab rund 79 € pro Monat. Mittelständische Betriebe mit mehr Belegvolumen oder zusätzlicher Lohnbuchhaltung zahlen entsprechend mehr. Wir arbeiten grundsätzlich mit transparenten Festpreisen statt unklarer Stundenabrechnung – im kostenlosen Erstgespräch erhalten Sie ein individuelles Angebot.",
+  },
+  {
+    question: "Was kostet Lohnabrechnung in Berlin?",
+    answer:
+      "Unsere Lohnbuchhaltung wird pro Mitarbeiter und Monat abgerechnet. Der genaue Preis richtet sich nach der Anzahl der Mitarbeiter und dem Abrechnungsumfang (z. B. Minijobber, Auszubildende, Teilzeit). Bereits ab einem Mitarbeiter bieten wir eine vollständige Abwicklung inklusive An-/Abmeldungen, Lohnsteueranmeldung und digitaler Personalakte. Fragen Sie uns gerne nach einem unverbindlichen Angebot.",
+  },
+  {
+    question: "Lohnt sich Buchhaltung outsourcen für Freiberufler in Berlin?",
+    answer:
+      "Ja – gerade für Freiberufler ist das Auslagern der Buchhaltung besonders sinnvoll. Sie sparen wertvolle Zeit, vermeiden Fehler bei Umsatzsteuer-Voranmeldungen und haben jederzeit sauber aufbereitete Unterlagen für Ihren Steuerberater. Gerade in Berlin, wo Miet- und Lebenshaltungskosten hoch sind, ist die monatliche Entlastung durch einen externen Buchhaltungsservice oft günstiger als die eigene Arbeitszeit, die Sie in Buchhaltung investieren würden.",
+  },
+  {
+    question: "Betreut ihr auch Unternehmen in Charlottenburg und Wilmersdorf?",
+    answer:
+      "Ja. Wir sind in Berlin ansässig (Wilmersdorfer Str. 122-123, 10627 Berlin-Charlottenburg) und betreuen Mandanten aus dem gesamten Berliner Stadtgebiet – von Charlottenburg und Wilmersdorf über Mitte und Prenzlauer Berg bis nach Marzahn und Spandau. Da unsere Prozesse vollständig digital laufen, spielt der genaue Standort keine Rolle.",
+  },
+  {
+    question: "Kann ich die Buchhaltung auch rückwirkend aufholen lassen?",
+    answer:
+      "Ja, wir übernehmen auch rückständige Buchhaltung – auch für mehrere Jahre. Ob Belegchaos, lückenhafte Aufzeichnungen oder eine komplette Neubegründung: Wir sortieren, buchen und bereiten alles für Ihren Steuerberater auf. Sprechen Sie uns einfach an, wir finden gemeinsam einen pragmatischen Weg.",
+  },
 ];

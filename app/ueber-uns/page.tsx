@@ -107,7 +107,7 @@ export default function UeberUns() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <div className="flex flex-wrap gap-2">
-                    {["Gegründet von Jannik Roloff", "Berlin"].map((b) => (
+                    {["Gegründet von Jannik Roloff", "Berlin – Charlottenburg", "IHK-ausgebildet"].map((b) => (
                       <span key={b} className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-700 backdrop-blur">
                         {b}
                       </span>
@@ -127,16 +127,33 @@ export default function UeberUns() {
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Wer wir sind</h2>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
                 <p>
-                  Taxalis Consulting wurde von Jannik Roloff in Berlin gegründet – mit dem Ziel, kleinen und mittleren
-                  Unternehmen eine moderne, digitale Alternative zur klassischen Backoffice-Organisation zu bieten. Als
-                  ausgebildete Fachkraft für Buchhaltung und Finanzbuchhaltung kennen wir die Herausforderungen, die
-                  Belege, Lohnabrechnungen und laufende Buchführung im Tagesgeschäft mit sich bringen.
+                  Taxalis Consulting wurde von Jannik Roloff in Berlin-Charlottenburg gegründet – mit dem Ziel, kleinen
+                  und mittleren Unternehmen eine moderne, digitale Alternative zur klassischen Backoffice-Organisation
+                  zu bieten. Jannik Roloff ist ausgebildeter Kaufmann und hat sich auf Buchhaltung und Finanzbuchhaltung
+                  spezialisiert (IHK-Abschluss). Wir sind tätig gemäß § 6 Nr. 3 und 4 StBerG und kennen die
+                  Herausforderungen, die Belege, Lohnabrechnungen und laufende Buchführung im Tagesgeschäft mit sich
+                  bringen – aus jahrelanger Praxis.
                 </p>
                 <p>
                   Statt anonymer Stundenabrechnung setzen wir auf feste Ansprechpartner, klare Prozesse und
-                  Festpreis-Modelle. Jedes Mandat wird persönlich betreut – digital, strukturiert und mit kurzen
-                  Reaktionszeiten.
+                  transparente Festpreis-Modelle. Jedes Mandat wird persönlich betreut – digital, strukturiert und mit
+                  kurzen Reaktionszeiten. Unsere Mandanten kommen aus dem gesamten Berliner Stadtgebiet: von
+                  Charlottenburg und Wilmersdorf über Mitte und Prenzlauer Berg bis nach Marzahn und Steglitz.
                 </p>
+              </div>
+              {/* E-E-A-T: Qualifikationen & Zahlen */}
+              <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {[
+                  { value: "§ 6 StBerG", label: "Rechtliche Grundlage" },
+                  { value: "IHK", label: "Qualifizierter Abschluss" },
+                  { value: "100 %", label: "Digitale Prozesse" },
+                  { value: "Berlin", label: "Persönlich vor Ort" },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-xl border border-slate-100 bg-slate-50 p-4 text-center">
+                    <div className="text-xl font-bold text-emerald-600">{stat.value}</div>
+                    <div className="mt-1 text-xs text-slate-500">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </Reveal>
           </div>
