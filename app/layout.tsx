@@ -77,11 +77,11 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.taxalis-consulting.de"),
   title: {
-    default: "Premium Büroservice & Lohnbuchhaltung Berlin | Taxalis Consulting",
+    default: "Bookkeeping & Payroll Berlin | Lohnbuchhaltung Berlin | Taxalis Consulting",
     template: "%s | Taxalis Consulting",
   },
   description:
-    "Taxalis Consulting ist Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, Büroservice und laufende Buchhaltung – transparent, DSGVO-konform und zu 100% digital. Jetzt unverbindlich anfragen.",
+    "Bookkeeping & payroll services in Berlin for SMEs. Lohnbuchhaltung, Buchhaltung & Büroservice – 100 % digital, Festpreise, DSGVO-konform. Tätig gem. § 6 StBerG.",
   alternates: {
     canonical: "/",
     languages: { "de-DE": "/" },
@@ -118,20 +118,20 @@ export const metadata: Metadata = {
     "ICBM": "52.5076, 13.3062",
   },
   openGraph: {
-    title: "Premium Büroservice & Lohnbuchhaltung Berlin | Taxalis Consulting",
+    title: "Bookkeeping & Payroll Berlin | Lohnbuchhaltung Berlin | Taxalis Consulting",
     description:
-      "Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, Büroservice und laufende Buchhaltung – transparent, DSGVO-konform und zu 100% digital.",
+      "Bookkeeping & payroll services in Berlin for SMEs. Lohnbuchhaltung, Buchhaltung & Büroservice – 100 % digital, fixed prices, DSGVO-compliant.",
     url: "/",
     siteName: "Taxalis Consulting",
     locale: "de_DE",
     type: "website",
-    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "Taxalis Consulting – Premium Büroservice & Lohnbuchhaltung in Berlin" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "Taxalis Consulting – Bookkeeping & Payroll Berlin" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Premium Büroservice & Lohnbuchhaltung Berlin | Taxalis Consulting",
+    title: "Bookkeeping & Payroll Berlin | Lohnbuchhaltung Berlin | Taxalis Consulting",
     description:
-      "Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, Büroservice und laufende Buchhaltung.",
+      "Bookkeeping & payroll services in Berlin for SMEs. Lohnbuchhaltung & Buchhaltung – 100 % digital, fixed prices.",
     images: ["/og-cover.jpg"],
   },
 };
