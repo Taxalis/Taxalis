@@ -84,12 +84,14 @@ export const metadata: Metadata = {
     "Taxalis Consulting ist Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, Büroservice und laufende Buchhaltung – transparent, DSGVO-konform und zu 100% digital. Jetzt unverbindlich anfragen.",
   alternates: {
     canonical: "/",
+    languages: { "de-DE": "/" },
   },
   robots: {
     index: true,
     follow: true,
   },
   keywords: [
+    // Deutsch
     "Lohnbuchhaltung Berlin",
     "Büroservice Berlin",
     "Buchhaltung Berlin",
@@ -100,6 +102,14 @@ export const metadata: Metadata = {
     "Buchhaltung Freiberufler Berlin",
     "Buchhaltungsbüro Charlottenburg",
     "Outsourcing Buchhaltung",
+    // English
+    "accounting services Berlin",
+    "payroll services Berlin Germany",
+    "bookkeeping Berlin",
+    "outsource accounting Berlin",
+    "payroll processing Berlin",
+    "accounting firm Berlin Germany",
+    "small business accounting Berlin",
     "Taxalis Consulting",
   ],
   other: {

@@ -22,14 +22,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
-    keywords: post.keywords,
-    alternates: { canonical: `/blog/${post.slug}` },
+    keywords: [
+      ...post.keywords,
+      "accounting services Berlin",
+      "payroll services Berlin",
+      "bookkeeping Berlin Germany",
+      "outsource accounting Berlin",
+    ],
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+      languages: { "de-DE": `/blog/${post.slug}` },
+    },
     openGraph: {
       title: `${post.title} | Taxalis Consulting`,
       description: post.description,
       url: `/blog/${post.slug}`,
       type: "article",
       images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Taxalis Consulting`,
+      description: post.description,
+      images: ["/og-cover.jpg"],
     },
   };
 }
@@ -39,26 +54,55 @@ export default async function BlogArticle({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const jsonLd = {
+  const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    keywords: post.keywords.join(", "),
     datePublished: post.date,
     dateModified: post.date,
     inLanguage: "de-DE",
     mainEntityOfPage: `https://www.taxalis-consulting.de/blog/${post.slug}`,
-    author: { "@type": "Organization", name: "Taxalis Consulting" },
+    image: {
+      "@type": "ImageObject",
+      url: "https://www.taxalis-consulting.de/og-cover.jpg",
+      width: 1200,
+      height: 630,
+    },
+    author: {
+      "@type": "Person",
+      name: "Jannik Roloff",
+      jobTitle: "Buchhalter & Geschäftsführer",
+      description: "IHK-ausgebildeter Kaufmann, spezialisiert auf Buchhaltung und Lohnabrechnung in Berlin. Tätig gem. § 6 Nr. 3 und 4 StBerG. / IHK-certified accountant specialising in bookkeeping and payroll services in Berlin, Germany.",
+      worksFor: {
+        "@type": "Organization",
+        name: "Taxalis Consulting",
+        url: "https://www.taxalis-consulting.de",
+      },
+    },
     publisher: {
       "@type": "Organization",
       name: "Taxalis Consulting",
+      url: "https://www.taxalis-consulting.de",
       logo: { "@type": "ImageObject", url: "https://www.taxalis-consulting.de/logo.png" },
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Startseite", item: "https://www.taxalis-consulting.de" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.taxalis-consulting.de/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://www.taxalis-consulting.de/blog/${post.slug}` },
+    ],
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Nav />
       <main className="bg-white text-slate-900">
         <section className="bg-slate-50 pt-36 pb-12 sm:pt-44 sm:pb-16">
@@ -74,6 +118,13 @@ export default async function BlogArticle({ params }: Props) {
             <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{post.title}</h1>
             <p className="mt-4 text-sm text-slate-500">
               {new Date(post.date).toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })} · {post.readingMinutes} Min. Lesezeit
+            </p>
+            <p className="mt-2 text-sm text-slate-400">
+              <span className="font-medium text-slate-600">Jannik Roloff</span>
+              <span className="mx-2">·</span>
+              <span>IHK-Kaufmann · Buchhaltung &amp; Lohnabrechnung Berlin</span>
+              <span className="mx-2 hidden sm:inline">·</span>
+              <span className="hidden sm:inline italic">Bookkeeping &amp; Payroll Expert, Berlin</span>
             </p>
           </div>
         </section>

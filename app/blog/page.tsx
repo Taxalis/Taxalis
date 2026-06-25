@@ -9,7 +9,25 @@ export const metadata: Metadata = {
   title: "Blog & Ratgeber – Buchhaltung, Lohn & Gründung in Berlin",
   description:
     "Ratgeber rund um Lohnbuchhaltung, Buchhaltung, § 6 StBerG und Unternehmensgründung in Berlin. Praxiswissen von Taxalis Consulting.",
-  alternates: { canonical: "/blog" },
+  alternates: {
+    canonical: "/blog",
+    languages: { "de-DE": "/blog" },
+  },
+  openGraph: {
+    title: "Blog & Ratgeber – Buchhaltung, Lohn & Gründung in Berlin | Taxalis Consulting",
+    description:
+      "Ratgeber rund um Lohnbuchhaltung, Buchhaltung, § 6 StBerG und Unternehmensgründung in Berlin. Praxiswissen von Taxalis Consulting.",
+    url: "/blog",
+    type: "website",
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "Blog & Ratgeber – Taxalis Consulting Berlin" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog & Ratgeber – Buchhaltung & Lohnbuchhaltung Berlin | Taxalis Consulting",
+    description:
+      "Praxiswissen zu Lohnbuchhaltung, Buchhaltung und Gründung in Berlin. Accounting & payroll insights from Taxalis Consulting.",
+    images: ["/og-cover.jpg"],
+  },
 };
 
 const posts = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date));
