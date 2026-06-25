@@ -58,7 +58,8 @@ export default function UeberUns() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-slate-50 pt-36 pb-16 sm:pt-44 sm:pb-24">
           <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <Reveal>
+            {/* Hero text — no Reveal wrapper so h1 is visible immediately (FCP/LCP) */}
+            <div>
               <nav className="mb-6 flex items-center gap-2 text-sm text-slate-400" aria-label="Breadcrumb">
                 <Link href="/" className="transition-colors hover:text-emerald-600">
                   Startseite
@@ -93,14 +94,16 @@ export default function UeberUns() {
                   Unsere Leistungen
                 </Link>
               </div>
-            </Reveal>
+            </div>
 
-            <Reveal className="delay-150">
+            {/* Hero image — no Reveal, priority=true so browser preloads (LCP fix) */}
+            <div>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl shadow-slate-200/70 sm:aspect-[5/4] lg:aspect-[4/5]">
                 <Image
                   src="/office.jpg"
                   alt="Arbeitsplatz von Taxalis Consulting in Berlin"
                   fill
+                  priority
                   sizes="(min-width: 1024px) 560px, 100vw"
                   className="object-cover"
                 />
@@ -115,7 +118,7 @@ export default function UeberUns() {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </div>
           </div>
         </section>
 
