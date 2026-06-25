@@ -77,11 +77,11 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.taxalis-consulting.de"),
   title: {
-    default: "Bookkeeping & Payroll Berlin | Lohnbuchhaltung Berlin | Taxalis Consulting",
+    default: "Lohnbuchhaltung & Büroservice Berlin | Taxalis Consulting",
     template: "%s | Taxalis Consulting",
   },
   description:
-    "Bookkeeping & payroll services in Berlin for SMEs. Lohnbuchhaltung, Buchhaltung & Büroservice – 100 % digital, Festpreise, DSGVO-konform. Tätig gem. § 6 StBerG.",
+    "Taxalis Consulting – Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, laufende Buchhaltung & Büroservice. Transparent, DSGVO-konform, Festpreise. Tätig gem. § 6 StBerG.",
   alternates: {
     canonical: "/",
     languages: { "de-DE": "/" },
@@ -118,20 +118,20 @@ export const metadata: Metadata = {
     "ICBM": "52.5076, 13.3062",
   },
   openGraph: {
-    title: "Bookkeeping & Payroll Berlin | Lohnbuchhaltung Berlin | Taxalis Consulting",
+    title: "Lohnbuchhaltung & Büroservice Berlin | Taxalis Consulting",
     description:
-      "Bookkeeping & payroll services in Berlin for SMEs. Lohnbuchhaltung, Buchhaltung & Büroservice – 100 % digital, fixed prices, DSGVO-compliant.",
+      "Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, laufende Buchhaltung & Büroservice – transparent, DSGVO-konform und zu 100 % digital.",
     url: "/",
     siteName: "Taxalis Consulting",
     locale: "de_DE",
     type: "website",
-    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "Taxalis Consulting – Bookkeeping & Payroll Berlin" }],
+    images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: "Taxalis Consulting – Lohnbuchhaltung & Büroservice Berlin" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bookkeeping & Payroll Berlin | Lohnbuchhaltung Berlin | Taxalis Consulting",
+    title: "Lohnbuchhaltung & Büroservice Berlin | Taxalis Consulting",
     description:
-      "Bookkeeping & payroll services in Berlin for SMEs. Lohnbuchhaltung & Buchhaltung – 100 % digital, fixed prices.",
+      "Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, laufende Buchhaltung & Büroservice – transparent, DSGVO-konform, Festpreise.",
     images: ["/og-cover.jpg"],
   },
 };
