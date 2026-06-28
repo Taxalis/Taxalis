@@ -14,6 +14,7 @@ export default function CookieBanner() {
   const accept = () => {
     localStorage.setItem("cookie-consent", "accepted");
     setVisible(false);
+    window.dispatchEvent(new Event("cookieConsent"));
   };
 
   const decline = () => {
@@ -27,7 +28,7 @@ export default function CookieBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white shadow-2xl shadow-slate-900/10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <p className="max-w-2xl text-sm leading-relaxed text-slate-600">
-          Wir verwenden Analyse-Cookies (Vercel Analytics), um die Nutzung unserer Website zu verstehen und zu verbessern.
+          Wir verwenden Analyse-Cookies (Google Analytics &amp; Vercel Analytics), um die Nutzung unserer Website zu verstehen und zu verbessern.
           Ihre Daten werden DSGVO-konform verarbeitet. Weitere Informationen finden Sie in unserer{" "}
           <Link href="/datenschutz" className="font-medium text-emerald-600 underline hover:text-emerald-700">
             Datenschutzerklärung

@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { testimonials, reviewStats } from "@/app/lib/testimonials";
 import CookieBanner from "@/app/components/CookieBanner";
+import GoogleAnalytics from "@/app/components/GoogleAnalytics";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
@@ -156,6 +157,7 @@ export default function RootLayout({
         />
         {children}
         <CookieBanner />
+        <GoogleAnalytics gaId="G-RNY95SZCSJ" />
         <Analytics />
         <SpeedInsights />
       </body>
