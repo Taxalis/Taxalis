@@ -157,7 +157,7 @@ export default function RootLayout({
         />
         {children}
         <CookieBanner />
-        <GoogleAnalytics gaId="G-RNY95SZCSJ" />
+        <GoogleAnalytics gaId="G-ZMTYC9NK1K" />
         <Analytics />
         <SpeedInsights />
       </body>
