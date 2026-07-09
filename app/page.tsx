@@ -3,10 +3,15 @@ import Image from "next/image";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon, { IconName } from "@/app/components/Icon";
 import { services } from "@/app/lib/services";
-import { testimonials, reviewStats } from "@/app/lib/testimonials";
-import { faqItems } from "@/app/lib/faq";
+import { testimonials as staticTestimonials, reviewStats } from "@/app/lib/testimonials";
+import { faqItems as staticFaqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
+import { getSiteSettings, getTestimonials, getFaqItems } from "@/sanity/lib/queries";
+
+// Inhalte werden bei jedem Deployment/Revalidate frisch aus Sanity geladen.
+// Solange in Sanity noch keine Inhalte gepflegt sind, greifen die
+// bestehenden Texte aus app/lib/*.ts als Fallback, damit die Seite nie leer ist.
 
 const PAIN_POINTS: { icon: IconName; title: string; desc: string }[] = [
   {
@@ -106,7 +111,24 @@ const PROCESS_STEPS = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const [siteSettings, sanityTestimonials, sanityFaqItems] = await Promise.all([
+    getSiteSettings(),
+    getTestimonials(),
+    getFaqItems(),
+  ]);
+
+  const heroBadge = siteSettings?.heroBadge || "Digitaler Backoffice-Partner in Berlin";
+  const heroHeading =
+    siteSettings?.heroHeading ||
+    "Premium Büroservice & Lohnbuchhaltung für Berliner Unternehmen";
+  const heroText =
+    siteSettings?.heroText ||
+    "Taxalis Consulting übernimmt Lohnbuchhaltung, laufende Buchhaltung und administrativen Büroservice – transparent, zu 100% digital und DSGVO-konform. Damit Sie sich auf Ihr Kerngeschäft konzentrieren können.";
+
+  const testimonials = sanityTestimonials.length > 0 ? sanityTestimonials : staticTestimonials;
+  const faqItems = sanityFaqItems.length > 0 ? sanityFaqItems : staticFaqItems;
+
   return (
     <>
       <Nav />
@@ -117,14 +139,13 @@ export default function Home() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-xs font-semibold text-emerald-700">
                 <Icon name="map-pin" size={14} />
-                Digitaler Backoffice-Partner in Berlin
+                {heroBadge}
               </span>
               <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                Premium Büroservice &amp; Lohnbuchhaltung für Berliner Unternehmen
+                {heroHeading}
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
-                Taxalis Consulting übernimmt Lohnbuchhaltung, laufende Buchhaltung und administrativen Büroservice –
-                transparent, zu 100% digital und DSGVO-konform. Damit Sie sich auf Ihr Kerngeschäft konzentrieren können.
+                {heroText}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
