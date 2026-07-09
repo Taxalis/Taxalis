@@ -1,29 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PortableText } from "@portabletext/react";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";
 import { getPostBySlug, getAllPostSlugs } from "@/app/lib/blog";
+import { getBlogPostBySlug, getAllBlogPosts } from "@/sanity/lib/queries";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return getAllPostSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const sanityPosts = await getAllBlogPosts();
+  const sanitySlugs = sanityPosts.map((p) => p.slug);
+  const staticSlugs = getAllPostSlugs().filter((s) => !sanitySlugs.includes(s));
+  return [...sanitySlugs, ...staticSlugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const sanityPost = await getBlogPostBySlug(slug);
+  const post = sanityPost || getPostBySlug(slug);
   if (!post) {
     return { title: "Artikel nicht gefunden", robots: { index: false, follow: true } };
   }
+  const description = "description" in post && post.description ? post.description : post.excerpt;
+  const keywords = "keywords" in post && post.keywords ? post.keywords : [];
   return {
     title: post.title,
-    description: post.description,
+    description,
     keywords: [
-      ...post.keywords,
+      ...keywords,
       "accounting services Berlin",
       "payroll services Berlin",
       "bookkeeping Berlin Germany",
@@ -35,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: `${post.title} | Taxalis Consulting`,
-      description: post.description,
+      description,
       url: `/blog/${post.slug}`,
       type: "article",
       images: [{ url: "/og-cover.jpg", width: 1200, height: 630, alt: post.title }],
@@ -43,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: `${post.title} | Taxalis Consulting`,
-      description: post.description,
+      description,
       images: ["/og-cover.jpg"],
     },
   };
@@ -51,15 +59,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogArticle({ params }: Props) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const sanityPost = await getBlogPostBySlug(slug);
+  const post = sanityPost || getPostBySlug(slug);
   if (!post) notFound();
+
+  const description = "description" in post && post.description ? post.description : post.excerpt;
+  const keywords = "keywords" in post && post.keywords ? post.keywords : [];
+  const readingMinutes = post.readingMinutes ?? 5;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.description,
-    keywords: post.keywords.join(", "),
+    description,
+    keywords: keywords.join(", "),
     datePublished: post.date,
     dateModified: post.date,
     inLanguage: "de-DE",
@@ -117,7 +130,7 @@ export default async function BlogArticle({ params }: Props) {
             <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">{post.category}</span>
             <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{post.title}</h1>
             <p className="mt-4 text-sm text-slate-500">
-              {new Date(post.date).toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })} · {post.readingMinutes} Min. Lesezeit
+              {new Date(post.date).toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })} · {readingMinutes} Min. Lesezeit
             </p>
             <p className="mt-2 text-sm text-slate-400">
               <span className="font-medium text-slate-600">Jannik Roloff</span>
@@ -130,32 +143,61 @@ export default async function BlogArticle({ params }: Props) {
         </section>
         <article className="py-12 sm:py-16">
           <div className="mx-auto max-w-3xl px-6">
-            {post.content.map((s, i) => {
-              if (s.type === "h2")
+            {sanityPost ? (
+              <div className="prose-content">
+                <PortableText
+                  value={sanityPost.content}
+                  components={{
+                    block: {
+                      h2: ({ children }) => (
+                        <h2 className="mt-10 mb-3 text-2xl font-bold tracking-tight text-slate-900">{children}</h2>
+                      ),
+                      normal: ({ children }) => (
+                        <p className="mb-4 text-base leading-relaxed text-slate-600">{children}</p>
+                      ),
+                    },
+                    list: {
+                      bullet: ({ children }) => <ul className="mb-4 space-y-2">{children}</ul>,
+                    },
+                    listItem: {
+                      bullet: ({ children }) => (
+                        <li className="flex items-start gap-3 text-base leading-relaxed text-slate-600">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
+                          <span>{children}</span>
+                        </li>
+                      ),
+                    },
+                  }}
+                />
+              </div>
+            ) : (
+              (post as import("@/app/lib/blog").BlogPost).content.map((s, i) => {
+                if (s.type === "h2")
+                  return (
+                    <h2 key={i} className="mt-10 mb-3 text-2xl font-bold tracking-tight text-slate-900">
+                      {s.text}
+                    </h2>
+                  );
+                if (s.type === "ul")
+                  return (
+                    <ul key={i} className="mb-4 space-y-2">
+                      {(s.items || []).map((it, j) => (
+                        <li key={j} className="flex items-start gap-3 text-base leading-relaxed text-slate-600">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
+                          {it}
+                        </li>
+                      ))}
+                    </ul>
+                  );
                 return (
-                  <h2 key={i} className="mt-10 mb-3 text-2xl font-bold tracking-tight text-slate-900">
+                  <p key={i} className="mb-4 text-base leading-relaxed text-slate-600">
                     {s.text}
-                  </h2>
+                  </p>
                 );
-              if (s.type === "ul")
-                return (
-                  <ul key={i} className="mb-4 space-y-2">
-                    {(s.items || []).map((it, j) => (
-                      <li key={j} className="flex items-start gap-3 text-base leading-relaxed text-slate-600">
-                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
-                );
-              return (
-                <p key={i} className="mb-4 text-base leading-relaxed text-slate-600">
-                  {s.text}
-                </p>
-              );
-            })}
+              })
+            )}
 
-            {post.related && post.related.length > 0 && (
+            {"related" in post && post.related && post.related.length > 0 && (
               <div className="mt-12 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6">
                 <h2 className="mb-3 text-lg font-semibold text-slate-900">Passende Leistungen</h2>
                 <ul className="space-y-2">

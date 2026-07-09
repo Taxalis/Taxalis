@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
-import { blogPosts } from "@/app/lib/blog";
+import { blogPosts as staticBlogPosts } from "@/app/lib/blog";
+import { getAllBlogPosts } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = {
   title: "Blog & Ratgeber – Buchhaltung, Lohn & Gründung in Berlin",
@@ -30,9 +31,13 @@ export const metadata: Metadata = {
   },
 };
 
-const posts = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date));
+export default async function BlogPage() {
+  const sanityPosts = await getAllBlogPosts();
+  const posts =
+    sanityPosts.length > 0
+      ? [...sanityPosts].sort((a, b) => b.date.localeCompare(a.date))
+      : [...staticBlogPosts].sort((a, b) => b.date.localeCompare(a.date));
 
-export default function BlogPage() {
   return (
     <>
       <Nav />
@@ -68,7 +73,7 @@ export default function BlogPage() {
                         Artikel lesen
                         <Icon name="arrow-right" size={14} />
                       </span>
-                      <span className="text-xs text-slate-400">{p.readingMinutes} Min.</span>
+                      <span className="text-xs text-slate-400">{p.readingMinutes ?? 5} Min.</span>
                     </div>
                   </Link>
                 </Reveal>
