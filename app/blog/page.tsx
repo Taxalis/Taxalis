@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog & Ratgeber – Buchhaltung & Lohnbuchhaltung Berlin | Taxalis Consulting",
     description:
-      "Praxiswissen zu Lohnbuchhaltung, Buchhaltung und Gründung in Berlin. Accounting & payroll insights from Taxalis Consulting.",
+      "Praxiswissen zu Lohnbuchhaltung, Buchhaltung und Gründung in Berlin – für Unternehmer, Gründer und Selbstständige.",
     images: ["/og-cover.jpg"],
   },
 };

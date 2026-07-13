@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Über uns",
+  title: "Über uns – Lohnbuchhaltung & Buchhaltung Berlin",
   description:
-    "Lernen Sie Taxalis Consulting kennen: Ihr persönlicher Backoffice-Partner in Berlin für Lohnbuchhaltung, Buchhaltung und Büroservice – digital, diskret und transparent.",
+    "Taxalis Consulting – Ihr persönlicher Buchhaltungspartner in Berlin: ausgebildet in Buchhaltung und Lohnbuchhaltung, tätig gemäß § 6 StBerG. Transparente Festpreise, 100 % digital.",
   alternates: {
     canonical: "/ueber-uns",
   },

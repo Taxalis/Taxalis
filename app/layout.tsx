@@ -82,35 +82,26 @@ export const metadata: Metadata = {
     template: "%s | Taxalis Consulting",
   },
   description:
-    "Taxalis Consulting – Ihr digitaler Backoffice-Partner in Berlin: Lohnbuchhaltung, laufende Buchhaltung & Büroservice. Transparent, DSGVO-konform, Festpreise. Tätig gem. § 6 StBerG.",
+    "Externes Lohnbüro & Buchhaltungsservice in Berlin: Lohnbuchhaltung ab 20 €/Mitarbeiter, laufende Buchhaltung & Büroservice. Festpreise, 100 % digital, persönlicher Ansprechpartner. Jetzt anfragen.",
   alternates: {
-    canonical: "/",
-    languages: { "de-DE": "/" },
+    canonical: "https://www.taxalis-consulting.de/",
+    languages: { "de-DE": "https://www.taxalis-consulting.de/" },
   },
   robots: {
     index: true,
     follow: true,
   },
   keywords: [
-    // Deutsch
     "Lohnbuchhaltung Berlin",
     "Büroservice Berlin",
     "Buchhaltung Berlin",
     "Buchhaltungsservice Berlin",
     "Finanzbuchhaltung Berlin",
     "Gehaltsabrechnung Berlin",
+    "Lohnabrechnung Berlin",
     "Buchhaltung outsourcen Berlin",
-    "Buchhaltung Freiberufler Berlin",
+    "externes Lohnbüro Berlin",
     "Buchhaltungsbüro Charlottenburg",
-    "Outsourcing Buchhaltung",
-    // English
-    "accounting services Berlin",
-    "payroll services Berlin Germany",
-    "bookkeeping Berlin",
-    "outsource accounting Berlin",
-    "payroll processing Berlin",
-    "accounting firm Berlin Germany",
-    "small business accounting Berlin",
     "Taxalis Consulting",
   ],
   other: {

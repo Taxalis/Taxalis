@@ -54,7 +54,7 @@ export default async function Layout({
   const { id } = await params;
   const service = getServiceById(id);
 
-  const jsonLd = service
+  const serviceJsonLd = service
     ? {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -80,10 +80,26 @@ export default async function Layout({
       }
     : null;
 
+  const faqJsonLd =
+    service?.faq && service.faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: service.faq.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }
+      : null;
+
   return (
     <>
-      {jsonLd && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {serviceJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      )}
+      {faqJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       )}
       {children}
     </>

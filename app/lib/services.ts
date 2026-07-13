@@ -27,6 +27,8 @@ export interface ServiceDetails {
   localKeywords?: string[];
   /** Berlin-focused content paragraphs rendered on the detail page. */
   localIntro?: string[];
+  /** FAQ items shown on the detail page with FAQPage schema markup. */
+  faq?: { q: string; a: string }[];
 }
 
 export const services: ServiceDetails[] = [
@@ -44,7 +46,35 @@ export const services: ServiceDetails[] = [
     localIntro: [
       "Als Arbeitgeber in Berlin tragen Sie Verantwortung für pünktliche, korrekte Gehaltsabrechnungen – Monat für Monat. Genau hier setzt unsere externe Lohnbuchhaltung in Berlin an: Wir übernehmen die komplette laufende Lohn- und Gehaltsabrechnung, von der An- und Abmeldung Ihrer Mitarbeiter über die digitale Personalakte bis zu allen Meldungen an Finanzamt, Krankenkassen und Sozialversicherung.",
       "Ob Minijob, Teilzeit oder Vollzeit, ob fünf oder fünfzig Mitarbeiter – wir arbeiten zu 100 % digital und DSGVO-konform. Auf Wunsch binden wir eine Zeiterfassung ein, kontrollieren die Arbeitszeitkonten und sorgen für den reibungslosen Monatswechsel inklusive Lohnsteueranmeldung per Elster.",
-      "Der Vorteil einer externen Lohnbuchhaltung in Berlin: Sie sparen Zeit, vermeiden Fehler und Fristversäumnisse – und haben trotzdem einen festen, persönlichen Ansprechpartner vor Ort. Fordern Sie jetzt Ihr unverbindliches Angebot an.",
+      "Unser Lohnbüro in Berlin betreut Unternehmen aus dem gesamten Stadtgebiet – von Charlottenburg und Wilmersdorf über Prenzlauer Berg und Mitte bis nach Schöneberg, Steglitz und Tempelhof. Dank volldigitaler Prozesse spielt es keine Rolle, wo in Berlin oder Brandenburg Ihr Unternehmen ansässig ist: die Zusammenarbeit läuft nahtlos per App, E-Mail und Video.",
+      "Was kostet ein externes Lohnbüro in Berlin? Unsere Lohnbuchhaltung wird pro Mitarbeiter abgerechnet – ab 20 € je Mitarbeiter und Monat. Das ist günstiger als eine eigene Personalstelle und vermeidet zugleich Ausfallrisiken durch Krankheit oder Urlaub der eigenen Kraft. Bei mehr als fünf Mitarbeitern gelten attraktive Staffelpreise.",
+      "Der Vorteil eines externen Lohnbuchhaltungspartners liegt auf der Hand: Sie sparen Zeit, vermeiden Fehler und Fristversäumnisse – und haben trotzdem einen festen, persönlichen Ansprechpartner vor Ort. Fordern Sie jetzt Ihr unverbindliches Angebot an.",
+    ],
+    faq: [
+      {
+        q: "Was kostet externe Lohnbuchhaltung in Berlin?",
+        a: "Unsere Lohnbuchhaltung beginnt ab 20 € pro Mitarbeiter und Monat. Der genaue Preis richtet sich nach Mitarbeiteranzahl, Abrechnungsvolumen und gewünschten Zusatzleistungen wie Zeiterfassung oder Arbeitsvertragserstellung. Ab fünf Mitarbeitern gelten attraktive Staffelpreise. Nach einem kurzen Erstgespräch erhalten Sie ein verbindliches Festpreisangebot.",
+      },
+      {
+        q: "Ab wie vielen Mitarbeitern lohnt sich ein externes Lohnbüro?",
+        a: "Bereits ab dem ersten Mitarbeiter lohnt sich die Auslagerung: Sie vermeiden Einarbeitungsaufwand, teure Fehler und Fristversäumnisse bei Elster und Sozialversicherung. Gerade kleine Unternehmen in Berlin mit 1–10 Mitarbeitern profitieren besonders, weil sie sich keine eigene Lohnbuchhalterin leisten können oder wollen.",
+      },
+      {
+        q: "Muss ich für die Zusammenarbeit in eine Kanzlei kommen?",
+        a: "Nein. Wir arbeiten zu 100 % digital – Belege, Stammdaten und Abrechnungen laufen per App, E-Mail oder sicherem Upload. Ein persönliches Erstgespräch bieten wir optional per Video oder vor Ort in Berlin-Charlottenburg an.",
+      },
+      {
+        q: "Was unterscheidet Ihr Lohnbüro von einem Steuerberater?",
+        a: "Wir erbringen die laufende Lohnabrechnung und alle Meldungen gemäß § 6 Nr. 3 StBerG – das ist unser Kerngeschäft und kostet deutlich weniger als eine Steuerkanzlei. Steuerliche Beratung, Jahresabschlüsse und Steuererklärungen bleiben Ihrem Steuerberater vorbehalten. Viele unserer Mandanten nutzen beides: uns für die laufende Lohnbuchhaltung und einen Steuerberater für den Abschluss.",
+      },
+      {
+        q: "Wie schnell können Sie mit der Lohnbuchhaltung starten?",
+        a: "In der Regel sind wir innerhalb von ein bis zwei Wochen einsatzbereit. Wir erfassen die Stammdaten Ihrer Mitarbeiter, richten die digitale Personalakte ein und übernehmen ab dem nächsten Abrechnungsmonat vollständig die Abrechnung.",
+      },
+      {
+        q: "Was passiert, wenn Ihr Team krank oder im Urlaub ist?",
+        a: "Durch unser Team-Setup gibt es keinen Ausfall. Anders als bei einer eigenen Kraft im Unternehmen stellen unsere internen Vertretungsregelungen sicher, dass Abrechnungen auch bei Urlaub oder Krankheit pünktlich erstellt und Meldungen fristgerecht übermittelt werden.",
+      },
     ],
     benefits: ["Gesetzeskonforme, pünktliche Abrechnungen", "An- und Abmeldungen zuverlässig erledigt", "Digitale Personalakte – jederzeit griffbereit", "Korrekte Elster- und Sozialversicherungsmeldungen", "Saubere Monatswechsel ohne Fristversäumnis", "Persönlicher Berliner Ansprechpartner"],
     features: ["Anmeldung & Abmeldung von Mitarbeitern", "Erstellung von Arbeitsverträgen", "Digitale Personalakte (E-Akte)", "Monatliche Lohn- und Gehaltsabrechnung", "Optionale Zeit- und Stundenerfassung", "Kontrolle der Arbeitszeitkonten", "Monatswechsel & Lohnsteueranmeldung (Elster)", "Sozialversicherungsmeldungen & -wechsel", "Lohnkorrekturen bei Bedarf"],

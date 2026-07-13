@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { faqItems } from "@/app/lib/faq";
 
 export const metadata: Metadata = {
-  title: "Häufige Fragen (FAQ)",
+  title: "FAQ – Lohnbuchhaltung & Buchhaltung Berlin",
   description:
-    "Antworten auf häufige Fragen zu Buchhaltung, Lohnbuchhaltung und Büroservice von Taxalis Consulting – inklusive Hinweisen zur Abgrenzung zur Steuerberatung gemäß § 6 StBerG.",
+    "Häufige Fragen zu Lohnbuchhaltung, Buchhaltung und Büroservice in Berlin beantwortet – Preise, Abläufe, Abgrenzung zur Steuerberatung (§ 6 StBerG). Jetzt informieren.",
   alternates: {
     canonical: "/faq",
   },

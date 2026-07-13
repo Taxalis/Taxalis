@@ -212,6 +212,43 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </section>
 
+        {/* FAQ */}
+        {service.faq && service.faq.length > 0 && (
+          <section className="py-20 sm:py-28">
+            <div className="mx-auto max-w-3xl px-6">
+              <Reveal>
+                <div className="mx-auto max-w-2xl text-center">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">FAQ</span>
+                  <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                    Häufige Fragen zur {service.title}
+                  </h2>
+                </div>
+              </Reveal>
+              <div className="mt-12 space-y-4">
+                {service.faq.map((item, i) => (
+                  <Reveal key={i} className={DELAYS[i % 4]}>
+                    <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm shadow-slate-200/40">
+                      <h3 className="font-semibold text-slate-900">{item.q}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.a}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+              <Reveal>
+                <div className="mt-10 text-center">
+                  <Link
+                    href="/faq"
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-colors hover:border-emerald-200 hover:text-emerald-600"
+                  >
+                    Alle häufigen Fragen
+                    <Icon name="arrow-right" size={14} />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
+
         {/* CTA */}
         <section className="bg-neutral-900 py-20 text-center text-white sm:py-28">
           <Reveal>
