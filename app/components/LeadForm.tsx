@@ -97,6 +97,14 @@ export default function LeadForm() {
         }),
       });
       if (!res.ok) throw new Error();
+      // GA4 Conversion Tracking
+      if (typeof window !== "undefined" && typeof (window as Window & { gtag?: (...a: unknown[]) => void }).gtag === "function") {
+        (window as Window & { gtag: (...a: unknown[]) => void }).gtag("event", "generate_lead", {
+          event_category: "Contact",
+          event_label: servicesLabel || "Anfrage",
+          value: 1,
+        });
+      }
       setDone(true);
     } catch {
       setError(true);

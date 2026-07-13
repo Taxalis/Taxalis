@@ -158,6 +158,40 @@ export default function UeberUns() {
                   </div>
                 ))}
               </div>
+
+              {/* Qualifikations-Karte */}
+              <div className="mt-8 rounded-2xl border border-slate-100 bg-slate-50 p-6">
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-emerald-700">Qualifikationen &amp; Befugnisse</h3>
+                <ul className="space-y-3">
+                  {[
+                    {
+                      icon: "shield" as IconName,
+                      title: "Ausgebildeter Kaufmann (IHK)",
+                      desc: "Jannik Roloff hat eine kaufmännische Ausbildung mit Schwerpunkt Buchhaltung und Finanzbuchhaltung (IHK-Abschluss) absolviert.",
+                    },
+                    {
+                      icon: "file-text" as IconName,
+                      title: "Tätigkeitserlaubnis § 6 Nr. 3 & 4 StBerG",
+                      desc: "Wir sind befugt, laufende Buchführung und laufende Lohnabrechnung (inkl. Lohnsteueranmeldungen) als Hilfeleistung in Steuersachen zu erbringen.",
+                    },
+                    {
+                      icon: "lock" as IconName,
+                      title: "DSGVO-konforme Verarbeitung",
+                      desc: "Alle Mandantendaten werden nach den Anforderungen der DSGVO verarbeitet und ausschließlich auf deutschen bzw. EU-Servern gespeichert.",
+                    },
+                  ].map((item) => (
+                    <li key={item.title} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
+                        <Icon name={item.icon} size={14} />
+                      </span>
+                      <div>
+                        <div className="text-sm font-semibold text-slate-900">{item.title}</div>
+                        <div className="mt-0.5 text-xs leading-relaxed text-slate-500">{item.desc}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
           </div>
         </section>

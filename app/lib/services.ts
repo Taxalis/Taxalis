@@ -101,7 +101,35 @@ export const services: ServiceDetails[] = [
     localIntro: [
       "Eine saubere, laufende Buchhaltung in Berlin ist die Grundlage für gute unternehmerische Entscheidungen – und für eine entspannte Zusammenarbeit mit Ihrem Steuerberater. Wir erfassen Ihre Belege digital, verbuchen jeden Geschäftsvorfall korrekt und übernehmen die laufende Erfassung und Meldung der Umsatzsteuer (Umsatzsteuer-Voranmeldung).",
       "Unser Buchhaltungsservice in Berlin skaliert mit Ihrem Belegvolumen: vom Einzelunternehmen mit wenigen Belegen pro Monat bis zur GmbH mit hohem Aufkommen. Auf Wunsch führen wir zusätzlich Ihr Kassenbuch und liefern monatlich eine verständliche betriebswirtschaftliche Auswertung (BWA).",
-      "Als spezialisierter Buchhaltungsservice arbeiten wir gemäß § 6 StBerG – die steuerliche Bewertung bleibt bei Ihrem Steuerberater, der von uns ein vollständig vorbereitetes, abgestimmtes Dossier erhält. Das spart Zeit und oft auch Kosten bei der Steuerkanzlei.",
+      "Als spezialisierter Buchhaltungspartner betreuen wir Unternehmen aus dem gesamten Berliner Stadtgebiet – von Mitte und Prenzlauer Berg über Charlottenburg und Wilmersdorf bis nach Schöneberg, Tempelhof und Steglitz. Dank volldigitaler Prozesse spielt Ihr Standort keine Rolle: Belege übermitteln Sie per App, E-Mail oder sicherem Upload – wir kümmern uns um den Rest.",
+      "Was kostet ein Buchhaltungsservice in Berlin? Unsere laufende Buchhaltung wird nach Belegvolumen abgerechnet – transparent, kalkulierbar und deutlich günstiger als eine eigene Buchhaltungskraft. Nach einem kurzen Erstgespräch erhalten Sie ein verbindliches Festpreisangebot ohne versteckte Kosten.",
+      "Als spezialisierter Buchhaltungsservice arbeiten wir gemäß § 6 StBerG – die steuerliche Bewertung bleibt bei Ihrem Steuerberater, der von uns ein vollständig vorbereitetes, abgestimmtes Dossier erhält. Das spart Zeit und oft auch Kosten bei der Steuerkanzlei. Fordern Sie jetzt Ihr unverbindliches Angebot an.",
+    ],
+    faq: [
+      {
+        q: "Was kostet ein Buchhaltungsservice in Berlin?",
+        a: "Unser Buchhaltungsservice wird nach Belegvolumen abgerechnet. Das Einstiegspaket für Einzelunternehmer mit wenigen Belegen beginnt deutlich unter dem Preis einer eigenen Buchhaltungskraft. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Festpreisangebot – ohne Überraschungen auf der Rechnung.",
+      },
+      {
+        q: "Was ist der Unterschied zwischen Buchhaltung und Steuerberatung?",
+        a: "Wir übernehmen die laufende Finanzbuchhaltung gemäß § 6 Nr. 4 StBerG: Belegerfassung, Verbuchung, Kontenabstimmung und die Umsatzsteuer-Voranmeldung. Steuerliche Bewertungen, Jahresabschlüsse und Steuererklärungen sind Ihrem Steuerberater vorbehalten – den wir mit einem vollständig vorbereiteten Dossier optimal unterstützen.",
+      },
+      {
+        q: "Muss ich in Ihr Büro kommen, um die Belege zu übergeben?",
+        a: "Nein. Alle Belege können Sie digital übermitteln – per App, E-Mail oder sicherem Upload-Portal. Wir arbeiten zu 100 % digital und DSGVO-konform. Ein persönliches Erstgespräch bieten wir optional per Video oder vor Ort in Berlin-Charlottenburg an.",
+      },
+      {
+        q: "Wir haben bereits einen Steuerberater – macht ein externer Buchhaltungsservice dann noch Sinn?",
+        a: "Ja, und häufig spart es Ihnen sogar Geld. Wenn wir die laufende Buchhaltung vollständig und korrekt vorbereiten, reduziert Ihr Steuerberater seinen Aufwand erheblich – das spiegelt sich oft direkt in niedrigeren Kanzleikosten wider. Wir stimmen uns eng mit Ihrer Steuerkanzlei ab.",
+      },
+      {
+        q: "Kann ich auch rückwirkend Buchhaltung nachholen lassen?",
+        a: "Ja. Die rückwirkende Aufarbeitung von Buchhaltung ist einer unserer häufigsten Aufträge. Wir holen zurückliegende Monate vollständig nach und bereiten alle Unterlagen strukturiert für Ihren Steuerberater auf – auch wenn mehrere Jahre aufzuarbeiten sind.",
+      },
+      {
+        q: "Für welche Rechtsformen bieten Sie Buchhaltung an?",
+        a: "Wir betreuen Einzelunternehmer, Freiberufler, GbRs, UGs und GmbHs. Ob Einnahmen-Überschuss-Rechnung oder Bilanzierungspflicht – wir bereiten Ihre Buchhaltung so vor, dass Ihr Steuerberater den Abschluss effizient erstellen kann.",
+      },
     ],
     benefits: ["Vollständige finanzielle Kontrolle", "Laufende Umsatzsteuer-Erfassung & -Meldung", "Steuerberater-fertige Unterlagen", "Skalierbar nach Belegvolumen", "Revisionssichere Dokumentation", "Optionale Kassenbuchführung"],
     features: ["Digitale Belegerfassung", "Erfassung & Meldung der Umsatzsteuer (UStVA)", "Kontenabstimmung", "Verbuchung nach Belegvolumen", "Optionale Kassenbuchführung", "Monatliche betriebswirtschaftliche Auswertung (BWA)", "Vollständige Vorbereitung für Ihren Steuerberater"],
