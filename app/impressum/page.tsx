@@ -73,8 +73,9 @@ export default function Impressum() {
                   <div>
                     <h2 className="text-lg font-semibold text-slate-900">Umsatzsteuer-ID</h2>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      Nicht vorhanden.
+                      Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
                     </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-900">DE458023656</p>
                   </div>
                   <div>
                     <h2 className="text-lg font-semibold text-slate-900">Registereintrag</h2>
