@@ -6,7 +6,7 @@ export interface Testimonial {
 }
 
 /** Aggregierte Google-Bewertung (für Schema & Anzeige). */
-export const reviewStats = { average: 5.0, count: 4, source: "Google" };
+export const reviewStats = { average: 5.0, count: 7, source: "Google" };
 
 /** Echte Google-Bewertungen von Mandanten. */
 export const testimonials: Testimonial[] = [
@@ -31,5 +31,19 @@ export const testimonials: Testimonial[] = [
     name: "Fabi Zeixa",
     rating: 5,
     meta: "Local Guide",
+  },
+  {
+    name: "Emre Alüste",
+    rating: 5,
+    text: "Ich habe bei dieser Firma meinen Jahresabschluss für meine Firma erstellen lassen und bin rundum begeistert. Der Erstkontakt mit Herrn Roloff war hervorragend: Auf meine Anfrage erhielt ich sehr schnell eine Rückmeldung, und wir haben uns telefonisch ausführlich ausgetauscht – sogar bis in den Abend hinein hat er sich Zeit für mich genommen. Herr Roloff hat mir geduldig alle Möglichkeiten aufgezeigt, den Service verständlich erklärt und mir transparent dargelegt, mit welchen Kosten ich rechnen muss. Besonders positiv fiel mir auf, dass er mir kein Ultimatum gestellt hat, sondern mir in Ruhe Bedenkzeit gegeben hat, um mich zu entscheiden. Diese Beratung ohne Druck hat mich überzeugt. Von Anfang bis Ende ist alles reibungslos verlaufen. Ich kann Herrn Roloff nur wärmstens weiterempfehlen!",
+  },
+  {
+    name: "Efo79 Efo79",
+    rating: 5,
+    text: "Ich bin mit der Zusammenarbeit äußerst zufrieden. Die Buchhaltungsfirma arbeitet sehr zuverlässig, kompetent und stets termingerecht. Alle Fragen werden verständlich erklärt, und man fühlt sich jederzeit bestens beraten. Besonders schätze ich die schnelle Kommunikation, die hohe Fachkompetenz und die sorgfältige Bearbeitung aller Anliegen. Dank der professionellen Unterstützung wird die Buchhaltung deutlich einfacher und stressfreier. Klare Empfehlung für alle, die einen vertrauenswürdigen und engagierten Partner im Bereich Buchhaltung suchen!",
+  },
+  {
+    name: "Zeynel Esgünoglu",
+    rating: 5,
   },
 ];
