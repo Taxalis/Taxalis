@@ -40,6 +40,12 @@ export function Nav() {
     { href: "/leistungen/jahresabschluesse", label: "Jahresabschluss-Vorbereitung" },
   ];
 
+  const branchen = [
+    { href: "/loesungen/pflegedienst", label: "Pflegedienste" },
+    { href: "/loesungen/sicherheitsdienst", label: "Sicherheitsunternehmen" },
+    { href: "/loesungen/logistik", label: "Logistikbetriebe" },
+  ];
+
   return (
     <>
       <style>{`
@@ -80,6 +86,8 @@ export function Nav() {
         <Link href="/" onClick={() => setMenuOpen(false)}>Startseite</Link>
         <div className="mobile-section">Leistungen</div>
         {leistungen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
+        <div className="mobile-section">Für Ihre Branche</div>
+        {branchen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
         <div className="mobile-section">Unternehmen</div>
         <Link href="/preise" onClick={() => setMenuOpen(false)}>Preise</Link>
         <Link href="/ueber-uns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
@@ -106,6 +114,9 @@ export function Nav() {
               {leistungenOpen && (
                 <div className="nav-dropdown-menu">
                   {leistungen.map(l => <Link key={l.href} href={l.href}>{l.label}</Link>)}
+                  <div style={{height:1,background:'#e5e7eb',margin:'6px 8px'}} />
+                  <div style={{fontSize:10,fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase',color:'#9ca3af',padding:'6px 14px 2px'}}>Für Ihre Branche</div>
+                  {branchen.map(l => <Link key={l.href} href={l.href}>{l.label}</Link>)}
                 </div>
               )}
             </div>
@@ -135,6 +146,11 @@ export function Footer() {
     { label: "Buchhaltung", href: "/leistungen/buchhaltung" },
     { label: "Büroservice", href: "/leistungen/bueroservice" },
     { label: "Jahresabschluss-Vorbereitung", href: "/leistungen/jahresabschluesse" },
+  ];
+  const branchenFooter = [
+    { label: "Pflegedienste", href: "/loesungen/pflegedienst" },
+    { label: "Sicherheitsunternehmen", href: "/loesungen/sicherheitsdienst" },
+    { label: "Logistikbetriebe", href: "/loesungen/logistik" },
   ];
   const seiten = [
     { label: "Preise", href: "/preise" },
@@ -169,6 +185,14 @@ export function Footer() {
             <div className="mb-4 text-[11px] font-semibold uppercase tracking-widest text-white/35">Leistungen</div>
             <ul className="space-y-2.5">
               {leistungen.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-white/55 transition-colors hover:text-emerald-400">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mb-3 mt-5 text-[11px] font-semibold uppercase tracking-widest text-white/35">Branchen</div>
+            <ul className="space-y-2.5">
+              {branchenFooter.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-sm text-white/55 transition-colors hover:text-emerald-400">{l.label}</Link>
                 </li>

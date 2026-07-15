@@ -336,6 +336,70 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Branchen */}
+        <section className="py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <div className="mx-auto max-w-2xl text-center">
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Für Ihre Branche</span>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                  Spezialisierte Lohnabrechnung für Ihre Branche
+                </h2>
+                <p className="mt-4 text-lg text-slate-600">
+                  Pflegemindestlohn, Manteltarifverträge, Schichtzuschläge – wir kennen die branchenspezifischen Anforderungen.
+                </p>
+              </div>
+            </Reveal>
+            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+              {[
+                {
+                  href: "/loesungen/pflegedienst",
+                  icon: "users" as IconName,
+                  label: "Pflegedienste",
+                  desc: "Pflegemindestlohn, Nacht- & Feiertagszuschläge, Teilzeit und Minijob – korrekt und fristgerecht abgerechnet.",
+                  tags: ["Pflegemindestlohn", "§ 3b EStG Zuschläge", "Digitale Personalakte"],
+                },
+                {
+                  href: "/loesungen/sicherheitsdienst",
+                  icon: "shield" as IconName,
+                  label: "Sicherheitsunternehmen",
+                  desc: "Manteltarifvertrag Bewachungsgewerbe, Wechselschichten, Minijobber – wir rechnen tarifkonform ab.",
+                  tags: ["Manteltarifvertrag BDSW", "Schichtzuschläge", "Minijob-Abrechnung"],
+                },
+                {
+                  href: "/loesungen/logistik",
+                  icon: "plug" as IconName,
+                  label: "Logistikbetriebe",
+                  desc: "Fahrergehälter, Spesen, Saisonpersonal und Schichtarbeit – auch bei hoher Mitarbeiterfluktuation.",
+                  tags: ["Fahrergehälter & Spesen", "Kurzfristige Beschäftigung", "Arbeitszeitkonten"],
+                },
+              ].map((b, i) => (
+                <Reveal key={b.href} className={DELAYS[i % 4]}>
+                  <Link
+                    href={b.href}
+                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl hover:shadow-slate-200/60"
+                  >
+                    <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white">
+                      <Icon name={b.icon} size={26} />
+                    </span>
+                    <h3 className="mb-2 text-xl font-semibold text-slate-900">{b.label}</h3>
+                    <p className="mb-5 text-sm leading-relaxed text-slate-500">{b.desc}</p>
+                    <div className="mb-5 flex flex-1 flex-wrap gap-1.5">
+                      {b.tags.map((t) => (
+                        <span key={t} className="rounded-md bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">{t}</span>
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
+                      Mehr erfahren
+                      <Icon name="arrow-right" size={14} />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Process */}
         <section id="ablauf" className="py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-6">
