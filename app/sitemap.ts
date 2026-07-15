@@ -64,5 +64,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
+  const branchenRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/loesungen/pflegedienst`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/loesungen/sicherheitsdienst`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/loesungen/logistik`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+  ];
+
+  return [...staticRoutes, ...serviceRoutes, ...branchenRoutes, ...blogRoutes];
 }

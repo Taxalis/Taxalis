@@ -356,6 +356,128 @@ export const blogPosts: BlogPost[] = [
       { href: "/preise", label: "Preise & Pakete" },
     ],
   },
+  {
+    slug: "lohnabrechnung-pflegedienst-berlin",
+    title: "Lohnabrechnung für Pflegedienste in Berlin: Was Sie wissen müssen",
+    description:
+      "Lohnabrechnung für Pflegedienste in Berlin: Pflegemindestlohn korrekt abrechnen, Schicht- und Feiertagszuschläge, hohe Fluktuation – externes Lohnbüro für die Pflegebranche.",
+    category: "Lohnbuchhaltung",
+    date: "2026-07-15",
+    readingMinutes: 6,
+    keywords: [
+      "Lohnabrechnung Pflegedienst Berlin",
+      "Lohnbüro Pflegedienst",
+      "Pflegemindestlohn abrechnen",
+      "Lohnbuchhaltung Pflegebranche",
+      "externes Lohnbüro Pflege",
+    ],
+    excerpt:
+      "Pflegemindestlohn, Schichtzuschläge und hohe Mitarbeiterfluktuation machen die Lohnabrechnung in der Pflege besonders komplex. Wir erklären, worauf Pflegedienste achten müssen.",
+    content: [
+      { type: "p", text: "Kein Arbeitgeber in Deutschland hat eine so vielschichtige Lohnabrechnung wie Pflegedienste und Pflegeheime: Pflegemindestlohn in verschiedenen Stufen, Nacht- und Feiertagszuschläge, Arbeitszeitkonten, hohe Fluktuation und viele Teilzeitkräfte – die monatliche Gehaltsabrechnung ist aufwändig und fehleranfällig. Dieser Beitrag erklärt die wichtigsten Besonderheiten." },
+      { type: "h2", text: "Der Pflegemindestlohn: Stufen und aktuelle Werte" },
+      { type: "p", text: "Der Pflegemindestlohn wird durch die Pflegemindestlohnverordnung (PflegeArbbV) geregelt und gilt für alle Beschäftigten in der Pflege, unabhängig von Tarifvertrag oder Betriebsgröße. Er ist gestaffelt nach Qualifikation: Pflegehilfskräfte, Pflegefachassistenten und Pflegefachkräfte erhalten unterschiedliche Mindestlöhne. Diese Stufen werden regelmäßig angepasst – die korrekte Einstufung Ihrer Mitarbeiter ist daher entscheidend für eine rechtssichere Abrechnung." },
+      { type: "h2", text: "Schicht-, Nacht- und Feiertagszuschläge korrekt abrechnen" },
+      { type: "p", text: "Pflegearbeit kennt keine Kernarbeitszeiten: Nachtschichten, Wochenenddienste und Feiertagsarbeit sind Alltag. Für die Lohnabrechnung bedeutet das: Zuschläge müssen korrekt berechnet und lohnsteuerrechtlich korrekt eingestuft werden. § 3b EStG regelt, welche Zuschläge steuerfrei sind – und bis zu welcher Höhe. Fehler bei der Zuschlagsberechnung können teuer werden." },
+      { type: "h2", text: "Hohe Fluktuation und viele Teilzeitkräfte" },
+      { type: "ul", items: [
+        "Häufige An- und Abmeldungen bei Krankenkassen und Minijob-Zentrale",
+        "Vertragsänderungen (Stundenreduzierung, Elternzeit, Krankschreibungen)",
+        "Viele Teilzeitmodelle parallel – von 10 bis 35 Stunden",
+        "Arbeitszeitkontenverwaltung und Überstundenausgleich",
+      ] },
+      { type: "h2", text: "Warum externe Lohnabrechnung für Pflegedienste sinnvoll ist" },
+      { type: "p", text: "Die Lohnabrechnung eines Pflegedienstes bindet erhebliche Ressourcen – und Fehler sind riskant. Ein externes Lohnbüro kennt die Besonderheiten der Branche, hält Fristen ein und sorgt für korrekte Meldungen an Finanzamt und Sozialversicherung. Für Pflegedienste in Berlin bedeutet das: Zeit für die Versorgung der Pflegebedürftigen statt für Abrechnungsstress." },
+      { type: "h2", text: "Was darf ein Lohnbüro – und was nicht?" },
+      { type: "p", text: "Ein Lohnbüro darf gemäß § 6 Nr. 3 StBerG die laufende Lohnabrechnung und Lohnsteueranmeldungen übernehmen. Steuerliche Beratung, Jahresabschlüsse und verbindliche Rechtsauskünfte zu Tarifverträgen bleiben dem Steuerberater bzw. Rechtsberater vorbehalten. Ein gutes Lohnbüro kennt diese Grenzen und arbeitet eng mit der Steuerkanzlei Ihres Pflegedienstes zusammen." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Die Lohnabrechnung für Pflegedienste in Berlin ist komplex – aber lösbar. Mit einem spezialisierten externen Lohnbüro, das die Branche kennt, können Pflegedienste ihre Abrechnungspflichten sicher erfüllen und sich auf ihr Kerngeschäft konzentrieren." },
+    ],
+    related: [
+      { href: "/loesungen/pflegedienst", label: "Lohnabrechnung für Pflegedienste in Berlin" },
+      { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
+    ],
+  },
+  {
+    slug: "lohnabrechnung-sicherheitsdienst-berlin",
+    title: "Lohnabrechnung für Sicherheitsunternehmen: Manteltarifvertrag und Zuschläge korrekt abrechnen",
+    description:
+      "Lohnabrechnung für Sicherheitsdienste in Berlin: Manteltarifvertrag Bewachungsgewerbe, Nacht- und Feiertagszuschläge, Minijobber – alles korrekt abrechnen gemäß § 6 Nr. 3 StBerG.",
+    category: "Lohnbuchhaltung",
+    date: "2026-07-15",
+    readingMinutes: 6,
+    keywords: [
+      "Lohnabrechnung Sicherheitsunternehmen Berlin",
+      "Manteltarifvertrag Bewachungsgewerbe Lohnabrechnung",
+      "Lohnbüro Sicherheitsdienst",
+      "Gehaltsabrechnung Wachdienst Berlin",
+      "Lohnbuchhaltung Sicherheitsgewerbe",
+    ],
+    excerpt:
+      "Sicherheitsunternehmen haben eine der komplexesten Lohnabrechnungen: Manteltarifvertrag, Schicht- und Feiertagszuschläge, viele Minijobber. Wir erklären, worauf Sie achten müssen.",
+    content: [
+      { type: "p", text: "Das Bewachungsgewerbe zählt zu den abrechnungsintensivsten Branchen in Deutschland: Der Manteltarifvertrag Bewachungsgewerbe (BDSW) regelt branchenspezifische Mindestlöhne und Zuschlagsarten, dazu kommen viele Minijobber, variierende Einsatzzeiten und häufige Personalwechsel. Dieser Beitrag gibt einen Überblick über die wichtigsten Besonderheiten." },
+      { type: "h2", text: "Manteltarifvertrag Bewachungsgewerbe: Was Sicherheitsunternehmen wissen müssen" },
+      { type: "p", text: "Der Manteltarifvertrag für das Bewachungsgewerbe (BDSW) gilt für Mitglieder des Bundesverbands der Sicherheitswirtschaft und enthält branchenspezifische Mindestlöhne, die über dem allgemeinen gesetzlichen Mindestlohn liegen können. Welche Regelungen für Ihr Unternehmen gelten, hängt von der Verbandsmitgliedschaft und dem Bundesland ab. Für Berlin gelten eigene Regelungen – die korrekte Anwendung ist entscheidend für eine rechtssichere Abrechnung." },
+      { type: "h2", text: "Nacht-, Sonntags- und Feiertagszuschläge" },
+      { type: "p", text: "Wach- und Sicherheitsdienste arbeiten rund um die Uhr – und entsprechend komplex sind die Zuschlagsabrechnungen. § 3b EStG regelt die Steuerfreiheit von Nacht-, Sonntags- und Feiertagszuschlägen bis zu bestimmten Prozentsätzen des Grundlohns. Eine fehlerhafte Berechnung führt entweder zu unnötiger Steuerlast für Ihre Mitarbeiter oder zu Nachzahlungen im Rahmen einer Lohnsteuerprüfung." },
+      { type: "h2", text: "Viele Minijobber und häufige An-/Abmeldungen" },
+      { type: "ul", items: [
+        "Hoher Anteil Minijobber und Midijobber neben Vollzeitkräften",
+        "Häufige Neueinstellungen durch Zuverlässigkeitsprüfungen und Personalwechsel",
+        "An- und Abmeldungen bei Minijob-Zentrale und Krankenkassen zeitnah erforderlich",
+        "Unterschiedliche Beschäftigungsmodelle parallel verwalten",
+      ] },
+      { type: "h2", text: "Warum externe Lohnabrechnung für Sicherheitsunternehmen sinnvoll ist" },
+      { type: "p", text: "Die Lohnabrechnung eines Sicherheitsdienstes ist zu komplex für eine nebenberuflich betraute Verwaltungskraft. Fehler bei Zuschlagsabrechnungen, Mindestlöhnen oder SV-Meldungen können bei einer Betriebsprüfung teuer werden. Ein externes Lohnbüro, das die Branche kennt, schützt vor diesen Risiken – und sorgt dafür, dass Sie sich aufs Kerngeschäft konzentrieren können." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Lohnabrechnung für Sicherheitsunternehmen in Berlin erfordert Branchenwissen, Sorgfalt und aktuelles Know-how. Mit einem spezialisierten Lohnbüro an Ihrer Seite sind Fristen, Tarife und Zuschläge in sicheren Händen." },
+    ],
+    related: [
+      { href: "/loesungen/sicherheitsdienst", label: "Lohnabrechnung für Sicherheitsunternehmen Berlin" },
+      { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
+    ],
+  },
+  {
+    slug: "lohnabrechnung-logistik-berlin",
+    title: "Lohnbuchhaltung für Logistikunternehmen in Berlin: Saisonspitzen und Schichtarbeit korrekt abrechnen",
+    description:
+      "Lohnabrechnung für Speditionen und Logistikbetriebe in Berlin: Fahrergehälter, Schichtarbeit, Saisonpersonal und Minijobber korrekt abrechnen – externes Lohnbüro für die Logistikbranche.",
+    category: "Lohnbuchhaltung",
+    date: "2026-07-15",
+    readingMinutes: 5,
+    keywords: [
+      "Lohnabrechnung Logistik Berlin",
+      "Lohnbüro Spedition Berlin",
+      "Lohnbuchhaltung Logistikunternehmen",
+      "Gehaltsabrechnung Fahrer Berlin",
+      "Saisonpersonal Lohnabrechnung",
+    ],
+    excerpt:
+      "Logistikbetriebe haben variierende Fahrstunden, Saisonspitzen und komplexe Zuschlagsmodelle. Wir erklären, wie Speditionen und Kurierdienste ihre Lohnabrechnung effizient auslagern.",
+    content: [
+      { type: "p", text: "Speditionen, Kurierdienste und Lagerlogistikbetriebe in Berlin haben einen gemeinsamen Nenner: Die Lohnabrechnung ist alles andere als gleichförmig. Variierende Fahrstunden, Saisonspitzen zu Weihnachten und im Sommergeschäft, ein Mix aus Festangestellten und Minijobbern sowie Nacht- und Schichtarbeit machen die monatliche Gehaltsabrechnung aufwändig." },
+      { type: "h2", text: "Fahrergehälter und Spesen korrekt abrechnen" },
+      { type: "p", text: "Fahrer erhalten in der Regel variable Vergütungen: Grundgehalt plus Stundenzuschläge, Spesen für Übernachtungen und Verpflegungsmehraufwendungen, Nachtarbeitszuschläge. Spesen und Verpflegungspauschalen können bis zu gesetzlichen Grenzen steuerfrei ausgezahlt werden – die korrekte Dokumentation und Abrechnung ist entscheidend." },
+      { type: "h2", text: "Schichtarbeit und Arbeitszeitkonten" },
+      { type: "p", text: "Logistikbetriebe arbeiten im Schichtbetrieb – und das bedeutet für die Lohnabrechnung: Schichtzuschläge müssen korrekt nach § 3b EStG berechnet werden, Arbeitszeitkonten müssen geführt werden, Überstunden müssen erfasst und vergütet oder ausgeglichen werden. Eine saubere Zeiterfassung ist die Grundlage." },
+      { type: "h2", text: "Saisonpersonal und kurzfristige Beschäftigung" },
+      { type: "ul", items: [
+        "Saisonale Aufstockung in der Hochphase – z. B. Weihnachtsgeschäft oder Sommergeschäft",
+        "Kurzfristige Beschäftigungen (max. 70 Arbeitstage pro Jahr) korrekt abrechnen",
+        "Minijobber und Midijobber parallel zu Festangestellten verwalten",
+        "Häufige An- und Abmeldungen bei Minijob-Zentrale und Krankenkassen",
+      ] },
+      { type: "h2", text: "Warum Logistikbetriebe die Lohnabrechnung auslagern" },
+      { type: "p", text: "In der Hochsaison hat niemand Zeit für Buchhaltung – und genau dann muss die Lohnabrechnung reibungslos laufen. Ein externes Lohnbüro liefert pünktlich, auch wenn Ihr Team auf Touren ist. Ohne eigene Buchhaltungskraft, ohne Ausfallrisiko, zu einem festen Preis pro Mitarbeiter." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Lohnbuchhaltung für Logistikunternehmen in Berlin ist eine Spezialaufgabe. Mit dem richtigen Partner an Ihrer Seite sind Fahrergehälter, Saisonpersonal und Schichtarbeit in sicheren Händen – und Sie können sich auf Ihre Touren konzentrieren." },
+    ],
+    related: [
+      { href: "/loesungen/logistik", label: "Lohnabrechnung für Logistikunternehmen Berlin" },
+      { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
+    ],
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

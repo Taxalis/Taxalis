@@ -48,7 +48,7 @@ export const services: ServiceDetails[] = [
       "Ob Minijob, Teilzeit oder Vollzeit, ob fünf oder fünfzig Mitarbeiter – wir arbeiten zu 100 % digital und DSGVO-konform. Auf Wunsch binden wir eine Zeiterfassung ein, kontrollieren die Arbeitszeitkonten und sorgen für den reibungslosen Monatswechsel inklusive Lohnsteueranmeldung per Elster.",
       "Unser Lohnbüro in Berlin betreut Unternehmen aus dem gesamten Stadtgebiet – von Charlottenburg und Wilmersdorf über Prenzlauer Berg und Mitte bis nach Schöneberg, Steglitz und Tempelhof. Dank volldigitaler Prozesse spielt es keine Rolle, wo in Berlin oder Brandenburg Ihr Unternehmen ansässig ist: die Zusammenarbeit läuft nahtlos per App, E-Mail und Video.",
       "Was kostet ein externes Lohnbüro in Berlin? Unsere Lohnbuchhaltung wird pro Mitarbeiter abgerechnet – ab 20 € je Mitarbeiter und Monat. Das ist günstiger als eine eigene Personalstelle und vermeidet zugleich Ausfallrisiken durch Krankheit oder Urlaub der eigenen Kraft. Bei mehr als fünf Mitarbeitern gelten attraktive Staffelpreise.",
-      "Der Vorteil eines externen Lohnbuchhaltungspartners liegt auf der Hand: Sie sparen Zeit, vermeiden Fehler und Fristversäumnisse – und haben trotzdem einen festen, persönlichen Ansprechpartner vor Ort. Fordern Sie jetzt Ihr unverbindliches Angebot an.",
+      "Der Vorteil eines externen Lohnbuchhaltungspartners liegt auf der Hand: Sie sparen Zeit, vermeiden Fehler und Fristversäumnisse – und haben trotzdem einen festen, persönlichen Ansprechpartner vor Ort. Wir betreuen unter anderem Pflegedienste, Sicherheitsunternehmen und Logistikbetriebe mit branchenspezifischen Abrechnungsanforderungen. Fordern Sie jetzt Ihr unverbindliches Angebot an.",
     ],
     faq: [
       {
