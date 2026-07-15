@@ -3,8 +3,7 @@ import Image from "next/image";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon, { IconName } from "@/app/components/Icon";
 import { services } from "@/app/lib/services";
-import { testimonials as staticTestimonials, reviewStats as staticReviewStats } from "@/app/lib/testimonials";
-import { getGoogleReviews } from "@/app/lib/google-reviews";
+import { testimonials as staticTestimonials, reviewStats } from "@/app/lib/testimonials";
 import { faqItems as staticFaqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
@@ -113,11 +112,10 @@ const PROCESS_STEPS = [
 ];
 
 export default async function Home() {
-  const [siteSettings, sanityTestimonials, sanityFaqItems, googleReviews] = await Promise.all([
+  const [siteSettings, sanityTestimonials, sanityFaqItems] = await Promise.all([
     getSiteSettings(),
     getTestimonials(),
     getFaqItems(),
-    getGoogleReviews(),
   ]);
 
   const heroBadge = siteSettings?.heroBadge || "Digitaler Backoffice-Partner in Berlin";
@@ -128,23 +126,7 @@ export default async function Home() {
     siteSettings?.heroText ||
     "Taxalis Consulting übernimmt Lohnbuchhaltung, laufende Buchhaltung und administrativen Büroservice – transparent, zu 100% digital und DSGVO-konform. Damit Sie sich auf Ihr Kerngeschäft konzentrieren können.";
 
-  // Priorität: Google (live) → Sanity → statisch
-  const testimonials =
-    googleReviews && googleReviews.testimonials.length > 0
-      ? googleReviews.testimonials
-      : sanityTestimonials.length > 0
-        ? sanityTestimonials
-        : staticTestimonials;
-
-  const reviewStats =
-    googleReviews
-      ? {
-          average: googleReviews.rating,
-          count: googleReviews.total,
-          source: "Google",
-        }
-      : staticReviewStats;
-
+  const testimonials = sanityTestimonials.length > 0 ? sanityTestimonials : staticTestimonials;
   const faqItems = sanityFaqItems.length > 0 ? sanityFaqItems : staticFaqItems;
 
   return (
