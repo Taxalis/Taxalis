@@ -6,6 +6,7 @@ import { services } from "@/app/lib/services";
 import { testimonials as staticTestimonials, reviewStats } from "@/app/lib/testimonials";
 import { faqItems as staticFaqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
+import TestimonialsCarousel from "@/app/components/TestimonialsCarousel";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
 import { getSiteSettings, getTestimonials, getFaqItems } from "@/sanity/lib/queries";
 
@@ -511,27 +512,8 @@ export default async function Home() {
                 </div>
               </div>
             </Reveal>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {testimonials.filter((t) => t.text).map((t, i) => (
-                <Reveal key={t.name} className={DELAYS[i % 3]}>
-                  <div className="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 shadow-sm shadow-slate-200/40">
-                    <div className="mb-3 flex items-start justify-between">
-                      <div className="text-amber-400" aria-label={`${t.rating} von 5 Sternen`}>{"★".repeat(t.rating)}</div>
-                      <span className="text-5xl font-serif leading-none text-emerald-100 select-none" aria-hidden="true">&ldquo;</span>
-                    </div>
-                    <p className="flex-1 text-sm leading-relaxed text-slate-600 italic">{t.text}</p>
-                    <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
-                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white">
-                        {t.name.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="text-sm font-semibold text-slate-900">{t.name}</div>
-                        {t.meta && <div className="text-xs text-slate-400">{t.meta}</div>}
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
+            <div className="mt-12">
+              <TestimonialsCarousel testimonials={testimonials} />
             </div>
           </div>
         </section>
