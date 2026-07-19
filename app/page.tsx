@@ -8,11 +8,8 @@ import { faqItems as staticFaqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
 import TestimonialsCarousel from "@/app/components/TestimonialsCarousel";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
-import { getSiteSettings, getTestimonials, getFaqItems } from "@/sanity/lib/queries";
 
-// Inhalte werden bei jedem Deployment/Revalidate frisch aus Sanity geladen.
-// Solange in Sanity noch keine Inhalte gepflegt sind, greifen die
-// bestehenden Texte aus app/lib/*.ts als Fallback, damit die Seite nie leer ist.
+// Alle Inhalte kommen direkt aus app/lib/*.ts (statisch, kein CMS).
 
 const PAIN_POINTS: { icon: IconName; title: string; desc: string }[] = [
   {
@@ -112,23 +109,14 @@ const PROCESS_STEPS = [
   },
 ];
 
-export default async function Home() {
-  const [siteSettings, sanityTestimonials, sanityFaqItems] = await Promise.all([
-    getSiteSettings(),
-    getTestimonials(),
-    getFaqItems(),
-  ]);
-
-  const heroBadge = siteSettings?.heroBadge || "Digitaler Backoffice-Partner in Berlin";
-  const heroHeading =
-    siteSettings?.heroHeading ||
-    "Premium Büroservice & Lohnbuchhaltung für Berliner Unternehmen";
+export default function Home() {
+  const heroBadge = "Digitaler Backoffice-Partner in Berlin";
+  const heroHeading = "Premium Büroservice & Lohnbuchhaltung für Berliner Unternehmen";
   const heroText =
-    siteSettings?.heroText ||
     "Taxalis Consulting übernimmt Lohnbuchhaltung, laufende Buchhaltung und administrativen Büroservice – transparent, zu 100% digital und DSGVO-konform. Damit Sie sich auf Ihr Kerngeschäft konzentrieren können.";
 
-  const testimonials = sanityTestimonials.length > 0 ? sanityTestimonials : staticTestimonials;
-  const faqItems = sanityFaqItems.length > 0 ? sanityFaqItems : staticFaqItems;
+  const testimonials = staticTestimonials;
+  const faqItems = staticFaqItems;
 
   return (
     <>

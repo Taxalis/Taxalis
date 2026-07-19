@@ -9,7 +9,6 @@ import { testimonials as staticTestimonials, reviewStats } from "@/app/lib/testi
 import { faqItems as staticFaqItems } from "@/app/lib/faq";
 import LeadForm from "@/app/components/LeadForm";
 import { Reveal, DELAYS } from "@/app/components/Reveal";
-import { getSiteSettings, getTestimonials, getFaqItems } from "@/sanity/lib/queries";
 
 // Design-Entwurf (Testseite): erstellt mit dem ui-ux-pro-max Skill,
 // Designsystem "Trust & Authority" (Navy/Blau, Plus Jakarta Sans).
@@ -107,23 +106,14 @@ const FAQ_PREVIEW = [
 const CTA_LINK =
   "inline-flex items-center gap-2 rounded-lg px-6 py-3.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2";
 
-export default async function EntwurfHome() {
-  const [siteSettings, sanityTestimonials, sanityFaqItems] = await Promise.all([
-    getSiteSettings().catch(() => null),
-    getTestimonials().catch(() => []),
-    getFaqItems().catch(() => []),
-  ]);
-
-  const heroBadge = siteSettings?.heroBadge || "Digitaler Backoffice-Partner in Berlin";
-  const heroHeading =
-    siteSettings?.heroHeading ||
-    "Premium Büroservice & Lohnbuchhaltung für Berliner Unternehmen";
+export default function EntwurfHome() {
+  const heroBadge = "Digitaler Backoffice-Partner in Berlin";
+  const heroHeading = "Premium Büroservice & Lohnbuchhaltung für Berliner Unternehmen";
   const heroText =
-    siteSettings?.heroText ||
     "Taxalis Consulting übernimmt Lohnbuchhaltung, laufende Buchhaltung und administrativen Büroservice – transparent, zu 100% digital und DSGVO-konform. Damit Sie sich auf Ihr Kerngeschäft konzentrieren können.";
 
-  const testimonials = sanityTestimonials.length > 0 ? sanityTestimonials : staticTestimonials;
-  const faqItems = sanityFaqItems.length > 0 ? sanityFaqItems : staticFaqItems;
+  const testimonials = staticTestimonials;
+  const faqItems = staticFaqItems;
   const featuredTestimonial = testimonials.find((t) => t.text && t.meta) ?? testimonials[0];
 
   return (

@@ -52,8 +52,26 @@ const jsonLd = {
     "@type": "OfferCatalog",
     name: "Leistungen",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Lohnbuchhaltung Berlin", url: "https://www.taxalis-consulting.de/leistungen/lohnbuchhaltung" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Buchhaltung Berlin", url: "https://www.taxalis-consulting.de/leistungen/buchhaltung" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Lohnbuchhaltung Berlin", url: "https://www.taxalis-consulting.de/leistungen/lohnbuchhaltung" },
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: 20,
+          priceCurrency: "EUR",
+          unitText: "pro Mitarbeiter / Monat, ab",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Buchhaltung Berlin", url: "https://www.taxalis-consulting.de/leistungen/buchhaltung" },
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: 99,
+          priceCurrency: "EUR",
+          unitText: "pro Monat, ab",
+        },
+      },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Büroservice & Unternehmensberatung Berlin", url: "https://www.taxalis-consulting.de/leistungen/bueroservice" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Jahresabschluss-Vorbereitung Berlin", url: "https://www.taxalis-consulting.de/leistungen/jahresabschluesse" } },
     ],

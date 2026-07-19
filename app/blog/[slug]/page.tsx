@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PortableText } from "@portabletext/react";
 import { Nav, Footer } from "@/app/components/Nav";
 import Icon from "@/app/components/Icon";
 import { getPostBySlug, getAllPostSlugs } from "@/app/lib/blog";
-import { getBlogPostBySlug, getAllBlogPosts } from "@/sanity/lib/queries";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const sanityPosts = await getAllBlogPosts();
-  const sanitySlugs = sanityPosts.map((p) => p.slug);
-  const staticSlugs = getAllPostSlugs().filter((s) => !sanitySlugs.includes(s));
-  return [...sanitySlugs, ...staticSlugs].map((slug) => ({ slug }));
+  return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const sanityPost = await getBlogPostBySlug(slug);
-  const post = sanityPost || getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) {
     return { title: "Artikel nicht gefunden", robots: { index: false, follow: true } };
   }
@@ -59,8 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogArticle({ params }: Props) {
   const { slug } = await params;
-  const sanityPost = await getBlogPostBySlug(slug);
-  const post = sanityPost || getPostBySlug(slug);
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   const description = "description" in post && post.description ? post.description : post.excerpt;
@@ -143,59 +136,30 @@ export default async function BlogArticle({ params }: Props) {
         </section>
         <article className="py-12 sm:py-16">
           <div className="mx-auto max-w-3xl px-6">
-            {sanityPost ? (
-              <div className="prose-content">
-                <PortableText
-                  value={sanityPost.content}
-                  components={{
-                    block: {
-                      h2: ({ children }) => (
-                        <h2 className="mt-10 mb-3 text-2xl font-bold tracking-tight text-slate-900">{children}</h2>
-                      ),
-                      normal: ({ children }) => (
-                        <p className="mb-4 text-base leading-relaxed text-slate-600">{children}</p>
-                      ),
-                    },
-                    list: {
-                      bullet: ({ children }) => <ul className="mb-4 space-y-2">{children}</ul>,
-                    },
-                    listItem: {
-                      bullet: ({ children }) => (
-                        <li className="flex items-start gap-3 text-base leading-relaxed text-slate-600">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
-                          <span>{children}</span>
-                        </li>
-                      ),
-                    },
-                  }}
-                />
-              </div>
-            ) : (
-              (post as import("@/app/lib/blog").BlogPost).content.map((s, i) => {
-                if (s.type === "h2")
-                  return (
-                    <h2 key={i} className="mt-10 mb-3 text-2xl font-bold tracking-tight text-slate-900">
-                      {s.text}
-                    </h2>
-                  );
-                if (s.type === "ul")
-                  return (
-                    <ul key={i} className="mb-4 space-y-2">
-                      {(s.items || []).map((it, j) => (
-                        <li key={j} className="flex items-start gap-3 text-base leading-relaxed text-slate-600">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
-                          {it}
-                        </li>
-                      ))}
-                    </ul>
-                  );
+            {post.content.map((s, i) => {
+              if (s.type === "h2")
                 return (
-                  <p key={i} className="mb-4 text-base leading-relaxed text-slate-600">
+                  <h2 key={i} className="mt-10 mb-3 text-2xl font-bold tracking-tight text-slate-900">
                     {s.text}
-                  </p>
+                  </h2>
                 );
-              })
-            )}
+              if (s.type === "ul")
+                return (
+                  <ul key={i} className="mb-4 space-y-2">
+                    {(s.items || []).map((it, j) => (
+                      <li key={j} className="flex items-start gap-3 text-base leading-relaxed text-slate-600">
+                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                );
+              return (
+                <p key={i} className="mb-4 text-base leading-relaxed text-slate-600">
+                  {s.text}
+                </p>
+              );
+            })}
 
             {"related" in post && post.related && post.related.length > 0 && (
               <div className="mt-12 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6">
