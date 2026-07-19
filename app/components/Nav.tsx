@@ -154,6 +154,7 @@ export function Footer() {
   ];
   const seiten = [
     { label: "Preise", href: "/preise" },
+    { label: "Lohnbüro wechseln", href: "/lohnbuero-wechseln" },
     { label: "Über Uns", href: "/ueber-uns" },
     { label: "FAQ", href: "/faq" },
     { label: "Blog", href: "/blog" },
