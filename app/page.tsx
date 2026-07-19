@@ -261,6 +261,21 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
+            <Reveal>
+              <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl bg-slate-900 px-8 py-6 sm:flex-row">
+                <div>
+                  <div className="font-semibold text-white">Unzufrieden mit Ihrem aktuellen Lohnbüro oder Ihrer Kanzlei?</div>
+                  <p className="mt-1 text-sm text-slate-300">Wir übernehmen alle Wechsel-Formalitäten – kostenlos, zu jedem Monatswechsel, ohne Abrechnungsausfall.</p>
+                </div>
+                <Link
+                  href="/lohnbuero-wechseln"
+                  className="inline-flex flex-shrink-0 items-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-emerald-600"
+                >
+                  Zum Wechselservice
+                  <Icon name="arrow-right" size={15} />
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </section>
 

@@ -89,6 +89,7 @@ export function Nav() {
         <div className="mobile-section">Für Ihre Branche</div>
         {branchen.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</Link>)}
         <div className="mobile-section">Unternehmen</div>
+        <Link href="/lohnbuero-wechseln" onClick={() => setMenuOpen(false)}>Lohnbüro wechseln</Link>
         <Link href="/preise" onClick={() => setMenuOpen(false)}>Preise</Link>
         <Link href="/ueber-uns" onClick={() => setMenuOpen(false)}>Über Uns</Link>
         <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
@@ -117,6 +118,8 @@ export function Nav() {
                   <div style={{height:1,background:'#e5e7eb',margin:'6px 8px'}} />
                   <div style={{fontSize:10,fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase',color:'#9ca3af',padding:'6px 14px 2px'}}>Für Ihre Branche</div>
                   {branchen.map(l => <Link key={l.href} href={l.href}>{l.label}</Link>)}
+                  <div style={{height:1,background:'#e5e7eb',margin:'6px 8px'}} />
+                  <Link href="/lohnbuero-wechseln" style={{fontWeight:600}}>Lohnbüro wechseln →</Link>
                 </div>
               )}
             </div>
