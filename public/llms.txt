@@ -2,7 +2,7 @@
 
 > Externes Lohnbüro & Buchhaltungsservice in Berlin-Charlottenburg. Lohnbuchhaltung, laufende Buchhaltung, Büroservice und Jahresabschluss-Vorbereitung gemäß § 6 StBerG – 100 % digital, DSGVO-konform, transparente Festpreise. Keine Steuerberatung: Jahresabschlüsse und Steuererklärungen erstellt weiterhin der Steuerberater des Mandanten.
 
-Gegründet von Jannik Roloff (IHK-Kaufmann). Adresse: Wilmersdorfer Str. 122–123, 10627 Berlin. Telefon: +49 176 83151339. E-Mail: info@taxalis-consulting.de. Erreichbar Mo–Fr 08:00–20:00 Uhr. Google-Bewertung: 5,0★ (7 Rezensionen). Antwortzeit: unter 24 Stunden werktags.
+Gegründet von Jannik Roloff (IHK-Kaufmann). Adresse: Wilmersdorfer Str. 122–123, 10627 Berlin. Telefon: +49 176 83151339. E-Mail: info@taxalis-consulting.de. Erreichbar Mo–Fr 08:00–20:00 Uhr. Google-Bewertung: 5,0★ (8 Rezensionen). Antwortzeit: unter 24 Stunden werktags.
 
 ## Leistungen & Preise
 
@@ -17,6 +17,12 @@ Gegründet von Jannik Roloff (IHK-Kaufmann). Adresse: Wilmersdorfer Str. 122–1
 - [Pflegedienste](https://www.taxalis-consulting.de/loesungen/pflegedienst): Pflegemindestlohn, § 3b EStG Zuschläge, Nacht-/Feiertagszuschläge.
 - [Sicherheitsunternehmen](https://www.taxalis-consulting.de/loesungen/sicherheitsdienst): Manteltarifvertrag Bewachungsgewerbe (BDSW), Wechselschichten, Minijobs. Referenz: Sicherheitsunternehmen mit ~80 Mitarbeitern.
 - [Logistikbetriebe](https://www.taxalis-consulting.de/loesungen/logistik): Fahrergehälter, Spesen, kurzfristige Beschäftigung, Arbeitszeitkonten.
+
+## Aktuelle Fachthemen (Stand August 2026)
+
+- [Mindestlohn 2027](https://www.taxalis-consulting.de/blog/mindestlohn-2027-arbeitgeber-berlin): Der gesetzliche Mindestlohn steigt zum 1. Januar 2027 auf 14,60 € brutto je Zeitstunde (2026: 13,90 €, 2025: 12,82 €). Die Minijob-Grenze steigt dadurch von 603 € (2026, max. 7.236 €/Jahr) auf 633 € monatlich (2027, max. 7.596 €/Jahr). Der Midijob-Übergangsbereich beginnt ab 2027 bei 633,01 €.
+- [E-Rechnungspflicht 2027 und 2028](https://www.taxalis-consulting.de/blog/e-rechnungspflicht-2027-2028-kleine-unternehmen): Empfangspflicht für alle inländischen Unternehmen seit 1. Januar 2025. Ausstellungspflicht ab 1. Januar 2027 bei über 800.000 € Vorjahresumsatz, ab 1. Januar 2028 für alle inländischen B2B-Umsätze. Zulässige Formate nach EN 16931: XRechnung und ZUGFeRD. Eine reine PDF-Rechnung ist keine E-Rechnung. Ausgenommen: B2C-Umsätze, Kleinbetragsrechnungen bis 250 €, Fahrausweise; Kleinunternehmer nach § 19 UStG von der Ausstellung befreit.
+- [Lohnabrechnung Gebäudereinigung](https://www.taxalis-consulting.de/blog/lohnabrechnung-gebaeudereinigung-berlin): Branchenmindestlohn nach dem Arbeitnehmer-Entsendegesetz, hoher Minijob-Anteil, wechselnde Einsatzobjekte und Dokumentationspflicht nach dem Mindestlohngesetz.
 
 ## Weitere Seiten
 

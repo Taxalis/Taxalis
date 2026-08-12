@@ -53,7 +53,10 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Fazit" },
       { type: "p", text: "Eine externe Lohnbuchhaltung spart Zeit, erhöht die Sicherheit und macht die monatliche Abrechnung planbar. Gerade für kleine und mittlere Unternehmen in Berlin ist das eine effiziente Lösung – mit persönlichem Ansprechpartner und ohne eigene Software." },
     ],
-    related: [{ href: "/leistungen/lohnbuchhaltung", label: "Mehr zur Lohnbuchhaltung in Berlin" }],
+    related: [
+      { href: "/leistungen/lohnbuchhaltung", label: "Mehr zur Lohnbuchhaltung in Berlin" },
+      { href: "/blog/mindestlohn-2027-arbeitgeber-berlin", label: "Mindestlohn 2027: 14,60 Euro – was jetzt zu tun ist" },
+    ],
   },
   {
     slug: "buchhaltungsservice-paragraph-6-stberg",
@@ -90,6 +93,7 @@ export const blogPosts: BlogPost[] = [
     related: [
       { href: "/leistungen/buchhaltung", label: "Buchhaltung in Berlin" },
       { href: "/leistungen/jahresabschluesse", label: "Jahresabschluss-Vorbereitung" },
+      { href: "/blog/e-rechnungspflicht-2027-2028-kleine-unternehmen", label: "E-Rechnungspflicht 2027 und 2028 im Überblick" },
     ],
   },
   {
@@ -124,7 +128,10 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "Fazit" },
       { type: "p", text: "Buchhaltungsservice und Steuerberater sind keine Konkurrenten, sondern ein Team. Wer die laufende Buchhaltung auslagert und mit einer Steuerkanzlei zusammenarbeitet, fährt in der Regel am effizientesten." },
     ],
-    related: [{ href: "/leistungen/buchhaltung", label: "Buchhaltungsservice in Berlin" }],
+    related: [
+      { href: "/leistungen/buchhaltung", label: "Buchhaltungsservice in Berlin" },
+      { href: "/blog/e-rechnungspflicht-2027-2028-kleine-unternehmen", label: "E-Rechnungspflicht 2027 und 2028 im Überblick" },
+    ],
   },
   {
     slug: "buchhaltungspflichten-gruender-berlin",
@@ -162,7 +169,10 @@ export const blogPosts: BlogPost[] = [
       { type: "h2", text: "So unterstützt Sie ein Büroservice" },
       { type: "p", text: "Ein Büroservice mit Unternehmensberatung übernimmt das komplette Gründungs-Onboarding – von der Gewerbeanmeldung über die steuerliche Erfassung bis zur Betriebsnummer – und richtet Ihre digitale Buchhaltung sauber ein. So starten Sie ohne Formular-Stress und mit der Gewissheit, dass alle Pflichten erfüllt sind." },
     ],
-    related: [{ href: "/leistungen/bueroservice", label: "Büroservice & Unternehmensberatung in Berlin" }],
+    related: [
+      { href: "/leistungen/bueroservice", label: "Büroservice & Unternehmensberatung in Berlin" },
+      { href: "/blog/e-rechnungspflicht-2027-2028-kleine-unternehmen", label: "E-Rechnungspflicht 2027 und 2028 im Überblick" },
+    ],
   },
   {
     slug: "buchhaltung-outsourcen-berlin-kosten",
@@ -203,6 +213,7 @@ export const blogPosts: BlogPost[] = [
     related: [
       { href: "/leistungen/buchhaltung", label: "Buchhaltungsservice in Berlin" },
       { href: "/preise", label: "Unsere Preise" },
+      { href: "/blog/e-rechnungspflicht-2027-2028-kleine-unternehmen", label: "E-Rechnungspflicht 2027 und 2028 im Überblick" },
     ],
   },
   {
@@ -252,6 +263,7 @@ export const blogPosts: BlogPost[] = [
     related: [
       { href: "/leistungen/lohnbuchhaltung", label: "Lohnbuchhaltung Berlin" },
       { href: "/faq", label: "Häufige Fragen zur Lohnabrechnung" },
+      { href: "/blog/mindestlohn-2027-arbeitgeber-berlin", label: "Mindestlohn 2027: 14,60 Euro – was jetzt zu tun ist" },
     ],
   },
   {
@@ -395,6 +407,7 @@ export const blogPosts: BlogPost[] = [
     ],
     related: [
       { href: "/loesungen/pflegedienst", label: "Lohnabrechnung für Pflegedienste in Berlin" },
+      { href: "/blog/mindestlohn-2027-arbeitgeber-berlin", label: "Mindestlohn 2027: 14,60 Euro – was jetzt zu tun ist" },
       { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
     ],
   },
@@ -435,6 +448,7 @@ export const blogPosts: BlogPost[] = [
     ],
     related: [
       { href: "/loesungen/sicherheitsdienst", label: "Lohnabrechnung für Sicherheitsunternehmen Berlin" },
+      { href: "/blog/mindestlohn-2027-arbeitgeber-berlin", label: "Mindestlohn 2027: 14,60 Euro – was jetzt zu tun ist" },
       { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
     ],
   },
@@ -475,7 +489,155 @@ export const blogPosts: BlogPost[] = [
     ],
     related: [
       { href: "/loesungen/logistik", label: "Lohnabrechnung für Logistikunternehmen Berlin" },
+      { href: "/blog/mindestlohn-2027-arbeitgeber-berlin", label: "Mindestlohn 2027: 14,60 Euro – was jetzt zu tun ist" },
       { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
+    ],
+  },
+  {
+    slug: "mindestlohn-2027-arbeitgeber-berlin",
+    title: "Mindestlohn 2027: 14,60 Euro – was Berliner Arbeitgeber jetzt vorbereiten müssen",
+    description:
+      "Der Mindestlohn steigt zum 1. Januar 2027 auf 14,60 Euro. Was das für Personalkosten, Minijobs und Arbeitsverträge bedeutet – der Fahrplan für Berliner Arbeitgeber.",
+    category: "Lohnbuchhaltung",
+    date: "2026-08-13",
+    readingMinutes: 5,
+    keywords: [
+      "Mindestlohn 2027",
+      "Mindestlohn 14,60 Euro",
+      "Mindestlohnerhöhung Arbeitgeber",
+      "Personalkosten 2027 Berlin",
+      "Lohnbuchhaltung Berlin",
+    ],
+    excerpt:
+      "Zum 1. Januar 2027 steigt der gesetzliche Mindestlohn auf 14,60 Euro brutto. Wer viele Beschäftigte im unteren Lohnsegment hat, sollte jetzt rechnen – nicht erst im Dezember.",
+    content: [
+      { type: "p", text: "Zum 1. Januar 2027 steigt der gesetzliche Mindestlohn von 13,90 Euro auf 14,60 Euro brutto pro Zeitstunde. Das ist die zweite Stufe der Anpassung, die die Mindestlohnkommission im Juni 2025 beschlossen und die Bundesregierung per Verordnung umgesetzt hat. Für Betriebe mit vielen Beschäftigten im unteren Lohnsegment ist das ein spürbarer Kostenfaktor – und er lässt sich jetzt schon berechnen." },
+      { type: "h2", text: "Wie hoch ist der Mindestlohn 2027?" },
+      { type: "p", text: "Der gesetzliche Mindestlohn beträgt ab dem 1. Januar 2027 14,60 Euro brutto je Zeitstunde. Zum Vergleich: 2025 lag er bei 12,82 Euro, 2026 bei 13,90 Euro. Das ist ein Anstieg von rund 13,9 Prozent innerhalb von zwei Jahren." },
+      { type: "h2", text: "Die neue Minijob-Grenze ab 2027" },
+      { type: "p", text: "Seit Oktober 2022 ist die Verdienstgrenze für Minijobs dynamisch an den Mindestlohn gekoppelt: Sie entspricht dem Entgelt für rund zehn Wochenstunden zum jeweiligen Mindestlohn. Konkret bedeutet das:" },
+      { type: "ul", items: [
+        "2026: 603 Euro monatlich im Jahresdurchschnitt (maximal 7.236 Euro im Jahr)",
+        "2027: 633 Euro monatlich im Jahresdurchschnitt (maximal 7.596 Euro im Jahr)",
+        "Midijob-Übergangsbereich 2026: 603,01 bis 2.000 Euro – ab 2027 beginnt er bei 633,01 Euro",
+      ] },
+      { type: "p", text: "Wichtig: Die Grenze steigt automatisch, die vereinbarte Stundenzahl aber nicht. Wer den Stundenumfang seiner Minijobber unverändert lässt und nur den höheren Mindestlohn zahlt, bleibt in der Regel im Minijob-Rahmen. Wer dagegen den Monatsverdienst konstant halten will, muss die Stunden reduzieren." },
+      { type: "h2", text: "Was Arbeitgeber jetzt konkret tun sollten" },
+      { type: "ul", items: [
+        "Alle Stundenlöhne unter 14,60 Euro identifizieren und die Mehrkosten für 2027 hochrechnen",
+        "Minijob-Verhältnisse prüfen: Stundenzahl anpassen oder höheren Verdienst einplanen",
+        "Arbeitsverträge mit fester Stundenlohnangabe auf Anpassungsbedarf prüfen",
+        "Kalkulationen und Angebotspreise für 2027 nachziehen – besonders bei langfristigen Verträgen",
+        "Dokumentationspflichten nach dem Mindestlohngesetz einhalten: Beginn, Ende und Dauer der Arbeitszeit erfassen",
+      ] },
+      { type: "h2", text: "Achtung bei Branchenmindestlöhnen" },
+      { type: "p", text: "In einigen Branchen gelten eigene, höhere Mindestlöhne – etwa im Baugewerbe, im Dachdeckerhandwerk, in der Gebäudereinigung oder in der Sicherheitsbranche. Ein Branchenmindestlohn darf nie unter dem gesetzlichen Mindestlohn liegen. Steigt der gesetzliche Mindestlohn über den Tarifwert, gilt automatisch der höhere Betrag. Prüfen Sie also beides – den gesetzlichen und den für Sie einschlägigen tariflichen Wert." },
+      { type: "h2", text: "Wer kontrolliert die Einhaltung?" },
+      { type: "p", text: "Zuständig ist die Finanzkontrolle Schwarzarbeit (FKS) der Zollverwaltung. Verstöße gegen den Mindestlohn können mit empfindlichen Bußgeldern geahndet werden – ebenso wie Lücken in der Arbeitszeitdokumentation. Eine saubere Zeiterfassung ist deshalb kein Nice-to-have, sondern die Grundlage der Nachweisführung." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Der Mindestlohn 2027 von 14,60 Euro steht fest und ist planbar. Wer die Mehrkosten früh durchrechnet, Minijob-Verhältnisse rechtzeitig anpasst und die Dokumentation im Griff hat, geht ohne Überraschungen ins neue Jahr. Wir übernehmen die Umstellung in der laufenden Lohnabrechnung für Sie – inklusive Prüfung aller betroffenen Beschäftigungsverhältnisse." },
+    ],
+    related: [
+      { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
+      { href: "/blog/lohnbuero-berlin", label: "Lohnbüro Berlin: Aufgaben und Ablauf" },
+    ],
+  },
+  {
+    slug: "e-rechnungspflicht-2027-2028-kleine-unternehmen",
+    title: "E-Rechnungspflicht 2027 und 2028: Was kleine Unternehmen in Berlin jetzt tun müssen",
+    description:
+      "E-Rechnungspflicht im B2B: Empfangen seit 2025, ausstellen ab 2027 über 800.000 Euro Umsatz, ab 2028 für alle. Fristen, Formate und Ausnahmen verständlich erklärt.",
+    category: "Buchhaltung",
+    date: "2026-08-13",
+    readingMinutes: 6,
+    keywords: [
+      "E-Rechnungspflicht 2027",
+      "E-Rechnung 2028 Pflicht",
+      "XRechnung ZUGFeRD",
+      "E-Rechnung kleine Unternehmen",
+      "Buchhaltung Berlin",
+    ],
+    excerpt:
+      "Eine PDF-Rechnung ist keine E-Rechnung. Wir erklären die gestaffelten Fristen bis 2028, welche Formate zulässig sind und welche Rechnungen dauerhaft ausgenommen bleiben.",
+    content: [
+      { type: "p", text: "Die E-Rechnung wird im deutschen B2B-Geschäftsverkehr schrittweise zur Pflicht. Viele kleine Unternehmen gehen davon aus, dass sie mit einer PDF-Rechnung per E-Mail auf der sicheren Seite sind – das ist ein Irrtum. Dieser Beitrag ordnet die Fristen ein und zeigt, was jetzt zu tun ist." },
+      { type: "h2", text: "Was ist eine E-Rechnung – und was nicht?" },
+      { type: "p", text: "Eine E-Rechnung ist eine Rechnung in einem strukturierten, maschinenlesbaren Format nach dem europäischen Standard EN 16931. In der Praxis sind das XRechnung (reines XML) und ZUGFeRD (hybrides Format aus PDF und eingebettetem XML). Eine reine PDF-Datei erfüllt diese Anforderung nicht: Sie ist zwar elektronisch, aber nicht maschinell auswertbar – und gilt umsatzsteuerlich nicht als E-Rechnung." },
+      { type: "h2", text: "Die Fristen im Überblick" },
+      { type: "ul", items: [
+        "Seit 1. Januar 2025: Alle inländischen Unternehmen müssen E-Rechnungen empfangen und verarbeiten können – ohne Übergangsfrist, unabhängig von Größe und Rechtsform.",
+        "Ab 1. Januar 2027: Ausstellungspflicht für Unternehmen mit mehr als 800.000 Euro Gesamtumsatz im Vorjahr (also 2026).",
+        "Ab 1. Januar 2028: Ausstellungspflicht für alle inländischen B2B-Umsätze, unabhängig vom Umsatz.",
+      ] },
+      { type: "p", text: "Für den Empfang gab es nie eine Übergangsfrist. Wer heute noch kein Verfahren dafür hat, ist bereits jetzt in der Pflicht – technisch genügt dafür zunächst ein zentrales E-Mail-Postfach mit einem definierten Prozess und revisionssicherer Archivierung." },
+      { type: "h2", text: "Gilt das auch für mein kleines Unternehmen?" },
+      { type: "p", text: "Ja, beim Empfang ausnahmslos. Bei der Ausstellung entscheidet der Vorjahresumsatz über den Zeitpunkt: Liegt Ihr Gesamtumsatz 2026 bei maximal 800.000 Euro, haben Sie bis Ende 2027 Zeit und dürfen bis dahin weiter Papier- oder PDF-Rechnungen versenden, sofern der Empfänger zustimmt. Ab 2028 gilt die Pflicht dann für alle." },
+      { type: "h2", text: "Welche Rechnungen bleiben ausgenommen?" },
+      { type: "ul", items: [
+        "Rechnungen an Endverbraucher (B2C) – dauerhaft nicht betroffen",
+        "Kleinbetragsrechnungen bis 250 Euro",
+        "Fahrausweise",
+        "Kleinunternehmer nach § 19 UStG sind von der Ausstellungspflicht befreit – empfangen müssen aber auch sie",
+      ] },
+      { type: "h2", text: "Welche Risiken drohen bei Versäumnissen?" },
+      { type: "p", text: "Nach Ablauf der jeweiligen Übergangsfrist ist eine reine PDF-Rechnung umsatzsteuerlich keine ordnungsgemäße Rechnung. Das kann den Vorsteuerabzug beim Empfänger gefährden – mit der Folge, dass Kunden die Zahlung zurückhalten oder eine korrigierte Rechnung verlangen. Der praktische Druck entsteht deshalb oft früher als die gesetzliche Frist: Viele größere Auftraggeber verlangen schon heute strukturierte Formate." },
+      { type: "h2", text: "Was Sie jetzt vorbereiten sollten" },
+      { type: "ul", items: [
+        "Empfangsweg festlegen: zentrale Rechnungs-E-Mail-Adresse und klarer Zuständigkeitsprozess",
+        "Archivierung prüfen: E-Rechnungen müssen revisionssicher im Originalformat aufbewahrt werden",
+        "Stammdaten bereinigen – fehlerhafte Adress- oder Steuerdaten fallen bei strukturierten Formaten sofort auf",
+        "Rechnungsprogramm auf XRechnung- und ZUGFeRD-Fähigkeit prüfen",
+        "Freiwillig früher umstellen, um Routine aufzubauen, statt kurz vor der Frist zu improvisieren",
+      ] },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Die E-Rechnungspflicht ist kein einmaliges Projekt, sondern betrifft Stammdaten, Prozesse und Archivierung. Kleine Unternehmen in Berlin haben bis Ende 2027 Zeit für die Ausstellung – empfangen müssen sie längst. Wer die Umstellung mit der laufenden Buchhaltung verbindet, spart doppelte Arbeit. Wir richten den Prozess gemeinsam mit Ihnen ein." },
+    ],
+    related: [
+      { href: "/leistungen/buchhaltung", label: "Laufende Buchhaltung in Berlin" },
+      { href: "/blog/buchhaltungsservice-paragraph-6-stberg", label: "Was darf ein Buchhaltungsservice?" },
+    ],
+  },
+  {
+    slug: "lohnabrechnung-gebaeudereinigung-berlin",
+    title: "Lohnabrechnung für Gebäudereiniger in Berlin: Branchenmindestlohn und Objektwechsel im Griff",
+    description:
+      "Lohnbuchhaltung für Gebäudereinigungsbetriebe in Berlin: Branchenmindestlohn, Teilzeit- und Minijob-Mix, Objektwechsel und hohe Fluktuation korrekt abrechnen.",
+    category: "Lohnbuchhaltung",
+    date: "2026-08-13",
+    readingMinutes: 5,
+    keywords: [
+      "Lohnabrechnung Gebäudereinigung Berlin",
+      "Lohnbüro Reinigungsfirma",
+      "Branchenmindestlohn Gebäudereinigung",
+      "Lohnbuchhaltung viele Minijobber",
+      "Gehaltsabrechnung Reinigungskräfte",
+    ],
+    excerpt:
+      "Viele Teilzeitkräfte, wechselnde Objekte, hohe Fluktuation und ein eigener Branchenmindestlohn: Warum die Lohnabrechnung in der Gebäudereinigung besonders fehleranfällig ist.",
+    content: [
+      { type: "p", text: "Gebäudereinigungsbetriebe haben eine der aufwändigsten Lohnabrechnungen überhaupt: viele Beschäftigte mit kleinen Stundenkontingenten, wechselnde Einsatzobjekte, kurzfristige Vertretungen und eine hohe Fluktuation. Dazu kommt ein eigener Branchenmindestlohn. Jeder dieser Punkte ist für sich harmlos – in der Kombination entsteht monatlicher Aufwand, der schnell eine halbe Stelle bindet." },
+      { type: "h2", text: "Branchenmindestlohn statt nur gesetzlicher Mindestlohn" },
+      { type: "p", text: "Die Gebäudereinigung gehört zu den Branchen mit einem eigenen, für allgemeinverbindlich erklärten Mindestlohn nach dem Arbeitnehmer-Entsendegesetz. Dieser darf den gesetzlichen Mindestlohn nie unterschreiten. Da der gesetzliche Mindestlohn zum 1. Januar 2027 auf 14,60 Euro steigt, ist bei jeder Lohnrunde zu prüfen, welcher Wert im Einzelfall der höhere ist – und dieser gilt. Zusätzlich unterscheiden Tarifwerke der Branche typischerweise zwischen Lohngruppen, etwa Innen- und Unterhaltsreinigung gegenüber Glas- und Fassadenreinigung." },
+      { type: "h2", text: "Der Minijob-Mix als Dauerthema" },
+      { type: "p", text: "In kaum einer Branche arbeiten so viele Beschäftigte an der Geringfügigkeitsgrenze. Mit jeder Mindestlohnerhöhung verschiebt sich diese Grenze: 2026 liegt sie bei 603 Euro monatlich, ab 2027 bei 633 Euro. Wer den Stundenumfang unverändert lässt, bleibt im Rahmen – wer aufstockt, riskiert unbemerkt Sozialversicherungspflicht. Die vorausschauende Jahresbetrachtung ist deshalb Pflicht, nicht Kür." },
+      { type: "h2", text: "Objektwechsel, Vertretungen und Fluktuation" },
+      { type: "ul", items: [
+        "Häufige An- und Abmeldungen bei Minijob-Zentrale und Krankenkassen",
+        "Einsatz derselben Kraft in mehreren Objekten mit unterschiedlichen Stundensätzen",
+        "Kurzfristige Krankheitsvertretungen, die im selben Monat abgerechnet werden müssen",
+        "Objektbezogene Zuschläge und Fahrzeiten korrekt zuordnen",
+        "Nacht- und Wochenendarbeit bei Sonderreinigungen nach § 3b EStG steuerfrei abrechnen",
+      ] },
+      { type: "h2", text: "Arbeitszeiterfassung als Nachweisgrundlage" },
+      { type: "p", text: "Für Beschäftigte im Anwendungsbereich des Mindestlohngesetzes müssen Beginn, Ende und Dauer der täglichen Arbeitszeit dokumentiert werden. Bei verteilten Objekten ohne feste Betriebsstätte ist das organisatorisch anspruchsvoll. Kontrolliert wird von der Finanzkontrolle Schwarzarbeit (FKS) – und geprüft wird nicht nur, ob korrekt gezahlt, sondern auch, ob sauber dokumentiert wurde." },
+      { type: "h2", text: "Warum sich das Auslagern hier besonders rechnet" },
+      { type: "p", text: "Der Aufwand in der Gebäudereinigung skaliert mit der Kopfzahl, nicht mit dem Umsatz. Ein Betrieb mit 40 Teilzeitkräften hat mehr Abrechnungsaufwand als ein Handwerksbetrieb mit 10 Vollzeitkräften bei gleichem Umsatz. Ein externes Lohnbüro rechnet pro Mitarbeiter ab, hält Tarif- und Mindestlohnänderungen nach und fällt weder krankheits- noch urlaubsbedingt aus." },
+      { type: "h2", text: "Fazit" },
+      { type: "p", text: "Branchenmindestlohn, Minijob-Grenzen und ständige Personalwechsel machen die Lohnabrechnung in der Gebäudereinigung zur Spezialaufgabe. Wir übernehmen die laufende Abrechnung inklusive aller Meldungen – Sie behalten den Kopf frei für Ihre Objekte." },
+    ],
+    related: [
+      { href: "/leistungen/lohnbuchhaltung", label: "Unsere Lohnbuchhaltung in Berlin" },
+      { href: "/blog/mindestlohn-2027-arbeitgeber-berlin", label: "Mindestlohn 2027: Was Arbeitgeber vorbereiten müssen" },
     ],
   },
 ];
