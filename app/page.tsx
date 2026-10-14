@@ -616,6 +616,16 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-xl shadow-slate-200/70">
+                    <Image
+                      src="/kontakt-schreibtisch.jpg"
+                      alt="Arbeitsplatz von Taxalis Consulting"
+                      fill
+                      sizes="(min-width: 1024px) 460px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </Reveal>
 

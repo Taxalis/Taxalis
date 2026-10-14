@@ -100,8 +100,8 @@ export default function UeberUns() {
             <div>
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl shadow-slate-200/70 sm:aspect-[5/4] lg:aspect-[4/5]">
                 <Image
-                  src="/office.jpg"
-                  alt="Arbeitsplatz von Taxalis Consulting in Berlin"
+                  src="/ueber-uns-treppenhaus.jpg"
+                  alt="Moderne Büroräume von Taxalis Consulting in Berlin"
                   fill
                   priority
                   sizes="(min-width: 1024px) 560px, 100vw"
