@@ -104,7 +104,7 @@ export default function UeberUns() {
                   alt="Moderne Büroräume von Taxalis Consulting in Berlin"
                   fill
                   priority
-                  sizes="(min-width: 1024px) 560px, 100vw"
+                  sizes="(min-width: 1024px) 1200px, 150vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" />
