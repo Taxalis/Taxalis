@@ -165,8 +165,8 @@ export default function Home() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl shadow-slate-200/70 sm:aspect-[5/4] lg:aspect-[4/5]">
                 <Image
-                  src="/office.jpg"
-                  alt="Modernes Büro von Taxalis Consulting in Berlin"
+                  src="/hero-handschlag.jpg"
+                  alt="Handschlag als Zeichen erfolgreicher Zusammenarbeit mit Taxalis Consulting"
                   fill
                   priority
                   sizes="(min-width: 1024px) 560px, 100vw"
